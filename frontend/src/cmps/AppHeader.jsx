@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export function AppHeader() {
   return (
@@ -17,9 +19,8 @@ export function AppHeader() {
       <div className='header__right'>
         <p>explore</p>
         <p>Become a host</p>
-        {/* <LanguageIcon /> */}
-        {/* <ExpandMoreIcon /> */}
-        {/* <Avatar /> */}
+        <MenuIcon />
+        <AccountCircleIcon />
       </div>
     </header>
   )
