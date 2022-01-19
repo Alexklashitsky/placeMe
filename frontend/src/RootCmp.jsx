@@ -1,24 +1,25 @@
-import { routes } from './routes.js'
-import { Switch, Route } from 'react-router'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { routes } from './routes.js';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { AppHeader } from './cmps/AppHeader.jsx'
-import { Footer } from './cmps/AppFooter'
+import { AppHeader } from './cmps/AppHeader.jsx';
+import { Footer } from './cmps/AppFooter';
+import { Home } from './pages/Home.jsx';
 
+import './assets/scss/main.scss';
 
-import '../assets/css/main.scss'
-
-export function App() {
+export function RootCmp() {
   return (
-    <div className="App">
+    <div className='App'>
       <Router>
-        <AppHeader />
+        {/* <AppHeader /> */}
         <main>
-        <Switch>
-          {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
-        </Switch>
-        </main>  
-        <Footer />
+          <Switch>
+            {routes.map((route) => (
+              <Route key={route.path} exact component={route.component} path={route.path} />
+            ))}
+          </Switch>
+        </main>
+        {/* <Footer /> */}
       </Router>
     </div>
   );
