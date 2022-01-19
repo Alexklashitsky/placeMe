@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { Footer } from './cmps/AppFooter'
 import { Home } from './pages/Home.jsx'
+import { StaySearch } from './pages/StaySearch.jsx'
 
 
 import './assets/scss/main.scss'

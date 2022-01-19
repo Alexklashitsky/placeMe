@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+.flex{
+    display: flex;
+}
+
+.square-ratio {
+    @include aspect-ratio(1, 1);
+}
+.video-ratio {
+    @include aspect-ratio(16, 9);
+}
+.portrait-ratio {
+    @include aspect-ratio(9, 16);
+=======
 .entire-layout {
   grid-column: 1/-1;
   // padding: 1rem;
@@ -5,4 +19,5 @@
 }
 .center-layout{
 grid-column: 2;
+>>>>>>> ff972fb30f8b81e2cdc09ea61bb5af0ba9222f7b
 }
