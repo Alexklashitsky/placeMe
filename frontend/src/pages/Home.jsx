@@ -1,12 +1,16 @@
 import React from 'react'
-import HeroImage from '../assets/imgs/sam-hull-KCJKsJPe9pQ-unsplash.jpg'
+import { Hero } from '../cmps/HomeHero.jsx'
+import  InspirationCards from '../cmps/InspirationCards'
 
 export function Home() {
   return (
-    <div className="hero-container entire-layout">
-      <div className="center-layout hero-img-container">
-        <img className="hero-pic" src={HeroImage} alt="" />
+    <section className="entire-layout">
+      <Hero/>
+      <div className="inspiration-container center-layout">
+      <p>Inspiration for your next trip</p> 
+      <InspirationCards/>
       </div>
-    </div>
+    </section>
   )
 }
+// src\assets\imgs\mike-aunzo-Bl-IWjL4s1I-unsplash.jpg
