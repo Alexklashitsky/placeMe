@@ -1,10 +1,12 @@
 import { stayService } from '../services/stay.service';
+// import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
 
 import React from 'react';
+
 const gStays = {
   _id: '10006546',
   name: 'Ribeira Charming Duplex',
-  type: 'House',
+  type: 'house',
   imgUrls: [
     'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
     'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
@@ -13,7 +15,10 @@ const gStays = {
     'https://images.unsplash.com/photo-1585779034823-7e9ac8faec70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
   ],
   price: 80.0,
-  summary: 'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
+  summary: 'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira ',
+  bedrooms: 3,
+  beds: 2,
+  baths: 2,
   capacity: 8,
   amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
   host: {
@@ -39,18 +44,16 @@ const gStays = {
         imgUrl: '/img/img2.jpg',
       },
     },
-    // {
-    //   id: 'madeId',
-    //   txt: 'Very helpful hosts. Cooked traditional...',
-    //   rate: 10,
-    //   by: {
-    //     _id: 'u102',
-    //     fullname: 'user2',
-    //     imgUrl: '/img/img2.jpg',
-    //   },
-    // },
   ],
 };
+
+// function getAmenetyIcon(amenity){
+//   switch(amenity){
+//     case 'TV':{
+//       return ConnectedTvIcon
+//     }
+//   }
+// }
 
 // function getReviews() {
 //   const reviews = gStays.reviews;
@@ -80,6 +83,7 @@ export class StayDetails extends React.Component {
 
   render() {
     const images = gStays.imgUrls;
+    const amenities = gStays.amenities;
     return (
       <div className='center-layout'>
         <h1 className='stay-name'>{gStays.name}</h1>
@@ -95,10 +99,31 @@ export class StayDetails extends React.Component {
           </section>
         </section>
         <section className='stay-details-images'>
-          {images.map((image) => {
-            <img src={image}></img>;
-          })}
+          {images.map((image) => (
+            <img src={image} />
+          ))}
         </section>
+        <section className='stay-details-hosted'>
+          <h1>
+            An amazing {gStays.type} hosted by {gStays.host.fullname}.
+          </h1>
+          <section className='stay-details-hosted-info'>
+            <h4>
+              {gStays.capacity} Guests <span> • </span>
+              {gStays.bedrooms} bedroom <span> • </span>
+              {gStays.beds} beds <span> • </span>
+              {gStays.baths} baths <span> </span>
+            </h4>
+          </section>
+        </section>
+        <section className='stay-details-ameneties'>
+          {amenities.map((amenity) => (
+            <div>
+              <h4>{amenity}</h4>
+            </div>
+          ))}
+        </section>
+        <section className='stay-details-description'>{gStays.summary}</section>
       </div>
     );
   }

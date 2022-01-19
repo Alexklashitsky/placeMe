@@ -1,9 +1,9 @@
 import { routes } from './routes.js';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { AppHeader } from './cmps/AppHeader.jsx';
-import { Footer } from './cmps/AppFooter';
-import { Home } from './pages/Home.jsx';
+// import { AppHeader } from './cmps/AppHeader.jsx';
+// import { Footer } from './cmps/AppFooter';
+// import { Home } from './pages/Home.jsx';
 
 import './assets/scss/main.scss';
 
