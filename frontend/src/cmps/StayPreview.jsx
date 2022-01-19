@@ -9,7 +9,7 @@ export function StayPreview({ stay }) {
 
 
         <Link className="clean-link" to={`/stay/${stay._id}`}>
-            <article className="stay-preview">
+            <article className="card">
                 <img src={stay.imgUrls[0]} alt="" />
                 <div className='preview-body flex'  >
                     <h4>  {stay.loc.address}</h4>
