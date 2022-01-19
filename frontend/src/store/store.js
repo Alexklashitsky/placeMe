@@ -15,8 +15,6 @@ const rootReducer = combineReducers({
     userModule: userReducer
 })
 
-
-
 export default createStore(
     rootReducer,
     applyMiddleware(thunk)
