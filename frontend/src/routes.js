@@ -6,8 +6,8 @@ export const routes = [
     path: '/stay/',
     component: StayDetails,
   },
-  {
-    path: '/',
-    component: Home,
-  },
+  // {
+  //   path: '/',
+  //   component: Home,
+  // },
 ];

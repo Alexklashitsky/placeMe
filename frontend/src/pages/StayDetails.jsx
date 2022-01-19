@@ -7,7 +7,10 @@ const gStays = {
   type: 'House',
   imgUrls: [
     'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
-    'otherImg.jpg',
+    'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80',
+    'https://images.unsplash.com/photo-1564078516393-cf04bd966897?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    'https://images.unsplash.com/photo-1585779034823-7e9ac8faec70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
   ],
   price: 80.0,
   summary: 'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...',
@@ -76,8 +79,9 @@ export class StayDetails extends React.Component {
   //   };
 
   render() {
+    const images = gStays.imgUrls;
     return (
-      <div className='stay-details-main-layout'>
+      <div className='center-layout'>
         <h1 className='stay-name'>{gStays.name}</h1>
         <section className='stay-details-header'>
           <section className='stay-info'>
@@ -90,7 +94,11 @@ export class StayDetails extends React.Component {
             <h4>Save</h4>
           </section>
         </section>
-        <section className='stay-details-images'></section>
+        <section className='stay-details-images'>
+          {images.map((image) => {
+            <img src={image}></img>;
+          })}
+        </section>
       </div>
     );
   }
