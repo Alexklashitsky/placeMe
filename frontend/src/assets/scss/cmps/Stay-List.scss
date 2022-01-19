@@ -1,0 +1,15 @@
+
+
+
+
+.stay-list {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    // grid-auto-rows: 300px;
+
+    // > * {
+    //     @include aspect-ratio(1, 1);
+    // }
+}
