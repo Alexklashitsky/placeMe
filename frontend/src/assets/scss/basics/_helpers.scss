@@ -1,3 +1,4 @@
+// <<<<<<< HEAD
 .flex{
     display: flex;
 }
@@ -10,6 +11,42 @@
 // }
 // .portrait-ratio {
 //     @include aspect-ratio(9, 16);
+//   }
+// =======
+
+.entire-layout {
+  grid-column: 1/-1;
+  width: 100%;
+  // padding: 1rem;
+}
+.center-layout {
+grid-column: 2;
+}
+
+.clean-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.clean-list{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+.gradient-text {
+  background-color: #f3ec78;
+  background-image: radial-gradient(circle at center,#D70466 0%,#BD1E59 30%,#92174D 55%,#861453 72.5%,#6C0D63 90%,#6C0D63 100%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+  &:hover {
+    background-image: radial-gradient(circle at center,#ff0077 0%,#f01062 30%,#e0166e 55%,#d41880 72.5%,#c019af 90%,#d116be 100%);
+}
+}
+
 // }
 // .entire-layout {
 //   grid-column: 1/-1;
