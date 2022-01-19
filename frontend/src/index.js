@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/scss/main.scss';
-import { RootCmp } from './assets/CmpRoot';
+import { RootCmp } from './RootCmp';
 import { Provider } from 'react-redux';
 
-import { store } from './js/store/store'
+import { store } from './store/store'
 
 ReactDOM.render(
   <React.StrictMode>

@@ -7,11 +7,11 @@ import thunk from 'redux-thunk'
 // const { applyMiddleware } = Redux
 // const thunk = ReduxThunk.default
 
-import { toysReducer } from "./toy.reducer.js";
+// import { toysReducer } from "./toy.reducer.js";
 import { userReducer } from "./user.reducer.js";
 
 const rootReducer = combineReducers({
-    toysModule: toysReducer,
+    // toysModule: toysReducer,
     userModule: userReducer
 })
 
