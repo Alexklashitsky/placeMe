@@ -13,11 +13,11 @@
 // //     userModule: userReducer
 // // })
 
-// // import { toysReducer } from "./toy.reducer.js";
+// import { staysReducer } from './stay.reducer.js';
 // import { userReducer } from './user.reducer.js';
 
 // const rootReducer = combineReducers({
-//   // toysModule: toysReducer,
+//   staysModule: staysReducer,
 //   userModule: userReducer,
 // });
 

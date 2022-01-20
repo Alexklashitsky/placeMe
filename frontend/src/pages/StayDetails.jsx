@@ -1,7 +1,5 @@
-import { stayService } from '../services/stay.service';
-// import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
-
 import React from 'react';
+import { StayCheckIn } from '../cmps/StayCheckIn';
 
 const gStays = {
   _id: '10006546',
@@ -20,7 +18,7 @@ const gStays = {
   beds: 2,
   baths: 2,
   capacity: 8,
-  amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed', 'Cooking basics'],
+  amenities: ['TV', 'Wifi', 'Kitchen', 'Smoking allowed', 'Pets allowed'],
   host: {
     _id: '51399391',
     fullname: 'Davit Pok',
@@ -38,22 +36,71 @@ const gStays = {
       id: 'madeId',
       txt: 'Very helpful hosts. Cooked traditional...',
       rate: 4,
+      createdAt: new Date(2214123174455).toLocaleString('he-us', {
+        timeZone: 'GMT',
+      }),
       by: {
         _id: 'u102',
-        fullname: 'user2',
-        imgUrl: '/img/img2.jpg',
+        fullname: 'Miri',
+        imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+      },
+    },
+    {
+      id: 'madeId',
+      txt: 'Very helpful hosts. Cooked traditional...',
+      rate: 4,
+      createdAt: new Date(2214123174455).toLocaleString('he-us', {
+        timeZone: 'GMT',
+      }),
+      by: {
+        _id: 'u102',
+        fullname: 'Miri',
+        imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+      },
+    },
+    {
+      id: 'madeId',
+      txt: 'Very helpful hosts. Cooked traditional...',
+      rate: 4,
+      createdAt: new Date(2214123174455).toLocaleString('he-us', {
+        timeZone: 'GMT',
+      }),
+      by: {
+        _id: 'u102',
+        fullname: 'Miri',
+        imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+      },
+    },
+    {
+      id: 'madeId',
+      txt: 'worst house ive been in ',
+      rate: 1,
+      createdAt: new Date().toLocaleString('he-us', {
+        timeZone: 'GMT',
+      }),
+      by: {
+        _id: 'u103',
+        fullname: 'Dudi',
+        imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
       },
     },
   ],
 };
 
-// function getAmenetyIcon(amenity){
-//   switch(amenity){
-//     case 'TV':{
-//       return ConnectedTvIcon
-//     }
-//   }
-// }
+function getAmenity(amenity) {
+  switch (amenity) {
+    case 'TV':
+      return 'fas fa-tv';
+    case 'Wifi':
+      return 'fas fa-wifi';
+    case 'Kitchen':
+      return 'fas fa-kitchen';
+    case 'Smoking allowed':
+      return 'fas fa-smoking';
+    case 'Pets allowed':
+      return 'fas fa-pet';
+  }
+}
 
 // function getReviews() {
 //   const reviews = gStays.reviews;
@@ -84,20 +131,26 @@ export class StayDetails extends React.Component {
   render() {
     const images = gStays.imgUrls;
     const amenities = gStays.amenities;
+    const reviews = gStays.reviews;
+    console.log('gStays:', gStays.reviews);
+
     return (
       <div className='center-layout'>
         <h1 className='stay-name'>{gStays.name}</h1>
+
         <section className='stay-details-header'>
           <section className='stay-info'>
             <h4 className='stay-rate'>{gStays.reviews[0].rate}</h4>
             <span className='stay-details-dot'>•</span>
             <h4 className='stay-address'>{gStays.loc.address}</h4>
           </section>
+
           <section className='social'>
             <h4>Share</h4>
             <h4>Save</h4>
           </section>
         </section>
+        <StayCheckIn />
         <section className='stay-details-images'>
           {images.map((image) => (
             <img src={image} />
@@ -118,13 +171,46 @@ export class StayDetails extends React.Component {
         </section>
         <section className='stay-details-ameneties'>
           {amenities.map((amenity) => (
-            <div>
+            <div className='amenity'>
+              <span class={`${getAmenity(amenity)}`}></span>
               <h4>{amenity}</h4>
             </div>
           ))}
         </section>
         <section className='stay-details-description'>{gStays.summary}</section>
+        <section className='stay-details-reviews'>
+          <ul className='reviews-list-container clean-list'>
+            {reviews.map((review) => (
+              <li className='review-preview-container'>
+                <section>
+                  <div className='review-preview-header'>
+                    <img className='host-img' src={review.by.imgUrl}></img>
+                    <div className='review-preview-text-container'>
+                      <li>{review.by.fullname}</li>
+                      <li>{review.createdAt}</li>
+                    </div>
+                  </div>
+                  <span>{review.txt}</span>
+                </section>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     );
   }
 }
+
+// {reviews.map((review) => (
+//   <div className='reviews'>
+//     <img className='avatar' src={review.by.imgUrl} />
+//     <div className='review-user-header'>
+//       <div className='fullname-date'>
+//         <h3 className='fullname'>{review.by.fullname}</h3>
+//         <h5>{review.createdAt}</h5>
+//       </div>
+//     </div>
+
+//     <h4>{review.txt}</h4>
+//   </div>
+// ))}

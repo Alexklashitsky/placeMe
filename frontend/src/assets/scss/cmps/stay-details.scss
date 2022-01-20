@@ -48,11 +48,51 @@
   border-bottom: 1px solid rgb(190, 190, 190);
 }
 
-.stay-details-hosted-info {
+.stay-details-description {
+  border-bottom: 1px solid #bebebe;
+  padding: 30px;
+}
+
+.info {
   display: flex;
   align-items: center;
 
   span {
     font-size: 5px;
   }
+}
+
+.stay-details-ameneties {
+  --n: 2;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, 100% / var(--n)), 1fr));
+  border-bottom: 1px solid rgb(190, 190, 190);
+
+  .amenity {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+}
+
+.reviews-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 30px;
+  grid-gap: 50px;
+}
+.host-img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.review-preview-header {
+  display: flex;
+  align-items: center;
+}
+.review-preview-text-container {
+  display: flex;
+  flex-direction: column;
 }

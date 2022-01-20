@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
@@ -13,7 +13,7 @@ export function AppHeader() {
 
       <div className='header__center'>
         <input type='text' />
-        {/* <SearchIcon /> */}
+        <SearchIcon />
       </div>
 
       <div className='header__right'>
