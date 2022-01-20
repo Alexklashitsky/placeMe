@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-export const StayCheckIn = () => {
-  const [Stay, setStay] = useState({});
+export const StayCheckIn = ({ stay }) => {
   const [isOrdered, toggleOrder] = useState(false);
   const [order, setOrder] = useState({
     totalPrice: 0,
@@ -19,39 +18,38 @@ export const StayCheckIn = () => {
     status: 'pending',
   });
 
-  const onSay = () => {
-    console.log('hello:');
-  };
+  console.log('from stay checking', stay);
+
   return (
     <section className='button-main sticky'>
-      <section class='order-container'>
-        <div class='order-form-header'>
+      <section className='order-container'>
+        <div className='order-form-header'>
           <p>
-            <span class='cost'>$500</span> / night
+            <span className='cost'>$500</span> / night
           </p>
           <p>
-            5 <span class='reviews'>(5 reviews)</span>
+            5 <span className='reviews'>(5 reviews)</span>
           </p>
         </div>
-        <div class='order-data'>
-          <div class='date-picker'>
-            <div class='date-input'>
+        <div className='order-data'>
+          <div className='date-picker'>
+            <div className='date-input'>
               <label>check in</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
-            <div class='date-input'>
+            <div className='date-input'>
               <label>check out</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
           </div>
-          <div class='guest-input'>
+          <div className='guest-input'>
             <label>guests</label>
             <input placeholder='2'></input>
           </div>
         </div>
-        <div class='btn-container'>
-          <div class='content'>
-            <button onClick={onSay} class='action-btn'>
+        <div className='btn-container'>
+          <div className='content'>
+            <button className='action-btn'>
               <span>Reserve</span>
             </button>
           </div>
@@ -60,19 +58,3 @@ export const StayCheckIn = () => {
     </section>
   );
 };
-
-// order: {
-//   "totalPrice": 160,
-//   "startDate": "2025/10/15",
-//   "endDate": "2025/10/17",
-//   "guests": {
-//     "adults": 2,
-//     "kids": 1
-//   },
-//   "stay": {
-//     "_id": "h102",
-//     "name": "House Of Uncle My",
-//     "price": 80.00
-//   },
-//   "status": "pending"
-// }

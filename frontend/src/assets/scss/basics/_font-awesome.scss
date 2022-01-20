@@ -50,3 +50,10 @@
   color: salmon;
   content: '\f005';
 }
+.fas.fa-share::before {
+  content: '\f14d';
+}
+
+.far.fa-empty-heart::before {
+  content: '\f004';
+}
