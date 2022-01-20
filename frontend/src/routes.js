@@ -1,15 +1,13 @@
-import { Home } from './pages/Home.jsx'
-import { StaySearch } from './pages/StaySearch.jsx'
+import { Home } from './pages/Home.jsx';
+import { StayDetails } from './pages/StayDetails';
 
 export const routes = [
-   {
-      path: '/',
-      component: Home
-   },
-   {
-      path: '/StaySearch/',
-      component: StaySearch
-   }
-
-]
-
+  {
+    path: '/stay/',
+    component: StayDetails,
+  },
+  {
+    path: '/',
+    component: Home,
+  },
+];
