@@ -132,6 +132,7 @@ export class StayDetails extends React.Component {
     const images = gStays.imgUrls;
     const amenities = gStays.amenities;
     const reviews = gStays.reviews;
+    const {stay} = this.state;
 
     return (
       <div className='entire-layout stay-details-container'>
@@ -187,7 +188,7 @@ export class StayDetails extends React.Component {
               </section>
             </section>
             <section className='right-side'>
-              <StayCheckIn />
+              <StayCheckIn stay={stay}/>
             </section>
           </section>
           <section className='stay-details-reviews'>
