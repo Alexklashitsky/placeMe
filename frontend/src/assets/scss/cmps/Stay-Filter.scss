@@ -24,6 +24,50 @@
     border-width: 0.1px;
     border-color: rgba(214, 211, 211, 0.918);
     
+}
 
+.cal-modal{
+    height:400px ;
+    width: 35rem;
+    // display: none;
+    visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    background-color: whitesmoke;
+    border-color: rgb(182, 177, 177);
+    border-radius: 10%;
+    left: 50rem;
+    bottom: 27rem;
+    // float: right;
+
+}
+
+.guests-modal{
+    height:400px ;
+    width: 35rem;
+    // display: none;
+    visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    background-color: whitesmoke;
+    border-color: rgb(182, 177, 177);
+    border-radius: 10%;
+    left: 62rem;
+    bottom: 27rem;
+
+}
+
+.filters-modal{
+    height:25rem ;
+    width: 15rem;
+    // display: none;
+    // visibility: hidden;
+    position: absolute;
+    z-index: 5;
+    background-color: whitesmoke;
+    border-color: rgb(182, 177, 177);
+    border-radius: 10%;
+    left: 62rem;
+    bottom: 25rem;
 }
     
