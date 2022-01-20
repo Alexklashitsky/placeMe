@@ -7,7 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 export function AppHeader() {
   return (
     <header className='header'>
-      <Link to='/' className='clean-link'>
+      <Link to='/' className=" gradient-text clean-link">
         <h1>PlaceMe</h1>
       </Link>
 
