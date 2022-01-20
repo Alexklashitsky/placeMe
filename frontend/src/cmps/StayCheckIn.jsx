@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const StayCheckIn = ({ stay }) => {
-  const [Stay, setStay] = useState({});
+  // const [Stay, setStay] = useState({});
   const [isOrdered, toggleOrder] = useState(false);
   const [order, setOrder] = useState({
     totalPrice: 0,
@@ -26,13 +26,14 @@ export const StayCheckIn = ({ stay }) => {
     console.log('hello:');
   };
   console.log('stay: ', stay)
+  // if (!stay) return;
   return (
     <section className='button-main sticky'>
       <section className='order-container'>
 
         <div className='order-form-header'>
           <p>
-            <span className='cost'>{'$',stay.price}</span> / night
+            <span className='cost'>4</span> / night
           </p>
           <p>
             5 <span className='reviews'>(5 reviews)</span>
