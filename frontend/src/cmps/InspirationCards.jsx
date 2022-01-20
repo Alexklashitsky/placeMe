@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from './HomeCard.jsx'
+import image from '../assets/imgs/vienna-reyes-2rfmp5ymooY-unsplash (1).jpg'
 
 
 function inspirationCards() {
@@ -7,9 +8,9 @@ function inspirationCards() {
     <div>
       <div className='inspiration-cards-container'>
             <Card
-                src="https://a0.muscache.com/im/pictures/eb9c7c6a-ee33-414a-b1ba-14e8860d59b3.jpg?im_w=720"
-                title="Online Experiences"
-                description="Unique activities we can do together, led by a world of hosts."
+                src={image}
+                title="Amazing Experiences"
+                description="the most amazing experiences of the world around the corner."
             />
             <Card
                 src="https://a0.muscache.com/im/pictures/15159c9c-9cf1-400e-b809-4e13f286fa38.jpg?im_w=720"

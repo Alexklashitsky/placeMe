@@ -1,4 +1,4 @@
-// <<<<<<< HEAD
+
 .flex{
     display: flex;
 }
@@ -48,11 +48,9 @@ list-style-type: none;
 }
 
 // }
-// .entire-layout {
-//   grid-column: 1/-1;
-//   // padding: 1rem;
-//   outline: 5px solid gold;
-// }
+.entire-layout {
+  grid-column: 1/-1;
+}
 .center-layout{
 grid-column: 2;
 }
@@ -62,10 +60,7 @@ grid-column: 2;
     color: inherit;
     cursor: pointer;
 }
-<<<<<<< HEAD
 
 .clean-list{
     list-style-type: none;
 }
-=======
->>>>>>> 4f135f952751dbdaa0d2a6f05fc55e9cf01b7d82

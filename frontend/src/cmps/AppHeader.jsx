@@ -17,8 +17,8 @@ export function AppHeader() {
       </div>
 
       <div className='header__right'>
-        <p>explore</p>
-        <p>Become a host</p>
+        <div className="nav-link" ><Link to='/StaySearch' className="clean-link"> explore</Link></div>
+        <div className="nav-link" ><Link to='/' className="clean-link">Become a host </Link></div>
         <MenuIcon />
         <AccountCircleIcon />
       </div>
