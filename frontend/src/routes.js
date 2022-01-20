@@ -4,16 +4,15 @@ import { StaySearch } from './pages/StaySearch';
 
 export const routes = [
   {
-    path: '/stay/',
-    component: StayDetails,
-  },
-  {
     path: '/',
     component: Home,
+  },
+  {
+    path: '/stay/:stayId',
+    component: StayDetails,
   },
   {
     path: '/StaySearch',
     component: StaySearch,
   },
-
 ];

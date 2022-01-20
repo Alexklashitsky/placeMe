@@ -5,17 +5,16 @@ export const StayCheckIn = () => {
     console.log('hello:');
   };
   return (
-    <main>
+    <section className='button-main'>
       <section class='order-container'>
         <div class='order-form-header'>
           <p>
-            <span class='cost'>$150</span> / night
+            <span class='cost'>$500</span> / night
           </p>
           <p>
-            4.38 <span class='reviews'>(4 reviews)</span>
+            5 <span class='reviews'>(5 reviews)</span>
           </p>
         </div>
-
         <div class='order-data'>
           <div class='date-picker'>
             <div class='date-input'>
@@ -27,22 +26,19 @@ export const StayCheckIn = () => {
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
           </div>
-
           <div class='guest-input'>
             <label>guests</label>
             <input placeholder='2'></input>
           </div>
         </div>
-
         <div class='btn-container'>
           <div class='content'>
             <button onClick={onSay} class='action-btn'>
-              <span>Check availability</span>
+              <span>Reserve</span>
             </button>
           </div>
         </div>
       </section>
-      <p class='footer'>Report this listing</p>
-    </main>
+    </section>
   );
 };

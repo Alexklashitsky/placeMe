@@ -6,20 +6,20 @@ let staysToSave = [];
 
 export const stayService = {
   query,
-  // getById,
-  // save,
+  getById,
+
   // remove,
   // getEmptyCar
 };
 
 async function query() {
   let stays = await storageService.query(STORAGE_KEY);
+  console.log('stays1:', stays);
+
   if (!stays) {
     stays = await _createDemoData();
+    console.log('stays2:', stays);
   }
-
-  console.log('stays:', stays);
-
   return stays;
 }
 
@@ -183,12 +183,15 @@ function _createDemoData() {
     },
   ];
 
-  save(stays);
-  return Promise.resolve(stays);
+  _saveStaysToStorage(stays);
 
-  // console.log('demo data');
+  return Promise.resolve(stays);
 }
 
-function save(stay) {
-  return storageService.post(STORAGE_KEY, stay);
+function getById(stayId) {
+  return storageService.get(STORAGE_KEY, stayId);
+}
+
+function _saveStaysToStorage(stays) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(stays));
 }

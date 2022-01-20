@@ -1,5 +1,14 @@
 import React from 'react';
 import { StayCheckIn } from '../cmps/StayCheckIn';
+import { stayService } from '../services/stay.service';
+// function getReviews() {
+//   const reviews = gStays.reviews;
+//   const stayAverage =
+//     reviews.reduce(function (sum, value) {
+//       return sum + value.rate;
+//     }, 0) / reviews.length;
+//   return stayAverage;
+// }
 
 const gStays = {
   _id: '10006546',
@@ -13,7 +22,8 @@ const gStays = {
     'https://images.unsplash.com/photo-1585779034823-7e9ac8faec70?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
   ],
   price: 80.0,
-  summary: 'Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira ',
+  summary:
+    'Beautiful 4 bedroom architecturally designed house, with infinity pool and floor to ceiling views in almost every room of the sea and Cap de Creus national park, in beautiful working fishing village in Northern Greece ',
   bedrooms: 3,
   beds: 2,
   baths: 2,
@@ -47,7 +57,7 @@ const gStays = {
     },
     {
       id: 'madeId',
-      txt: 'Very helpful hosts. Cooked traditional...',
+      txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
       rate: 4,
       createdAt: new Date(2214123174455).toLocaleString('he-us', {
         timeZone: 'GMT',
@@ -60,7 +70,7 @@ const gStays = {
     },
     {
       id: 'madeId',
-      txt: 'Very helpful hosts. Cooked traditional...',
+      txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
       rate: 4,
       createdAt: new Date(2214123174455).toLocaleString('he-us', {
         timeZone: 'GMT',
@@ -73,7 +83,7 @@ const gStays = {
     },
     {
       id: 'madeId',
-      txt: 'worst house ive been in ',
+      txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
       rate: 1,
       createdAt: new Date().toLocaleString('he-us', {
         timeZone: 'GMT',
@@ -102,100 +112,117 @@ function getAmenity(amenity) {
   }
 }
 
-// function getReviews() {
-//   const reviews = gStays.reviews;
-//   const stayAverage =
-//     reviews.reduce(function (sum, value) {
-//       return sum + value.rate;
-//     }, 0) / reviews.length;
-//   return stayAverage;
-// }
-
 export class StayDetails extends React.Component {
   state = { stay: null };
 
-  //   componentDidMount() {
-  //     const { stayId } = this.props.match.params;
+  componentDidMount() {
+    const { stayId } = this.props.match.params;
+    this.getById(stayId).then((stay) => {
+      this.setState({ stay });
+    });
+  }
 
-  //     this.getById('10006546').then((stay) => {
-  //       this.setState({ stay });
-  //     });
-  //   }
-
-  //   getById = (stayId) => {
-  //     return stayService.getById(stayId).then((stay) => {
-  //       return stay;
-  //     });
-  //   };
+  getById = (stayId) => {
+    return stayService.getById(stayId).then((stay) => {
+      return stay;
+    });
+  };
 
   render() {
     const images = gStays.imgUrls;
     const amenities = gStays.amenities;
     const reviews = gStays.reviews;
-    console.log('gStays:', gStays.reviews);
 
     return (
-      <div className='center-layout'>
-        <h1 className='stay-name'>{gStays.name}</h1>
-
-        <section className='stay-details-header'>
-          <section className='stay-info'>
-            <h4 className='stay-rate'>{gStays.reviews[0].rate}</h4>
-            <span className='stay-details-dot'>•</span>
-            <h4 className='stay-address'>{gStays.loc.address}</h4>
+      <div className='entire-layout stay-details-container'>
+        <div className='center-layout'>
+          <h1 className='stay-name'>{gStays.name}</h1>
+          <section className='stay-details-header'>
+            <section className='stay-info'>
+              <span className='fas fa-star'></span>
+              <p className='stay-rate'>{gStays.reviews[0].rate}</p>
+              <p className='reviews'>{gStays.reviews.length} reviews.</p>
+              <p className='stay-details-dot'>•</p>
+              <a href='' className='stay-address'>
+                {gStays.loc.address}
+              </a>
+            </section>
+            <section className='social'>
+              <span>Share </span>
+              <span> Save</span>
+            </section>
           </section>
-
-          <section className='social'>
-            <h4>Share</h4>
-            <h4>Save</h4>
-          </section>
-        </section>
-        <StayCheckIn />
-        <section className='stay-details-images'>
-          {images.map((image) => (
-            <img src={image} />
-          ))}
-        </section>
-        <section className='stay-details-hosted'>
-          <h1>
-            An amazing {gStays.type} hosted by {gStays.host.fullname}.
-          </h1>
-          <section className='stay-details-hosted-info'>
-            <h4>
-              {gStays.capacity} Guests <span> • </span>
-              {gStays.bedrooms} bedroom <span> • </span>
-              {gStays.beds} beds <span> • </span>
-              {gStays.baths} baths <span> </span>
-            </h4>
-          </section>
-        </section>
-        <section className='stay-details-ameneties'>
-          {amenities.map((amenity) => (
-            <div className='amenity'>
-              <span class={`${getAmenity(amenity)}`}></span>
-              <h4>{amenity}</h4>
-            </div>
-          ))}
-        </section>
-        <section className='stay-details-description'>{gStays.summary}</section>
-        <section className='stay-details-reviews'>
-          <ul className='reviews-list-container clean-list'>
-            {reviews.map((review) => (
-              <li className='review-preview-container'>
-                <section>
-                  <div className='review-preview-header'>
-                    <img className='host-img' src={review.by.imgUrl}></img>
-                    <div className='review-preview-text-container'>
-                      <li>{review.by.fullname}</li>
-                      <li>{review.createdAt}</li>
-                    </div>
-                  </div>
-                  <span>{review.txt}</span>
-                </section>
-              </li>
+          <section className='stay-details-images'>
+            {images.map((image) => (
+              <img src={image} />
             ))}
-          </ul>
-        </section>
+          </section>
+          <section className='divider'>
+            <section className='left-side'>
+              <section className='stay-details-hosted'>
+                <h1>
+                  An amazing {gStays.type} hosted by {gStays.host.fullname}.
+                </h1>
+                <section className='stay-details-hosted-info'>
+                  <h4>
+                    {gStays.capacity} Guests <span> • </span>
+                    {gStays.bedrooms} bedroom <span> • </span>
+                    {gStays.beds} beds <span> • </span>
+                    {gStays.baths} baths <span> </span>
+                  </h4>
+                </section>
+              </section>
+              <section className='stay-details-description'>{gStays.summary}</section>
+              <section className='stay-details-ameneties'>
+                {amenities.map((amenity) => (
+                  <div className='amenity'>
+                    <span class={`${getAmenity(amenity)}`}></span>
+                    <p>{amenity}</p>
+                  </div>
+                ))}
+              </section>
+            </section>
+            <section className='right-side'>
+              <StayCheckIn />
+            </section>
+          </section>
+          <section className='stay-details-reviews'>
+            <ul className='reviews-list-container clean-list'>
+              {reviews.map((review) => (
+                <li className='review-preview-container'>
+                  <section>
+                    <div className='review-preview-header'>
+                      <img className='host-img' src={review.by.imgUrl}></img>
+                      <div className='review-preview-text-container'>
+                        <li className='fullname'>{review.by.fullname}</li>
+                        <li className='date'>{review.createdAt}</li>
+                      </div>
+                    </div>
+                    <span>{review.txt}</span>
+                  </section>
+                </li>
+              ))}
+            </ul>
+          </section>
+          <section className='stay-details-reviews'>
+            <ul className='reviews-list-container clean-list'>
+              {reviews.map((review) => (
+                <li className='review-preview-container'>
+                  <section>
+                    <div className='review-preview-header'>
+                      <img className='host-img' src={review.by.imgUrl}></img>
+                      <div className='review-preview-text-container'>
+                        <li className='fullname'>{review.by.fullname}</li>
+                        <li className='date'>{review.createdAt}</li>
+                      </div>
+                    </div>
+                    <span>{review.txt}</span>
+                  </section>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
       </div>
     );
   }

@@ -1,16 +1,51 @@
+.stay-details-container {
+  display: grid;
+  grid-template-columns: 500px 1fr 500px;
+  justify-items: center;
+}
 .stay-details-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.stay-name {
+  font-size: 30px;
+  line-height: 50px;
+  color: #484848;
 }
 
 .stay-info {
   display: flex;
   align-items: center;
   gap: 10px;
+  line-height: 70px;
+
+  .reviews {
+    text-decoration: underline;
+  }
+
+  .stay-address {
+    color: #484848;
+  }
 }
 
+.divider {
+  display: flex;
+  gap: 20px;
+
+  .left-side {
+    justify-items: flex-end;
+    z-index: 100;
+    width: 50%;
+  }
+  .right-side {
+    width: 50%;
+  }
+}
 .social {
   display: flex;
+  gap: 10px;
 }
 
 .center-layout {
@@ -20,9 +55,8 @@
 .stay-details-images {
   display: grid;
   grid-template-columns: repeat(4, minmax(180px, 1fr));
-  grid-template-rows: 180px 180px;
+  grid-template-rows: 250px 250px;
   grid-gap: 8px;
-  max-height: 60vh;
 
   :first-child {
     grid-column: 1 / span 2;
@@ -46,27 +80,33 @@
 
 .stay-details-hosted {
   border-bottom: 1px solid rgb(190, 190, 190);
+  padding: $stay-details-padding;
 }
 
 .stay-details-description {
   border-bottom: 1px solid #bebebe;
-  padding: 30px;
-}
+  padding: $stay-details-padding;
+  max-width: 75ch;
+  line-height: 1.6;
 
-.info {
-  display: flex;
-  align-items: center;
+  .info {
+    display: flex;
+    align-items: center;
 
-  span {
-    font-size: 5px;
+    span {
+      font-size: 5px;
+    }
   }
 }
 
 .stay-details-ameneties {
-  --n: 2;
+  --n: 3;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(max(200px, 100% / var(--n)), 1fr));
   border-bottom: 1px solid rgb(190, 190, 190);
+  grid-gap: 20px;
+
+  padding: $stay-details-padding;
 
   .amenity {
     display: flex;
@@ -80,19 +120,24 @@
   grid-template-columns: 1fr 1fr;
   margin-top: 30px;
   grid-gap: 50px;
-}
-.host-img {
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-.review-preview-header {
-  display: flex;
-  align-items: center;
-}
-.review-preview-text-container {
-  display: flex;
-  flex-direction: column;
+
+  .host-img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+  .review-preview-header {
+    display: flex;
+    align-items: center;
+    .fullname {
+      font-weight: bold;
+    }
+  }
+  .review-preview-text-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 24px;
+  }
 }

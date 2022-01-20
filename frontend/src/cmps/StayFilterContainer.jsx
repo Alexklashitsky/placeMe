@@ -39,13 +39,13 @@ export class StayFilter extends Component {
                     <button onClick={() => this.onOpenModal('filters')} >Filters</button>
                 </div>
                 <div className={"cal-modal" + " " + `${this.state.currModalShown === 'cal' ? " " : "shown"}`}>
-
+                    <p>dsd</p>
                 </div>
                 <div className={"guests-modal" + " " + `${this.state.currModalShown === 'guests' ? " " : "shown"}`}>
-
+                    <p>guests</p>
                 </div>
                 <div className={"filters-modal" + " " + `${this.state.currModalShown === 'filters' ? " " : "shown"}`}>
-
+                    <p>fitters</p>
                 </div>
 
 
