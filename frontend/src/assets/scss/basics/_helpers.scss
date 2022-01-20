@@ -103,11 +103,17 @@
       #d116be 100%
     );
   }
-    background-image: radial-gradient(circle at center,#e21776 0%,#ca205f 30%,#be2568 55%,#af2571 72.5%,#a8239b 90%,#b826a9 100%);
+  background-image: radial-gradient(
+    circle at center,
+    #e21776 0%,
+    #ca205f 30%,
+    #be2568 55%,
+    #af2571 72.5%,
+    #a8239b 90%,
+    #b826a9 100%
+  );
 }
 
-
-}
 .entire-layout {
   grid-column: 1/-1;
 }

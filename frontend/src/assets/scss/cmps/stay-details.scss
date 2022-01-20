@@ -1,7 +1,9 @@
 .stay-details-container {
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 500px 1fr 500px;
   justify-items: center;
+  font-size: 1.3rem;
 }
 .stay-details-header {
   display: flex;
@@ -10,9 +12,9 @@
 }
 
 .stay-name {
-  font-size: 30px;
+  font-size: 2em;
   line-height: 50px;
-  color: #484848;
+  color: $gray;
 }
 
 .stay-info {
@@ -26,7 +28,7 @@
   }
 
   .stay-address {
-    color: #484848;
+    color: $gray;
   }
 }
 
@@ -37,10 +39,10 @@
   .left-side {
     justify-items: flex-end;
     z-index: 100;
-    width: 50%;
+    width: 60%;
   }
   .right-side {
-    width: 50%;
+    width: 40%;
   }
 }
 .social {
@@ -55,7 +57,7 @@
 .stay-details-images {
   display: grid;
   grid-template-columns: repeat(4, minmax(180px, 1fr));
-  grid-template-rows: 250px 250px;
+  grid-template-rows: 350px 350px;
   grid-gap: 8px;
 
   :first-child {
@@ -81,6 +83,15 @@
 .stay-details-hosted {
   border-bottom: 1px solid rgb(190, 190, 190);
   padding: $stay-details-padding;
+
+  .hosted-by {
+    font-size: 2rem;
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .beds {
+    color: $gray;
+  }
 }
 
 .stay-details-description {
@@ -119,6 +130,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 30px;
+  padding: $stay-details-padding;
   grid-gap: 50px;
 
   .host-img {

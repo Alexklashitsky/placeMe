@@ -160,16 +160,16 @@ export class StayDetails extends React.Component {
           <section className='divider'>
             <section className='left-side'>
               <section className='stay-details-hosted'>
-                <h1>
+                <span className='hosted-by'>
                   An amazing {gStays.type} hosted by {gStays.host.fullname}.
-                </h1>
+                </span>
                 <section className='stay-details-hosted-info'>
-                  <h4>
-                    {gStays.capacity} Guests <span> • </span>
-                    {gStays.bedrooms} bedroom <span> • </span>
-                    {gStays.beds} beds <span> • </span>
-                    {gStays.baths} baths <span> </span>
-                  </h4>
+                  <span className='beds'>
+                    {gStays.capacity} Guests <span className='dot'> · </span>
+                    {gStays.bedrooms} bedroom <span className='dot'> · </span>
+                    {gStays.beds} beds <span className='dot'> · </span>
+                    {gStays.baths} baths <span className='dot'> </span>
+                  </span>
                 </section>
               </section>
               <section className='stay-details-description'>{gStays.summary}</section>
@@ -180,6 +180,10 @@ export class StayDetails extends React.Component {
                     <p>{amenity}</p>
                   </div>
                 ))}
+              </section>
+              <section className='stay-details-description'>
+                {gStays.summary +
+                  ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.'}
               </section>
             </section>
             <section className='right-side'>

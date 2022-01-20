@@ -17,16 +17,8 @@
     "stay": {
       "_id": "h102",
       "name": "House Of Uncle My",
-<<<<<<< HEAD
       "price": 80.0
     },
     "status": "pending"
   }
 ]
-=======
-      "price": 80.00
-    },
-    "status": "pending"
-  }    
-]
->>>>>>> 5e726568a4ee36d1640b85557733b8a2ba84bce9

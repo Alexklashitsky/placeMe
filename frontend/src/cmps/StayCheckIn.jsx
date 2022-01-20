@@ -1,31 +1,29 @@
 import React, { useState } from 'react';
 
 export const StayCheckIn = () => {
-  const [Stay, setStay] = useState({})
-  const [isOrdered, toggleOrder] = useState(false)
-  const [order, setOrder] = useState(
-    {
-        "totalPrice": 0,
-        "startDate": "",
-        "endDate": "",
-        "guests": {
-          "adults": 0,
-          "kids": 0
-        },
-        "stay": {
-          "_id": "",
-          "name": "",
-          "price": 0
-        },
-        "status": "pending"
-    })
-
+  const [Stay, setStay] = useState({});
+  const [isOrdered, toggleOrder] = useState(false);
+  const [order, setOrder] = useState({
+    totalPrice: 0,
+    startDate: '',
+    endDate: '',
+    guests: {
+      adults: 0,
+      kids: 0,
+    },
+    stay: {
+      _id: '',
+      name: '',
+      price: 0,
+    },
+    status: 'pending',
+  });
 
   const onSay = () => {
     console.log('hello:');
   };
   return (
-    <section className='button-main'>
+    <section className='button-main sticky'>
       <section class='order-container'>
         <div class='order-form-header'>
           <p>
@@ -62,8 +60,6 @@ export const StayCheckIn = () => {
     </section>
   );
 };
-
-
 
 // order: {
 //   "totalPrice": 160,
