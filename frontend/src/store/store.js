@@ -1,11 +1,8 @@
-import Redux from 'redux';
-import { staysReducer } from './stay.reducer.js';
-import { userReducer } from './user.reducer.js';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-const { createStore, combineReducers } = Redux;
-const { applyMiddleware } = Redux;
-const thunk = ReduxThunk.default;
+import { staysReducer } from './stay.reducer.js';
+import { userReducer } from './user.reducer.js';
 
 const rootReducer = combineReducers({
   staysModule: staysReducer,
