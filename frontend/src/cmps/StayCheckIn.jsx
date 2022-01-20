@@ -25,52 +25,48 @@ export const StayCheckIn = ({ stay }) => {
   const onSay = () => {
     console.log('hello:');
   };
-  console.log('stay: ', stay)
-  // if (!stay) return;
+  if (!stay) return;
+
+  console.log('from stay checking', stay);
+
   return (
     <section className='button-main sticky'>
       <section className='order-container'>
-
         <div className='order-form-header'>
           <p>
-            <span className='cost'>4</span> / night
+            <span className='cost'>$500</span> / night
           </p>
           <p>
             5 <span className='reviews'>(5 reviews)</span>
           </p>
         </div>
-
-        <section className='order-data'>
-
+        <div className='order-data'>
           <div className='date-picker'>
             <div className='date-input'>
               <label>check in</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
-
             <div className='date-input'>
               <label>check out</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
 
             {/* {isModal && <Calendar />} */}
-          </div>
-
+          </div >
           <div className='guest-input'>
             <label>guests</label>
             <input placeholder='2'></input>
           </div>
-        </section>
-
+        </div>
         <div className='btn-container'>
           <div className='content'>
-            <button onClick={onSay} className='action-btn'>
+            <button className='action-btn'>
               <span>Reserve</span>
             </button>
           </div>
         </div>
-        
+
       </section>
-    </section>
+    </section >
   );
 };

@@ -1,6 +1,8 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { StayCheckIn } from '../cmps/StayCheckIn';
 import { stayService } from '../services/stay.service';
+import { App } from '../cmps/getPos';
+
 // function getReviews() {
 //   const reviews = gStays.reviews;
 //   const stayAverage =
@@ -112,137 +114,141 @@ function getAmenity(amenity) {
   }
 }
 
-export class StayDetails extends React.Component {
-  state = { stay: null };
+export function StayDetails(props) {
+  const [stay, setStay] = useState({});
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  componentDidMount() {
-    const { stayId } = this.props.match.params;
-    this.getById(stayId).then((stay) => {
-      this.setState({ stay });
+  //STAY USE EFFECT
+  useEffect(() => {
+    const { stayId } = props.match.params;
+    getById(stayId).then((stay) => {
+      setStay({ stay });
     });
-  }
+  }, []);
 
-  getById = (stayId) => {
+  //SCROLL USE EFFECT
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    // console.log('position:', position);
+    if (position > 1222) {
+      // console.log('hello');
+    }
+  };
+
+  const getById = (stayId) => {
     return stayService.getById(stayId).then((stay) => {
       return stay;
     });
   };
 
-  render() {
-    const images = gStays.imgUrls;
-    const amenities = gStays.amenities;
-    const reviews = gStays.reviews;
-    const {stay} = this.state;
+  const images = gStays.imgUrls;
+  const amenities = gStays.amenities;
+  const reviews = gStays.reviews;
 
-    return (
-      <div className='entire-layout stay-details-container'>
-        <div className='center-layout'>
-          <h1 className='stay-name'>{gStays.name}</h1>
-          <section className='stay-details-header'>
-            <section className='stay-info'>
-              <span className='fas fa-star'></span>
-              <p className='stay-rate'>{gStays.reviews[0].rate}</p>
-              <p className='reviews'>{gStays.reviews.length} reviews.</p>
-              <p className='stay-details-dot'>•</p>
-              <a href='' className='stay-address'>
-                {gStays.loc.address}
-              </a>
-            </section>
-            <section className='social'>
-              <span>Share </span>
-              <span> Save</span>
-            </section>
+  return (
+    <div className='entire-layout stay-details-container'>
+      {/* <App /> */}
+      <div className='center-layout'>
+        <h1 className='stay-name'>{gStays.name}</h1>
+        <section className='stay-details-header'>
+          <section className='stay-info'>
+            <span className='fas fa-star'></span>
+            <p className='stay-rate'>{gStays.reviews[0].rate}</p>
+            <p className='reviews'>{gStays.reviews.length} reviews.</p>
+            <p className='stay-details-dot'>•</p>
+            <a href='' className='stay-address'>
+              {gStays.loc.address}
+            </a>
           </section>
-          <section className='stay-details-images'>
-            {images.map((image) => (
+          <section className='social'>
+            <span className='fas fa-share'> Share </span>
+            <span className='far fa-empty-heart'> Save</span>
+          </section>
+        </section>
+        <section className='stay-details-images'>
+          {images.map((image) => (
+            <div className='image-container'>
               <img src={image} />
-            ))}
-          </section>
-          <section className='divider'>
-            <section className='left-side'>
-              <section className='stay-details-hosted'>
-                <span className='hosted-by'>
-                  An amazing {gStays.type} hosted by {gStays.host.fullname}.
+            </div>
+          ))}
+        </section>
+        <section className='divider'>
+          <section className='left-side'>
+            <section className='stay-details-hosted'>
+              <span className='hosted-by'>
+                An amazing {gStays.type} hosted by {gStays.host.fullname}.
+              </span>
+              <section className='stay-details-hosted-info'>
+                <span className='beds'>
+                  {gStays.capacity} Guests <span className='dot'> · </span>
+                  {gStays.bedrooms} bedroom <span className='dot'> · </span>
+                  {gStays.beds} beds <span className='dot'> · </span>
+                  {gStays.baths} baths <span className='dot'> </span>
                 </span>
-                <section className='stay-details-hosted-info'>
-                  <span className='beds'>
-                    {gStays.capacity} Guests <span className='dot'> · </span>
-                    {gStays.bedrooms} bedroom <span className='dot'> · </span>
-                    {gStays.beds} beds <span className='dot'> · </span>
-                    {gStays.baths} baths <span className='dot'> </span>
-                  </span>
-                </section>
               </section>
-              <section className='stay-details-description'>{gStays.summary}</section>
-              <section className='stay-details-ameneties'>
-                {amenities.map((amenity) => (
-                  <div className='amenity'>
-                    <span class={`${getAmenity(amenity)}`}></span>
-                    <p>{amenity}</p>
+            </section>
+            <section className='stay-details-description'>{gStays.summary}</section>
+            <section className='stay-details-ameneties'>
+              {amenities.map((amenity) => (
+                <div className='amenity'>
+                  <span className={`${getAmenity(amenity)}`}></span>
+                  <p>{amenity}</p>
+                </div>
+              ))}
+            </section>
+            <section className='stay-details-description'>
+              {gStays.summary +
+                ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.'}
+            </section>
+          </section>
+          <section className='right-side'>
+            <StayCheckIn stay={stay} />
+          </section>
+        </section>
+        <section className='stay-details-reviews'>
+          <ul className='reviews-list-container clean-list'>
+            {reviews.map((review) => (
+              <li className='review-preview-container'>
+                <section>
+                  <div className='review-preview-header'>
+                    <img className='host-img' src={review.by.imgUrl}></img>
+                    <div className='review-preview-text-container'>
+                      <li className='fullname'>{review.by.fullname}</li>
+                      <li className='date'>{review.createdAt}</li>
+                    </div>
                   </div>
-                ))}
-              </section>
-              <section className='stay-details-description'>
-                {gStays.summary +
-                  ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.'}
-              </section>
-            </section>
-            <section className='right-side'>
-              <StayCheckIn stay={stay}/>
-            </section>
-          </section>
-          <section className='stay-details-reviews'>
-            <ul className='reviews-list-container clean-list'>
-              {reviews.map((review) => (
-                <li className='review-preview-container'>
-                  <section>
-                    <div className='review-preview-header'>
-                      <img className='host-img' src={review.by.imgUrl}></img>
-                      <div className='review-preview-text-container'>
-                        <li className='fullname'>{review.by.fullname}</li>
-                        <li className='date'>{review.createdAt}</li>
-                      </div>
+                  <span>{review.txt}</span>
+                </section>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section className='stay-details-reviews'>
+          <ul className='reviews-list-container clean-list'>
+            {reviews.map((review) => (
+              <li className='review-preview-container'>
+                <section>
+                  <div className='review-preview-header'>
+                    <img className='host-img' src={review.by.imgUrl}></img>
+                    <div className='review-preview-text-container'>
+                      <li className='fullname'>{review.by.fullname}</li>
+                      <li className='date'>{review.createdAt}</li>
                     </div>
-                    <span>{review.txt}</span>
-                  </section>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className='stay-details-reviews'>
-            <ul className='reviews-list-container clean-list'>
-              {reviews.map((review) => (
-                <li className='review-preview-container'>
-                  <section>
-                    <div className='review-preview-header'>
-                      <img className='host-img' src={review.by.imgUrl}></img>
-                      <div className='review-preview-text-container'>
-                        <li className='fullname'>{review.by.fullname}</li>
-                        <li className='date'>{review.createdAt}</li>
-                      </div>
-                    </div>
-                    <span>{review.txt}</span>
-                  </section>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </div>
+                  </div>
+                  <span>{review.txt}</span>
+                </section>
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-// {reviews.map((review) => (
-//   <div className='reviews'>
-//     <img className='avatar' src={review.by.imgUrl} />
-//     <div className='review-user-header'>
-//       <div className='fullname-date'>
-//         <h3 className='fullname'>{review.by.fullname}</h3>
-//         <h5>{review.createdAt}</h5>
-//       </div>
-//     </div>
-
-//     <h4>{review.txt}</h4>
-//   </div>
-// ))}
