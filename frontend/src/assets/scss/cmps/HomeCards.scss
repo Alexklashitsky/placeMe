@@ -1,44 +1,59 @@
-.inspiration-cards-container {
-  display: flex;
-  padding: 30px;
+.inspiration-title{
+  margin-left: 90px;
+  margin-top: 48px;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
+.inspiration-container{
+  margin-top: 24px;
+  
+  .inspiration-cards-container {
+    display: flex;
+    padding: 0px 80px;
+    
+    .inspiration-card {
+      margin: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
+      transition: transform 200ms ease-in;
+      cursor: pointer;
+        &:hover {
+        transform: scale(1.01);
+      }
+      & > img {
+        object-fit: fill;
+        min-width: 300px;
+        min-height: 200px;
+        width: 100%;
+        width: 30vw;
+        // max-height: 30vh;
+      }
 
-.card {
-  margin: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.75);
-  transition: transform 200ms ease-in;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: scale(1.01);
-}
-
-.card > img {
-  object-fit: fill;
-  min-width: 300px;
-  min-height: 200px;
-  width: 100%;
-}
-
-.card__info {
-    margin-top: -9px;
-    border-radius: 10px;
-    padding: 20px;
-    padding-top: 20px;
-    border: 1;
-  }
-
-  .card__info > h2 {
-    font-size: 18px;
-    font-weight: 600;
+      .card__info {
+          margin-top: -9px;
+          border-radius: 10px;
+          padding: 20px;
+          padding-top: 20px;
+          border: 1;
+          & > h2 {
+            font-size: 18px;
+            font-weight: 600;
+          }
+          & > h4 {
+            font-size: 14px;
+            font-weight: 300;
+            margin-top: 8px;
+            margin-bottom: 8px;
+          }
+        }
+    }
   }
   
-  .card__info > h4 {
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 8px;
-    margin-bottom: 8px;
-  }
+}
+
+
+
+
+
+  

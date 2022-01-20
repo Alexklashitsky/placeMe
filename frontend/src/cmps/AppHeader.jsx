@@ -7,7 +7,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 export function AppHeader() {
   return (
     <header className='header'>
-      <Link to='/' className=" gradient-text clean-link">
+      <Link to='/' className="header_icon clean-link">
         <h1>PlaceMe</h1>
       </Link>
 
@@ -17,8 +17,8 @@ export function AppHeader() {
       </div>
 
       <div className='header__right'>
-        <div className="nav-link" ><Link to='/StaySearch' className="clean-link"> explore</Link></div>
-        <div className="nav-link" ><Link to='/' className="clean-link">Become a host </Link></div>
+        <div className="nav-link" ><Link to='/StaySearch' className="clean-link"> Explore</Link></div>
+        <div className="nav-link" ><Link to='/' className="clean-link">Become a Host </Link></div>
         <MenuIcon />
         <AccountCircleIcon />
       </div>

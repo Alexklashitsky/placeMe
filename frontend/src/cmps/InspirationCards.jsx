@@ -6,7 +6,9 @@ import image from '../assets/imgs/vienna-reyes-2rfmp5ymooY-unsplash (1).jpg'
 function inspirationCards() {
   return (
     <div>
+      <p className="inspiration-title">Inspiration for your next trip</p> 
       <div className='inspiration-cards-container'>
+      
             <Card
                 src={image}
                 title="Amazing Experiences"

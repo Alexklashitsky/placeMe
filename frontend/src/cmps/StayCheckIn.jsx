@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const StayCheckIn = () => {
+  const [Stay, setStay] = useState({})
+  const [isOrdered, toggleOrder] = useState(false)
+  const [order, setOrder] = useState(
+    {
+        "totalPrice": 0,
+        "startDate": "",
+        "endDate": "",
+        "guests": {
+          "adults": 0,
+          "kids": 0
+        },
+        "stay": {
+          "_id": "",
+          "name": "",
+          "price": 0
+        },
+        "status": "pending"
+    })
+
+
   const onSay = () => {
     console.log('hello:');
   };
@@ -37,7 +57,7 @@ export const StayCheckIn = () => {
         <div class='btn-container'>
           <div class='content'>
             <button onClick={onSay} class='action-btn'>
-              <span>Check availability</span>
+              <span>Reserve</span>
             </button>
           </div>
         </div>
@@ -46,3 +66,21 @@ export const StayCheckIn = () => {
     </main>
   );
 };
+
+
+
+// order: {
+//   "totalPrice": 160,
+//   "startDate": "2025/10/15",
+//   "endDate": "2025/10/17",
+//   "guests": {
+//     "adults": 2,
+//     "kids": 1
+//   },
+//   "stay": {
+//     "_id": "h102",
+//     "name": "House Of Uncle My",
+//     "price": 80.00
+//   },
+//   "status": "pending"
+// }
