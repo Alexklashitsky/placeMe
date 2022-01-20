@@ -11,6 +11,7 @@ const rootReducer = combineReducers({
   userModule: userReducer,
 });
 
+
 export default createStore(rootReducer, applyMiddleware(thunk));
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
