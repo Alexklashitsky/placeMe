@@ -12,7 +12,7 @@ export function RootCmp() {
     <div className='App'>
       <Router>
         <AppHeader />
-        <main>
+        <main className='main-root'>
           <Switch>
             {routes.map((route) => (
               <Route key={route.path} exact component={route.component} path={route.path} />

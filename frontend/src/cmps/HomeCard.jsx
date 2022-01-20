@@ -2,7 +2,7 @@ import React from 'react'
 
 export function HomeCard({ src, title, description, price }) {
   return (
-    <div className='card'>
+    <div className='inspiration-card'>
             <img src={src} alt="" />
             <div className="card__info">
                 <h2>{title}</h2>

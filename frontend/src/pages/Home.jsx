@@ -6,8 +6,7 @@ export function Home() {
   return (
     <section className="entire-layout">
       <Hero/>
-      <div className="inspiration-container center-layout">
-      <p>Inspiration for your next trip</p> 
+      <div className="inspiration-container center-layout">   
       <InspirationCards/>
       </div>
     </section>

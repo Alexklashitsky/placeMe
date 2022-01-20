@@ -17,13 +17,13 @@ div.hero-container{
     height: 100%;
     margin: 0 80px;
     border-radius: 10px;
-    transform: translate(10px, -100px);
+    transform: translate(10px, -130px);
 
     .hero-text {
       position: absolute;
       top: 100%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 0);
       color: #fff;
       padding-bottom: 24px;
       text-align: center;
@@ -52,10 +52,7 @@ div.hero-container{
 }
 }
 
-.inspiration-container{
-  margin-top: 24px;
-  
-}
+
 
 
 
