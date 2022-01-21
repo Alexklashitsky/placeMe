@@ -4,6 +4,7 @@ import { stayService } from '../services/stay.service.js';
 import { loadStays } from '../store/stay.action.js';
 import { StayList } from '../cmps/StayList';
 import { StayFilter } from '../cmps/StayFilterContainer';
+import { CalendarComp } from '../cmps/Calendar'
 
 class _StaySearch extends Component {
   state = {};
@@ -15,7 +16,7 @@ class _StaySearch extends Component {
 
     return (
       <section className='center-layout'>
-        <StayFilter />
+        <StayFilter showMonthArrow />
         <StayList stays={this.props.stays} />
       </section>
     );
