@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const StayCheckIn = ({ stay }) => {
+export const StayCheckIn = ({stay}) => {
   // const [Stay, setStay] = useState({});
   const [isOrdered, toggleOrder] = useState(false);
   const [order, setOrder] = useState({
@@ -27,43 +27,57 @@ export const StayCheckIn = ({ stay }) => {
   };
   if (!stay) return;
 
-  console.log('from stay checking', stay);
+  console.log('from stay checking2', stay);
 
   return (
     <section className='button-main sticky'>
       <section className='order-container'>
+
         <div className='order-form-header'>
           <p>
-            <span className='cost'>$500</span> / night
+            <span className='cost'>{stay.price}</span> / night
           </p>
+
           <p>
             5 <span className='reviews'>(5 reviews)</span>
           </p>
         </div>
+
         <div className='order-data'>
+          
           <div className='date-picker'>
+
             <div className='date-input'>
               <label>check in</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
+
             <div className='date-input'>
               <label>check out</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
-
-            {/* {isModal && <Calendar />} */}
+            {/* {isCalndarModal && <Calendar />} */}
+          
           </div >
+
           <div className='guest-input'>
-            <label>guests</label>
-            <input placeholder='2'></input>
+
+            <di>guests</di>
+            <div>{order.guests}</div>
+
           </div>
+          {/* {isGuestsModal && <GuestsFilter />} */}
+
         </div>
+
         <div className='btn-container'>
+
           <div className='content'>
             <button className='action-btn'>
               <span>Reserve</span>
             </button>
           </div>
+
         </div>
 
       </section>
