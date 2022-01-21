@@ -63,8 +63,8 @@ export const StayCheckIn = ({stay}) => {
           <div className='guest-input'>
 
             <div>guests</div>
-            <div>{order.guests}</div>
-            <div>{order.guests}</div>
+            {/* <div>{order.guests}</div>
+            <div>{order.guests}</div> */}
 
           </div>
           {/* {isGuestsModal && <GuestsFilter />} */}
