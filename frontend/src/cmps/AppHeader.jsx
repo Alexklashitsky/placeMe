@@ -11,16 +11,23 @@ export function AppHeader() {
         <h1>PlaceMe</h1>
       </Link>
 
-      <div className='header__center'>
-        <input type='text' />
-        <SearchIcon />
+      <div className='header-center-container'>
+        <div className='header__center'>
+
+          <input type='text' />
+          <SearchIcon />
+        </div>
       </div>
 
       <div className='header__right'>
         <div className="nav-link" ><Link to='/StaySearch' className="clean-link"> Explore</Link></div>
         <div className="nav-link" ><Link to='/' className="clean-link">Become a Host </Link></div>
+
+        <div className='menu-container'>
         <MenuIcon />
         <AccountCircleIcon />
+        </div>
+
       </div>
     </header>
   );
