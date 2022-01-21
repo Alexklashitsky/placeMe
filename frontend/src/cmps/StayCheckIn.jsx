@@ -62,7 +62,8 @@ export const StayCheckIn = ({stay}) => {
 
           <div className='guest-input'>
 
-            <di>guests</di>
+            <div>guests</div>
+            <div>{order.guests}</div>
             <div>{order.guests}</div>
 
           </div>

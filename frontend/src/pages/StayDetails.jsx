@@ -116,7 +116,6 @@ function getAmenity(amenity) {
 
 export function StayDetails(props) {
   const [stay, setStay] = useState({});
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   //STAY USE EFFECT
   useEffect(() => {
@@ -136,9 +135,9 @@ export function StayDetails(props) {
 
   const handleScroll = () => {
     const position = window.pageYOffset;
-    // console.log('position:', position);
-    if (position > 1222) {
-      // console.log('hello');
+    console.log('position:', position);
+    if (position > 1743) {
+      console.log('hello');
     }
   };
 
@@ -152,6 +151,8 @@ export function StayDetails(props) {
   const amenities = gStays.amenities;
   const reviews = gStays.reviews;
   console.log('stay in details: ', stay)
+
+  console.log('stay:', stay);
 
   return (
     <div className='entire-layout stay-details-container'>
