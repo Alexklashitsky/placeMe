@@ -2,6 +2,12 @@ import { BentoTwoTone } from '@mui/icons-material'
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { CalendarComp } from '../cmps/Calendar'
+import DayPicker from 'react-day-picker';
+
+
+
+import 'react-day-picker/lib/style.css';
+
 // import { Button } from "@material-ui/core";
 
 
@@ -43,7 +49,9 @@ export class StayFilter extends Component {
                     <button onClick={() => this.onOpenModal('filters')} >Filters</button>
                 </div>
                 <div className={"cal-modal" + " " + `${this.state.currModalShown === 'cal' ? " shown" : ""}`}>
-                    <CalendarComp />
+                    {/* <CalendarComp /> */}
+                    <DayPicker />
+
                 </div>
                 <div className={"guests-modal" + " " + `${this.state.currModalShown === 'guests' ? "shown" : ""}`}>
                     <p>guests</p>

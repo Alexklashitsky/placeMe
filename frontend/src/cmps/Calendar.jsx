@@ -4,7 +4,14 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { Calendar } from 'react-date-range';
 
 import { DateRangePicker } from 'react-date-range';
+// import 'react-dates/initialize';
+// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+// import 'react-dates/lib/css/_datepicker.css';
 
+
+
+
+// alex
 export class CalendarComp extends Component {
     handleSelect(ranges) {
         console.log(ranges);
@@ -29,13 +36,17 @@ export class CalendarComp extends Component {
         )
     }
 }
-// import React, {useState} from 'react';
-// import './Search.css';
+
+// //zur
+
+
+// import React, { useState } from 'react';
+// // import './Search.css';
 // import "react-date-range/dist/styles.css"; // main style file
 // import "react-date-range/dist/theme/default.css"; // theme css file
 // import { DateRangePicker } from "react-date-range";
-// import { Button } from "@material-ui/core";
-// import PeopleIcon from "@material-ui/icons/People";
+// // import { Button } from "@material-ui/core";
+// // import PeopleIcon from "@material-ui/icons/People";
 // import { useHistory } from "react-router-dom";
 
 // // DATE PICKER COMPONENT
@@ -48,7 +59,7 @@ export class CalendarComp extends Component {
 //         startDate: startDate,
 //         endDate: endDate,
 //         key: "selection",
-//       };
+//     };
 
 //     function handleSelect(ranges) {
 //         setStartDate(ranges.selection.startDate);
