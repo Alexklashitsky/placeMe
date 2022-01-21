@@ -137,6 +137,7 @@ export function StayDetails(props) {
 
   const handleScroll = () => {
     const position = window.pageYOffset;
+    // console.log('position:', position);
     if (position > 1743) {
       setModal(true);
     }

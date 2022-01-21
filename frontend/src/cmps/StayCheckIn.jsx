@@ -36,14 +36,12 @@ export const StayCheckIn = ({ stay }) => {
             5 <span className='reviews'>(5 reviews)</span>
           </p>
         </div>
-
         <div className='order-data'>
           <div className='date-picker'>
             <div className='date-input'>
               <label>CHECK-IN</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
-
             <div className='date-input'>
               <label>CHECK-OUT</label>
               <input placeholder='Tue Sep 07 2021'></input>
