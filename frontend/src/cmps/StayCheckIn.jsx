@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const StayCheckIn = ({stay}) => {
+export const StayCheckIn = ({ stay }) => {
   // const [Stay, setStay] = useState({});
   const [isOrdered, toggleOrder] = useState(false);
   const [order, setOrder] = useState({
@@ -20,19 +20,13 @@ export const StayCheckIn = ({stay}) => {
   });
 
   // description: user is pressing the button, activating a function which provide the order info - price, period, guests and name of stay
-  // the function should load the stay is received by prop from StayDetails. it should also receive the detials inputed by the guest (1. num of guest; 2. period) 
+  // the function should load the stay is received by prop from StayDetails. it should also receive the detials inputed by the guest (1. num of guest; 2. period)
 
-  const onSay = () => {
-    console.log('hello:');
-  };
   if (!stay) return;
-
-  console.log('from stay checking2', stay);
 
   return (
     <section className='button-main sticky'>
       <section className='order-container'>
-
         <div className='order-form-header'>
           <p>
             <span className='cost'>{stay.price}</span> / night
@@ -44,44 +38,36 @@ export const StayCheckIn = ({stay}) => {
         </div>
 
         <div className='order-data'>
-          
           <div className='date-picker'>
-
             <div className='date-input'>
-              <label>check in</label>
+              <label>CHECK-IN</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
 
             <div className='date-input'>
-              <label>check out</label>
+              <label>CHECK-OUT</label>
               <input placeholder='Tue Sep 07 2021'></input>
             </div>
             {/* {isCalndarModal && <Calendar />} */}
-          
-          </div >
+          </div>
 
           <div className='guest-input'>
-
             <div>guests</div>
             {/* <div>{order.guests}</div>
             <div>{order.guests}</div> */}
-
           </div>
           {/* {isGuestsModal && <GuestsFilter />} */}
-
         </div>
 
         <div className='btn-container'>
-
           <div className='content'>
             <button className='action-btn'>
               <span>Reserve</span>
             </button>
           </div>
-
         </div>
-
+        <span>You won't be charged yet</span>
       </section>
-    </section >
+    </section>
   );
 };

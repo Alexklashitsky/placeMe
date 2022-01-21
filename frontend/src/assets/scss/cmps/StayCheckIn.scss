@@ -38,7 +38,7 @@
     flex-direction: column;
     gap: 5px;
     border-top: 1px solid #00000050;
-    padding: 7px 12px;
+    padding: 17px 22px;
   }
   input {
     border: none;
@@ -64,7 +64,7 @@
 .sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 160px;
   font-size: 20px;
 }
 
