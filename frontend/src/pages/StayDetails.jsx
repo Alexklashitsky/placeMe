@@ -150,6 +150,7 @@ export function StayDetails(props) {
   const images = gStays.imgUrls;
   const amenities = gStays.amenities;
   const reviews = gStays.reviews;
+  console.log('stay in details: ', stay)
 
   return (
     <div className='entire-layout stay-details-container'>

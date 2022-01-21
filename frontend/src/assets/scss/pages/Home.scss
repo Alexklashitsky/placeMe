@@ -23,26 +23,31 @@ div.hero-container{
       position: absolute;
       top: 100%;
       left: 50%;
-      transform: translate(-50%, 0);
+      transform: translate(-50%, -70px);
       color: #fff;
       padding-bottom: 24px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      font-size: 1.5rem;
+      font-size: 3rem;
       width: 95%;
 
       .hero-button{
-        margin-top:  24px;
-        background-color: white;
-        // color: #ff7779;
-        padding: 12px 24px;
-        border-radius:1000px;
-        text-align: center;
-        width:8rem;
-        font-size: 0.9rem;
-        font-weight: 600;
+        margin-top: 24px;
+      background-color: white;
+      border-radius: 1000px;
+      text-align: center;
+      width: 11rem;
+      height: 72px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+
         
     }
       .hero-button:hover {
