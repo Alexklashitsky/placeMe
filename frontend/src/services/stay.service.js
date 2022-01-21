@@ -14,11 +14,8 @@ export const stayService = {
 
 async function query() {
   let stays = await storageService.query(STORAGE_KEY);
-  console.log('stays1:', stays);
-
   if (!stays) {
     stays = await _createDemoData();
-    console.log('stays2:', stays);
   }
   return stays;
 }
