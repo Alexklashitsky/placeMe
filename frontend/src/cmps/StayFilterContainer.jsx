@@ -19,8 +19,11 @@ export class StayFilter extends Component {
     }
 
     render() {
+        const { currModalShown } = this.state
         return (
+
             <section className='filter-header flex' >
+                {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
                 <ul className='special-stay flex clean-list'>
                     <li>Houseboats</li>
                     <li>Beachfront</li>
@@ -38,13 +41,13 @@ export class StayFilter extends Component {
                     <button onClick={() => this.onOpenModal('guests')}  >Guests</button>
                     <button onClick={() => this.onOpenModal('filters')} >Filters</button>
                 </div>
-                <div className={"cal-modal" + " " + `${this.state.currModalShown === 'cal' ? " " : "shown"}`}>
+                <div className={"cal-modal" + " " + `${this.state.currModalShown === 'cal' ? " shown" : ""}`}>
                     <p>dsd</p>
                 </div>
-                <div className={"guests-modal" + " " + `${this.state.currModalShown === 'guests' ? " " : "shown"}`}>
+                <div className={"guests-modal" + " " + `${this.state.currModalShown === 'guests' ? "shown" : ""}`}>
                     <p>guests</p>
                 </div>
-                <div className={"filters-modal" + " " + `${this.state.currModalShown === 'filters' ? " " : "shown"}`}>
+                <div className={"filters-modal" + " " + `${this.state.currModalShown === 'filters' ? "shown" : ""}`}>
                     <p>fitters</p>
                 </div>
 
