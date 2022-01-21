@@ -1,13 +1,3 @@
-.white-header{
-  background-color: white;
-  color: black;
-  height: 80px;
-}
-.black-header{
-  background-color: black;
-  color: white;
-  height: 144px;
-}
 header.header {
   display: flex;
   justify-content: space-between;
@@ -17,6 +7,16 @@ header.header {
   
   z-index: 100;
   width: 100%;
+  &.white-header{
+    background-color: white;
+    color: black;
+    height: 80px;
+  }
+  &.black-header{
+    background-color: black;
+    color: white;
+    height: 144px;
+  }
   
   
   a.header_icon {
