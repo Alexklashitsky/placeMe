@@ -116,6 +116,7 @@ function getAmenity(amenity) {
 
 export function StayDetails(props) {
   const [stay, setStay] = useState({});
+  const [modal, setModal] = useState(false);
 
   //STAY USE EFFECT
   useEffect(() => {
@@ -137,7 +138,7 @@ export function StayDetails(props) {
     const position = window.pageYOffset;
     // console.log('position:', position);
     if (position > 1743) {
-      console.log('hello');
+      setModal(true);
     }
   };
 
@@ -152,11 +153,8 @@ export function StayDetails(props) {
   const reviews = gStays.reviews;
   console.log('stay in details: ', stay)
 
-  console.log('stay:', stay);
-
   return (
     <div className='entire-layout stay-details-container'>
-      {/* <App /> */}
       <div className='center-layout'>
         <h1 className='stay-name'>{gStays.name}</h1>
         <section className='stay-details-header'>
@@ -169,6 +167,7 @@ export function StayDetails(props) {
               {gStays.loc.address}
             </a>
           </section>
+
           <section className='social'>
             <span className='fas fa-share'> Share </span>
             <span className='far fa-empty-heart'> Save</span>
@@ -214,6 +213,7 @@ export function StayDetails(props) {
             <StayCheckIn stay={stay} />
           </section>
         </section>
+        {modal ? <h1 className='hello'>ahh</h1> : <p></p>}
         <section className='stay-details-reviews'>
           <ul className='reviews-list-container clean-list'>
             {reviews.map((review) => (
@@ -232,6 +232,7 @@ export function StayDetails(props) {
             ))}
           </ul>
         </section>
+
         <section className='stay-details-reviews'>
           <ul className='reviews-list-container clean-list'>
             {reviews.map((review) => (

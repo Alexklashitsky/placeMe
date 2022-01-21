@@ -29,8 +29,8 @@
 .cal-modal{
     height:400px ;
     width: 35rem;
-    // display: none;
-    visibility: hidden;
+    display: none;
+    // visibility: hidden;
     position: absolute;
     z-index: 5;
     background-color: whitesmoke;
@@ -45,8 +45,8 @@
 .guests-modal{
     height:400px ;
     width: 35rem;
-    // display: none;
-    visibility: hidden;
+    display: none;
+    // visibility: hidden;
     position: absolute;
     z-index: 5;
     background-color: whitesmoke;
@@ -60,7 +60,7 @@
 .filters-modal{
     height:25rem ;
     width: 15rem;
-    // display: none;
+    display: none;
     // visibility: hidden;
     position: absolute;
     z-index: 5;
@@ -69,5 +69,15 @@
     border-radius: 10%;
     left: 62rem;
     bottom: 25rem;
+}
+.screen{
+    position: fixed;
+    opacity: 0.5;
+    background-color: gray;
+    inset: 0;
+}
+
+.shown{
+    display: block;
 }
     
