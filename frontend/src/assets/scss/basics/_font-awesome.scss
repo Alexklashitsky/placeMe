@@ -47,7 +47,10 @@
 }
 
 .fas.fa-star::before {
-  color: salmon;
+  color: rgb(255, 56, 92);
+  height: 14px;
+  min-width: 14px;
+  font-size: 14px;
   content: '\f005';
 }
 .fas.fa-share::before {

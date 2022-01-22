@@ -14,7 +14,7 @@ import { App } from '../cmps/getPos';
 
 const gStays = {
   _id: '10006546',
-  name: 'Ribeira Charming Duplex',
+  name: 'Le stanze del castello, la romantica',
   type: 'house',
   imgUrls: [
     'https://a0.muscache.com/im/pictures/e83e702f-ef49-40fb-8fa0-6512d7e26e9b.jpg?aki_policy=large',
@@ -34,12 +34,12 @@ const gStays = {
   host: {
     _id: '51399391',
     fullname: 'Davit Pok',
-    imgUrl: 'https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small',
+    imgUrl: 'https://a0.muscache.com/im/users/22498531/profile_pic/1413294529/original.jpg?im_w=240',
   },
   loc: {
     country: 'Portugal',
     countryCode: 'PT',
-    address: 'Porto, Portugal',
+    address: 'Teggiano, Salerno, Italy',
     lat: -8.61308,
     lng: 41.1413,
   },
@@ -47,7 +47,7 @@ const gStays = {
     {
       id: 'madeId',
       txt: 'Very helpful hosts. Cooked traditional...',
-      rate: 4,
+      rate: 4.93,
       createdAt: new Date(2214123174455).toLocaleString('he-us', {
         timeZone: 'GMT',
       }),
@@ -59,7 +59,7 @@ const gStays = {
     },
     {
       id: 'madeId',
-      txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+      txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
       rate: 4,
       createdAt: new Date(2214123174455).toLocaleString('he-us', {
         timeZone: 'GMT',
@@ -114,6 +114,7 @@ function getAmenity(amenity) {
   }
 }
 
+// useParams
 export function StayDetails(props) {
   const [stay, setStay] = useState({});
   const [modal, setModal] = useState(false);
@@ -151,28 +152,35 @@ export function StayDetails(props) {
   const images = gStays.imgUrls;
   const amenities = gStays.amenities;
   const reviews = gStays.reviews;
-  console.log('stay in details: ', stay)
 
   return (
     <div className='entire-layout stay-details-container'>
       <div className='center-layout'>
-        <h1 className='stay-name'>{gStays.name}</h1>
-        <section className='stay-details-header'>
-          <section className='stay-info'>
-            <span className='fas fa-star'></span>
-            <p className='stay-rate'>{gStays.reviews[0].rate}</p>
-            <p className='reviews'>{gStays.reviews.length} reviews.</p>
-            <p className='stay-details-dot'>•</p>
-            <a href='' className='stay-address'>
-              {gStays.loc.address}
-            </a>
+        <div className='stay-header'>
+          <h1 className='stay-name'>{gStays.name}</h1>
+          <section className='stay-details-header'>
+            <section className='stay-info'>
+              <span className='fas fa-star'></span>
+              <p className='stay-rate'>{gStays.reviews[0].rate}</p>
+              <p className='stay-details-dot'>·</p>
+              <p className='reviews'>{gStays.reviews.length} reviews </p>
+              <p className='stay-details-dot'> · </p>
+              <a href='' className='stay-address'>
+                {gStays.loc.address}
+              </a>
+            </section>
+            <section className='social'>
+              <span className='fas fa-share'>
+                {'  '}
+                <span className='text'> Share</span>{' '}
+              </span>
+              <span className='far fa-empty-heart'>
+                {'  '}
+                <span className='text'> Save</span>
+              </span>
+            </section>
           </section>
-
-          <section className='social'>
-            <span className='fas fa-share'> Share </span>
-            <span className='far fa-empty-heart'> Save</span>
-          </section>
-        </section>
+        </div>
         <section className='stay-details-images'>
           {images.map((image) => (
             <div className='image-container'>
@@ -180,19 +188,25 @@ export function StayDetails(props) {
             </div>
           ))}
         </section>
+
         <section className='divider'>
           <section className='left-side'>
-            <section className='stay-details-hosted'>
-              <span className='hosted-by'>
-                An amazing {gStays.type} hosted by {gStays.host.fullname}.
-              </span>
-              <section className='stay-details-hosted-info'>
-                <span className='beds'>
-                  {gStays.capacity} Guests <span className='dot'> · </span>
-                  {gStays.bedrooms} bedroom <span className='dot'> · </span>
-                  {gStays.beds} beds <span className='dot'> · </span>
-                  {gStays.baths} baths <span className='dot'> </span>
+            <section className='stay-detail-host-description'>
+              <section className='stay-details-hosted'>
+                <span className='hosted-by'>
+                  An amazing {gStays.type} hosted by {gStays.host.fullname}.
                 </span>
+                <section className='stay-details-hosted-info'>
+                  <span className='beds'>
+                    {gStays.capacity} guests <span className='dot'> · </span>
+                    {gStays.bedrooms} bedroom <span className='dot'> · </span>
+                    {gStays.beds} beds <span className='dot'> · </span>
+                    {gStays.baths} baths <span className='dot'> </span>
+                  </span>
+                </section>
+              </section>
+              <section>
+                <img className='host-img' src={gStays.host.imgUrl}></img>
               </section>
             </section>
             <section className='stay-details-description'>{gStays.summary}</section>
