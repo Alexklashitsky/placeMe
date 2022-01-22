@@ -56,17 +56,21 @@
 }
 
 .filters-modal{
-    height:25rem ;
-    width: 15rem;
+    height:70% ;
+    width: 40%;
     display: none;
     // visibility: hidden;
     position: absolute;
     z-index: 5;
     background-color: whitesmoke;
     border-color: rgb(182, 177, 177);
-    border-radius: 10%;
-    left: 62rem;
-    bottom: 25rem;
+    border-radius: 5%;
+    // left: 62rem;
+    // bottom: 25rem;
+    position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
 }
 .screen{
     position: fixed;

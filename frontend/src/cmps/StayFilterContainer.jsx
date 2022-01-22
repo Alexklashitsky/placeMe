@@ -2,6 +2,7 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { TestCal } from './test-cal';
 import { GuestsFilter } from './GuestsFilter'
+import { AdditionalFilter } from '../cmps/AdditionalFilters'
 
 
 
@@ -58,7 +59,7 @@ export class StayFilter extends Component {
 
                 </div>
                 <div className={"filters-modal" + " " + `${this.state.currModalShown === 'filters' ? "shown" : ""}`}>
-                    <p>fitters</p>
+                    <AdditionalFilter />
                 </div>
 
 

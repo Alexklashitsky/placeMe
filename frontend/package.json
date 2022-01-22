@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@appbaseio/reactivesearch": "^3.28.0",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -24,6 +25,7 @@
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
+    "rheostat": "^4.1.1",
     "sass": "^1.49.0",
     "socket.io": "^4.4.1",
     "sweetalert2": "^11.3.6",

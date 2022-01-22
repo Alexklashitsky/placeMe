@@ -69,7 +69,10 @@ export class GuestsFilter extends Component {
                             </div>
                         </div>
                     </div>
+                    <button className='save guest'>save</button>
+                    <button className='clear '>clear</button>
                 </div>
+
 
             </section>
 
