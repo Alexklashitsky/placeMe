@@ -12,19 +12,19 @@ export const stayService = {
   // getEmptyCar
 };
 
-// async function getRandomUserPhoto() {
-//   let response = await fetch('https://randomuser.me/api/');
-//   const users = await response.json();
+async function getRandomUserPhoto() {
+  let response = await fetch('https://randomuser.me/api/');
+  const users = await response.json();
 
-//   const user = {
-//     fullname: users.results[0].name.first + ' ' + users.results[0].name.last,
-//     photo: users.results[0].picture.thumbnail,
-//   };
-//   console.log(user);
-//   return user;
-// }
+  const user = {
+    fullname: users.results[0].name.first + ' ' + users.results[0].name.last,
+    photo: users.results[0].picture.thumbnail,
+  };
+  console.log(user);
+  return user;
+}
 
-// let gUser = getRandomUserPhoto();
+let gUser = getRandomUserPhoto();
 
 async function query() {
   let stays = await storageService.query(STORAGE_KEY);

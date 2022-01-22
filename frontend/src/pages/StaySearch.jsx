@@ -6,6 +6,7 @@ import { StayList } from '../cmps/StayList';
 import { StayFilter } from '../cmps/StayFilterContainer';
 import { CalendarComp } from '../cmps/Calendar'
 import { TestCal } from '../cmps/test-cal'
+import { AdditionalFilter } from '../cmps/AdditionalFilters'
 
 class _StaySearch extends Component {
   state = {};
