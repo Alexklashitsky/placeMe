@@ -1,0 +1,78 @@
+.sticky-header {
+  position: fixed;
+  top: 0px;
+  font-size: 20px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 3.4fr 9.6fr 3.4fr;
+  background-color: white;
+  border-bottom: 1px solid #bebebe;
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    grid-column: 2/3;
+    justify-content: space-between;
+    background-color: white;
+    height: 80px;
+
+    .list {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgb(34, 34, 34);
+    }
+    .reserve {
+      color: black;
+    }
+  }
+  .btn {
+    min-width: 230px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .details {
+      width: 100%;
+      p {
+        display: flex;
+        font-size: 16px;
+        align-items: center;
+        gap: 2px;
+      }
+      .ratings {
+        display: flex;
+        align-items: flex-end;
+      }
+      .price {
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+        align-items: baseline;
+      }
+      .dot {
+        font-size: 12px;
+      }
+      .rate {
+        font-size: 12px;
+      }
+      .reviews {
+        font-size: 13px;
+
+        display: flex;
+        flex-wrap: wrap;
+        text-decoration: underline;
+      }
+
+      .night {
+        font-size: 14px;
+        font-weight: 400;
+        color: $light-gray;
+      }
+    }
+  }
+}
