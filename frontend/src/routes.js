@@ -8,11 +8,11 @@ export const routes = [
     component: Home,
   },
   {
-    path: '/stay/:stayId',
-    component: StayDetails,
-  },
-  {
     path: '/StaySearch',
     component: StaySearch,
+  },
+  {
+    path: '/stay/:stayId',
+    component: StayDetails,
   },
 ];

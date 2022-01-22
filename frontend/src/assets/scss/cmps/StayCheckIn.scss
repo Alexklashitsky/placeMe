@@ -4,16 +4,46 @@
   padding: 20px;
   width: 100%;
   margin-top: 50px;
-  height: 300px;
+  height: max-content;
   margin-left: auto;
+  .charge {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: circular-light;
+    margin-top: 11px;
+    color: $dark-gray;
+  }
 
-  box-shadow: 0 0 5px 5px #00000015;
+  box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12);
   .order-form-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 24px;
+    align-items: center;
+
+    .reserve-reviews {
+      display: flex;
+      gap: 2px;
+      font-size: 15px;
+      color: $dark-gray;
+      font-weight: 400;
+    }
+
+    .night {
+      font-size: 16px;
+      font-family: circular-light;
+      font-weight: 400;
+    }
+    .reviews {
+      text-decoration: underline;
+      font-size: rem(14px);
+    }
   }
+
   .order-data {
     border: 1px solid #00000050;
     border-radius: 13px;
@@ -27,7 +57,12 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      padding: 10px 12px;
+      font-size: 14px;
+
+      padding-bottom: 10px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-top: 15px;
       &:last-of-type {
         border-left: 1px solid #00000050;
       }
@@ -38,7 +73,7 @@
     flex-direction: column;
     gap: 5px;
     border-top: 1px solid #00000050;
-    padding: 17px 22px;
+    padding: 14px 24px;
   }
   input {
     border: none;
@@ -52,7 +87,7 @@
   }
   span.cost {
     color: black;
-    font-size: 1.3em;
+    font-size: rem(22px);
   }
   span.reviews {
     color: #00000070;

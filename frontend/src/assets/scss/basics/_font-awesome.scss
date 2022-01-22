@@ -50,9 +50,19 @@
   color: rgb(255, 56, 92);
   height: 14px;
   min-width: 14px;
-  font-size: 14px;
+  font-size: 12px;
   content: '\f005';
 }
+
+.fas.fa-star-header::before {
+  color: rgb(255, 56, 92);
+  height: 14px;
+  min-width: 14px;
+  font-size: 12px;
+
+  content: '\f005';
+}
+
 .fas.fa-share::before {
   content: '\f14d';
 }
