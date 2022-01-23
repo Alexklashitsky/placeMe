@@ -1,10 +1,20 @@
-.stay-list {
-  // grid-column: 2;
-  display: flex;
-  position: relative;
-  margin: 20px;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
-  cursor: pointer;
-  flex-wrap: wrap;
+// .stay-list {
+//   // grid-column: 2;
+//   display: flex;
+//   position: relative;
+//   margin: 20px;
+//   padding: 20px;
+//   border-bottom: 1px solid lightgray;
+//   cursor: pointer;
+//   flex-wrap: wrap;
+// }
+
+.stay-list{
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  place-items: center;
+  // grid-template-rows: repeat(auto-fill, minmax(250px, 350px));
+  margin-top: 1.5rem;
 }
+

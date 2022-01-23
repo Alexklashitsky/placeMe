@@ -3,12 +3,32 @@ export function StayPreview({ stay }) {
   return (
     <Link className='clean-link' to={`/stay/${stay._id}`}>
       <article className='card'>
-        <img src={stay.imgUrls[0]} alt='' />
-        <div className='preview-body flex'>
-          <h4> {stay.loc.address}</h4>
-          <h4> {stay.price} per night</h4>
+
+        <div className='img-container'>
+          <img src={stay.imgUrls[0]} alt='' />
         </div>
-      </article>
-    </Link>
+
+        <div className='preview-body flex card-info'>
+
+            <div className='address-container'>
+              <h2> {stay.loc.address}</h2>
+            </div>
+
+            <div className='info-container text-right'>
+              <h4> {stay.price} /night</h4>
+            </div>
+          <div className='info-container'>
+            <h4>25 kilometers away</h4>
+          </div>
+
+          <div className='info-container text-right'>
+            <h4 >jan 23-30</h4>
+          </div>
+
+
+        </div>
+
+    </article>
+    </Link >
   );
 }
