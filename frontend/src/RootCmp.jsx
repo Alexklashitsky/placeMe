@@ -1,5 +1,5 @@
 import { routes } from './routes.js';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 
 import { AppHeader } from './cmps/AppHeader.jsx';
 // import { Footer } from './cmps/AppFooter';
@@ -11,7 +11,7 @@ export function RootCmp() {
   return (
     <div className='App'>
       <Router>
-        {/* <AppHeader /> */}
+        <AppHeader />
         <main className='main-root'>
           <Switch>
             {routes.map((route) => (
