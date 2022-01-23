@@ -25,10 +25,12 @@ export const CheckIn = ({ stay }) => {
     <section className='sticky-header'>
       <section className='container'>
         <section className='list'>
-          <span>Photos</span>
-          <span>Amenities</span>
-          <span>Reviews</span>
-          <span>Location</span>
+          <div>
+            <span>Photos</span>
+          </div>
+          <div>Amenities</div>
+          <div>Reviews</div>
+          <div>Location</div>
         </section>
 
         {isButtonShown && (

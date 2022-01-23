@@ -178,8 +178,15 @@
   margin-top: 30px;
   padding: $stay-details-padding;
   grid-gap: 50px;
+  text-align: justify;
+
   .txt {
     font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
   }
 
   .host-img {
@@ -193,6 +200,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    gap: 10px;
 
     .fullname {
       font-family: circular-bold;

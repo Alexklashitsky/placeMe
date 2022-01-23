@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export function AppHeader() {
   const [isHeader, setIsHeader] = useState(false);
+  const [isDetails, setIsDetails] = useState(false);
 
   //SCROLL USE EFFECT
 
@@ -16,26 +17,50 @@ export function AppHeader() {
     };
   }, []);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setIsHeader(true);
+    }
+    if (location.pathname.includes('/stay/')) {
+      setIsDetails(true);
+    }
+    if (location.pathname.includes('/StaySearch/')) {
+      setIsDetails(false);
+      setIsHeader(false);
+    }
+  }, [location]);
+
   const handleScroll = () => {
     const position = window.pageYOffset;
+    if (location.pathname.includes('/stay/')) return;
+
     if (position > 1) {
       setIsHeader(true);
     } else setIsHeader(false);
   };
+
+  const backPage = () => {
+    setIsHeader(false);
+    setIsDetails(false);
+  };
+
   return (
-    <header className={`header ${isHeader ? 'white-header' : 'black-header'}`}>
+    <header
+      className={`header ${isHeader ? 'white-header' : 'black-header'} ${isDetails ? 'details details-header' : ''} `}>
       <Link to='/' className='header_icon clean-link'>
-        <h1>PlaceMe</h1>
+        <h1 onClick={backPage}>PlaceMe</h1>
       </Link>
 
-      <div className={`header-center-container ${isHeader ? 'small-filter-button' : 'big-filter-bar'}`}>
+      <div className={`header-center-container ${isHeader ? 'small-filter-button' : 'big-filter-bar'} `}>
         {isHeader && (
           <div className='header-center'>
             <input type='text' />
             <SearchIcon />
           </div>
         )}
-        {!isHeader && (
+        {!isHeader && !isDetails && (
           <div className='header-center header-bar '>
             <div className='location-container'>
               <div className='container-border'>
