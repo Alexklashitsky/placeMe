@@ -1,10 +1,21 @@
-.stay-list {
-  // grid-column: 2;
+// .stay-list {
+//   // grid-column: 2;
+//   display: flex;
+//   position: relative;
+//   margin: 20px;
+//   padding: 20px;
+//   border-bottom: 1px solid lightgray;
+//   cursor: pointer;
+//   flex-wrap: wrap;
+// }
+
+.stay-list{
   display: flex;
-  position: relative;
-  margin: 20px;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
-  cursor: pointer;
+  gap: 1rem;
+  // place-items: center;
+  margin-top: 1.5rem;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
+
