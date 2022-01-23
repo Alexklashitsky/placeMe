@@ -17,7 +17,7 @@ class _StaySearch extends Component {
     if (!this.props.stays) return 'no stays';
 
     return (
-      <section className='center-layout'>
+      <section className='entire-layout'>
         <StayFilter />
         <StayList stays={this.props.stays} />
       </section>
