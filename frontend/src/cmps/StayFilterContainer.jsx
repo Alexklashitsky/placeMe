@@ -31,16 +31,16 @@ export class StayFilter extends Component {
 
             <section className='filter-header flex' >
                 {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
-                <ul className='special-stay flex clean-list'>
-                    <li>Houseboats</li>
-                    <li>Beachfront</li>
-                    <li>Cabins</li>
-                    <li>Treehouse</li>
-                    <li>Ski in/Ski out</li>
-                    <li>Amazing Places</li>
-                    <li>farms</li>
+                <section className='special-stay '>
+                    <div>Houseboats</div>
+                    <div>Beachfront</div>
+                    <div>Cabins</div>
+                    <div>Treehouse</div>
+                    <div>Ski in/Ski out</div>
+                    <div>Amazing Places</div>
+                    <div>farms</div>
 
-                </ul>
+                </section>
 
                 <div className='round-button'>
                     {/* <Button variant="outlined">Primary</Button> */}
@@ -48,22 +48,22 @@ export class StayFilter extends Component {
                     <button onClick={() => this.onOpenModal('guests')}  >Guests</button>
                     <button onClick={() => this.onOpenModal('filters')} >Filters</button>
                 </div>
+
                 <div className={"cal-modal" + " " + `${this.state.currModalShown === 'cal' ? " shown" : ""}`}>
                     {/* <CalendarComp /> */}
                     <TestCal />
                     <button className='save' onClick={() => this.onOpenModal('')} >save</button>
 
                 </div>
+
                 <div className={"guests-modal" + " " + `${this.state.currModalShown === 'guests' ? "shown" : ""}`}>
                     <GuestsFilter />
 
                 </div>
+
                 <div className={"filters-modal" + " " + `${this.state.currModalShown === 'filters' ? "shown" : ""}`}>
                     <AdditionalFilter />
                 </div>
-
-
-
 
             </section >
         )
