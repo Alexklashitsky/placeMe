@@ -46,7 +46,7 @@ export class AdditionalFilter extends Component {
         const label = { inputProps: { 'aria-label': 'freeCancel', 'name': 'freeCancel' } };
         return (
             <section>
-                <div className="additional-filter-types" >
+                <div className="additional-filter-types-header" >
                     <button>x</button>
                     <p>More filters</p>
                 </div>
@@ -69,50 +69,61 @@ export class AdditionalFilter extends Component {
                 </div>
                 <div className='additional-filter-types' >
                     <h3>Type of place</h3>
-                    <div className='check-box-part1' >
+                    <div>
                         <div className='check-box flex'>
-                            <input
-                                name="entirePlace"
-                                type="checkbox"
-                                checked={this.state.entirePlace}
-                                onChange={this.toggleCheck}
-                            />
-                            <div className='check-box-desc' >
-                                <p>Entire place</p>
-                                <small>Have a place to yourself</small>
+                            <div className='filter-continuer flex'>
+                                <input
+                                    name="entirePlace"
+                                    type="checkbox"
+                                    checked={this.state.entirePlace}
+                                    onChange={this.toggleCheck}
+                                />
+                                <div className='check-box-desc' >
+                                    <p>Entire place</p>
+                                    <small>Have a place to yourself</small>
+                                </div>
                             </div>
-                            <input
-                                name="hotelRoom"
-                                type="checkbox"
-                                checked={this.state.hotelRoom}
-                                onChange={this.toggleCheck}
-                            />
-                            <div className='check-box-desc' >
-                                <p>Hotel room</p>
-                                <small>Have a private or shared room in a boutique hotel, hostel, and more</small>
-                            </div>
-                            <input
-                                name="privateRoom"
-                                type="checkbox"
-                                checked={this.state.privateRoom}
-                                onChange={this.toggleCheck}
-                            />
-                            <div className='check-box-desc' >
-                                <p>Private room</p>
-                                <small>Have your own room and share some common spaces</small>
+                            <div className='filter-continuer flex'>
+                                <input
+                                    name="hotelRoom"
+                                    type="checkbox"
+                                    checked={this.state.hotelRoom}
+                                    onChange={this.toggleCheck}
+                                />
+                                <div className='check-box-desc' >
+                                    <p>Hotel room</p>
+                                    <small>Have a private or shared room in a boutique hotel, hostel, and more</small>
+                                </div>
                             </div>
                         </div>
-                        <input
-                            name="sharedRoom"
-                            type="checkbox"
-                            checked={this.state.sharedRoom}
-                            onChange={this.toggleCheck}
-                        />
-                        <div className='check-box-desc' >
-                            <p>Shared room</p>
-                            <small>Stay in a shared space, like a common room</small>
-                        </div>
+                        <div className='spacial-filters flex'>
+                            <div className='filter-continuer flex'>
+                                <input
+                                    name="privateRoom"
+                                    type="checkbox"
+                                    checked={this.state.privateRoom}
+                                    onChange={this.toggleCheck}
+                                />
+                                <div className='check-box-desc' >
+                                    <p>Private room</p>
+                                    <small>Have your own room and share some common spaces</small>
+                                </div>
+                            </div>
+                            <div className='filter-continuer flex'>
+                                <input
 
+                                    name="sharedRoom"
+                                    type="checkbox"
+                                    checked={this.state.sharedRoom}
+                                    onChange={this.toggleCheck}
+                                />
+                                <div className='check-box-desc' >
+                                    <p>Shared room</p>
+                                    <small>Stay in a shared space, like a common room</small>
+
+                                </div>
+                            </div>
+                        </div>
 
 
                     </div>
