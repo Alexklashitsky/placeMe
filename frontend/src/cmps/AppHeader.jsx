@@ -30,15 +30,55 @@ export function AppHeader() {
 
       <div className={`header-center-container ${isHeader ? 'small-filter-button' : 'big-filter-bar'}`}>
         {isHeader && (
-          <div className='header__center'>
+          <div className='header-center'>
             <input type='text' />
             <SearchIcon />
           </div>
         )}
         {!isHeader && (
-          <div className='header__bar'>
-            <input type='text' />
-            <SearchIcon />
+          <div className='header-center header-bar '>
+
+            <div className='location-container'>
+              <div className='container-border'>
+                <ul className='clean-list'>
+                  <li>Location</li>
+                  <li> <input placeholder='where are you going' type='text' /></li>
+                </ul>
+              </div>
+            </div>
+
+            <div className='date-container'>
+              <div className='container-border'>
+                <ul className='clean-list'>
+                  <li>Check in</li>
+                  <li> <input placeholder='add dates' type='text' /></li>
+                </ul>
+              </div>
+            </div>
+
+            <div className='date-container'>
+              <div className='container-border'>
+                <ul className='clean-list'>
+                  <li>Check out</li>
+                  <li> <input placeholder='add dates' type='text' /></li>
+                </ul>
+              </div>
+            </div>
+
+            <div className='guests-container'>
+              <div className='container-border'>
+                <ul className='clean-list'>
+                  <li>Guests</li>
+                  <li> <input placeholder='add guests' type='text' /></li>
+                </ul>
+                <div className='search-button'>
+                  <SearchIcon />
+                </div>
+              </div>
+            </div>
+
+
+
           </div>
         )}
       </div>
