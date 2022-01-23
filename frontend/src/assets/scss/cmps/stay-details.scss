@@ -7,6 +7,10 @@
   font-family: circular-light;
 }
 
+.center-layout {
+  grid-column: 2;
+}
+
 .stay-details-header {
   display: flex;
   justify-content: space-between;
@@ -93,10 +97,6 @@
   .right-side {
     width: 33%;
   }
-}
-
-.center-layout {
-  grid-column: 2;
 }
 
 .stay-detail-host-description {

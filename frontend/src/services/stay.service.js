@@ -12,20 +12,6 @@ export const stayService = {
   // getEmptyCar
 };
 
-async function getRandomUserPhoto() {
-  let response = await fetch('https://randomuser.me/api/');
-  const users = await response.json();
-
-  const user = {
-    fullname: users.results[0].name.first + ' ' + users.results[0].name.last,
-    photo: users.results[0].picture.thumbnail,
-  };
-  console.log(user);
-  return user;
-}
-
-let gUser = getRandomUserPhoto();
-
 async function query() {
   let stays = await storageService.query(STORAGE_KEY);
   if (!stays) {
@@ -58,7 +44,7 @@ function _createDemoData() {
       host: {
         _id: '51399391',
         fullname: 'Ania & Peter',
-        imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+        imgUrl: 'https://a0.muscache.com/im/pictures/user/93cacfa5-90df-4efa-929b-087f93299e3d.jpg?im_w=240',
       },
       loc: {
         country: 'Slovakia',
@@ -79,7 +65,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Jozsef',
-            imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
@@ -93,7 +79,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Maria',
-            imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
@@ -107,7 +93,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Nikita',
-            imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
@@ -121,7 +107,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Zuzana',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
           },
         },
 
@@ -136,7 +122,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Anita',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
           },
         },
         {
@@ -149,8 +135,8 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Dima',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
           },
         },
         {
@@ -164,7 +150,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Michal',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
           },
         },
         {
@@ -178,7 +164,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Lucy',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
           },
         },
         {
@@ -192,7 +178,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Florian',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -240,7 +226,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Jozsef',
-            imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
@@ -254,7 +240,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Maria',
-            imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
@@ -268,7 +254,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Nikita',
-            imgUrl: 'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
@@ -282,7 +268,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Zuzana',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
           },
         },
 
@@ -297,7 +283,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Anita',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
           },
         },
         {
@@ -310,8 +296,8 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Dima',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
           },
         },
         {
@@ -325,7 +311,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Michal',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
           },
         },
         {
@@ -339,7 +325,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Lucy',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
           },
         },
         {
@@ -353,7 +339,7 @@ function _createDemoData() {
           by: {
             _id: 'u102',
             fullname: 'Florian',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -392,7 +378,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -400,50 +386,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -482,7 +539,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -490,50 +547,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -572,7 +700,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -580,50 +708,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -662,7 +861,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -670,50 +869,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -752,7 +1022,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -760,50 +1030,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -842,7 +1183,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -850,50 +1191,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -932,7 +1344,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -940,50 +1352,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],
@@ -1022,7 +1505,7 @@ function _createDemoData() {
       reviews: [
         {
           id: 'madeId',
-          txt: 'Very helpful hosts. Cooked traditional...',
+          txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
@@ -1030,50 +1513,121 @@ function _createDemoData() {
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Jozsef',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
+          rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Maria',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/1bd3f085-66fa-4e23-88ae-3dd682ea3b12.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
-          rate: 4,
+          txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
+          rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
             _id: 'u102',
-            fullname: 'Miri',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            fullname: 'Nikita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/c6ea1d12-8d78-4059-b469-6a7c03635552.jpg?im_w=240',
           },
         },
         {
           id: 'madeId',
-          txt: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, rerum reprehenderit. Magni accusamus quos expedita laboriosam est quaerat asperiores architecto nemo numquam nobis sequi recusandae iste amet facere, esse minima voluptatem nihil. Omnis recusandae at deleniti unde veniam, iure commodi similique sunt perferendis repellendus nisi fugiat facilis voluptas consequatur doloremque.',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
           }),
           by: {
-            _id: 'u103',
-            fullname: 'Dudi',
-            imgUrl: 'https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png',
+            _id: 'u102',
+            fullname: 'Zuzana',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/a515c1ea-a27a-4eac-add1-bbd41def051a.jpg?im_w=240',
+          },
+        },
+
+        {
+          id: 'madeId',
+          txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Anita',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/8657d1be-095a-4d5b-86e2-0e5d381ecbca.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
+          rate: 5,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lima',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/2965cd79-df90-427e-8694-4e55fbe8fdf8.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Michal',
+            imgUrl: 'https://a0.muscache.com/im/pictures/user/9b9eacee-6aaa-4c79-8bf1-79fb4a9baf1f.jpg?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'We loved the tree house! Everything was perfect!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Lucy',
+            imgUrl: 'https://a0.muscache.com/defaults/user_pic-225x225.png?im_w=240',
+          },
+        },
+        {
+          id: 'madeId',
+          txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
+          rate: 1,
+          createdAt: new Date(2214123174455).toLocaleString('default', {
+            month: 'long',
+            year: 'numeric',
+          }),
+          by: {
+            _id: 'u102',
+            fullname: 'Florian',
+            imgUrl: 'https://a0.muscache.com/im/users/4903890/profile_pic/1434080085/original.jpg?im_w=240',
           },
         },
       ],

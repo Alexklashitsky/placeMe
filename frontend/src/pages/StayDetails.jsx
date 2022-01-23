@@ -150,9 +150,8 @@ export function StayDetails(props) {
 
   const handleScroll = () => {
     const position = window.pageYOffset;
-    console.log('position:', position);
 
-    if (position > 1600) {
+    if (position > 600) {
       setModal(true);
     } else {
       setModal(false);
@@ -160,10 +159,10 @@ export function StayDetails(props) {
   };
 
   if (!stay) return <div>loading</div>;
-
   return (
     <div className='entire-layout stay-details-container'>
       {!modal ? <div></div> : <CheckIn stay={stay} />}
+
       <div className='center-layout'>
         <div className='stay-header'>
           <h1 className='stay-name'>{stay.name}</h1>

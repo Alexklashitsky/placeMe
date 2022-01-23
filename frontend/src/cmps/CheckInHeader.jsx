@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export const CheckIn = ({ stay }) => {
-  console.log('stay:', stay);
+  const [isButtonShown, setIsButtonShown] = useState(false);
 
-  //   <div className='order-form-header'>
-  //   <p>
-  //     <span className='cost'>${stay.price}</span>
-  //     <span className='night'>/ night</span>
-  //   </p>
-  //   <section className='reserve-reviews'>
-  //     <span className='fas fa-star'></span>
-  //     <p className='stay-rate'>{stay.reviews[0].rate}</p>
-  //     <p className='stay-details-dot'>·</p>
-  //     <p className='reviews'>{stay.reviews.length} reviews </p>
-  //   </section>
-  // </div>
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    console.log('position:', position);
+
+    if (position > 1600) {
+      setIsButtonShown(true);
+    } else {
+      setIsButtonShown(false);
+    }
+  };
 
   return (
     <section className='sticky-header'>
@@ -26,98 +31,100 @@ export const CheckIn = ({ stay }) => {
           <span>Location</span>
         </section>
 
-        <div className='btn'>
-          <section className='details'>
-            <p className='price'>
-              $ {stay.price}
-              <span className='night'> / night</span>
-            </p>
-            <p className='ratings'>
-              <span className='fas fa-star-header'></span>
-              <span className='rate'>{stay.reviews[0].rate}</span>
-              <span className='dot'>·</span>
-              <span className='reviews'>{stay.reviews.length} reviews</span>
-            </p>
-          </section>
-          <section className='btn-container'>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='cell'></div>
-            <div className='content'>
-              <button className='action-btn'>
-                <span>Reserve</span>
-              </button>
-            </div>
-          </section>
-        </div>
+        {isButtonShown && (
+          <div className='btn'>
+            <section className='details'>
+              <p className='price'>
+                $ {stay.price}
+                <span className='night'> / night</span>
+              </p>
+              <p className='ratings'>
+                <span className='fas fa-star-header'></span>
+                <span className='rate'>{stay.reviews[0].rate}</span>
+                <span className='dot'>·</span>
+                <span className='reviews'>{stay.reviews.length} reviews</span>
+              </p>
+            </section>
+            <section className='btn-container'>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='cell'></div>
+              <div className='content'>
+                <button className='action-btn'>
+                  <span>Reserve</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        )}
       </section>
     </section>
   );

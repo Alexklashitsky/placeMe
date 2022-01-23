@@ -2,11 +2,23 @@
   background-color: white;
   color: black;
   height: 80px;
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 }
 .black-header {
   background-color: black;
   color: white;
   height: 144px;
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
 }
 header.header {
   display: flex;
@@ -17,6 +29,19 @@ header.header {
   z-index: 100;
   width: 100%;
   box-shadow: 2px 9px 15px -9px rgba(0, 0, 0, 0.11);
+  &.details.details-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    color: black;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 3.4fr 9.6fr 3.4fr;
+    font-size: 1rem;
+    .header-content {
+      grid-column: 2;
+    }
+  }
 
   a.header_icon {
     // object-fit: contain;

@@ -8,37 +8,27 @@ import { DateRangePicker } from 'react-date-range';
 // import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
 // import 'react-dates/lib/css/_datepicker.css';
 
-
-
-
 // alex
 export class CalendarComp extends Component {
-    handleSelect(ranges) {
-        console.log(ranges);
-        // {
-        //   selection: {
-        //     startDate: [native Date Object],
-        //     endDate: [native Date Object],
-        //   }
-        // }
-    }
-    render() {
-        const selectionRange = {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: 'selection',
-        }
-        return (
-            <DateRangePicker
-                ranges={[selectionRange]}
-                onChange={this.handleSelect}
-            />
-        )
-    }
+  handleSelect(ranges) {
+    // {
+    //   selection: {
+    //     startDate: [native Date Object],
+    //     endDate: [native Date Object],
+    //   }
+    // }
+  }
+  render() {
+    const selectionRange = {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection',
+    };
+    return <DateRangePicker ranges={[selectionRange]} onChange={this.handleSelect} />;
+  }
 }
 
 // //zur
-
 
 // import React, { useState } from 'react';
 // // import './Search.css';
