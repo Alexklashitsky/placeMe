@@ -12,7 +12,6 @@ export const CheckIn = ({ stay }) => {
 
   const handleScroll = () => {
     const position = window.pageYOffset;
-    console.log('position:', position);
 
     if (position > 1600) {
       setIsButtonShown(true);

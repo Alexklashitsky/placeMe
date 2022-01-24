@@ -55,7 +55,7 @@ function _createDemoData() {
       },
       reviews: [
         {
-          id: 'madeId',
+          id: '1',
           txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
           rate: 4.93,
           createdAt: new Date(2217123174455).toLocaleString('default', {
@@ -63,13 +63,13 @@ function _createDemoData() {
             year: 'numeric',
           }),
           by: {
-            _id: 'u102',
+            id: 'u102',
             fullname: 'Jozsef',
             imgUrl: 'https://a0.muscache.com/im/pictures/user/a7cc0b74-1b56-4f8b-92ff-f83797829f3c.jpg?im_w=240',
           },
         },
         {
-          id: 'madeId',
+          id: '2',
           txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
           rate: 5,
           createdAt: new Date(2114123174455).toLocaleString('default', {
@@ -83,7 +83,7 @@ function _createDemoData() {
           },
         },
         {
-          id: 'madeId',
+          id: '3',
           txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
           rate: 5,
           createdAt: new Date(2214124174455).toLocaleString('default', {
@@ -97,7 +97,7 @@ function _createDemoData() {
           },
         },
         {
-          id: 'madeId',
+          id: '4',
           txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
@@ -112,7 +112,7 @@ function _createDemoData() {
         },
 
         {
-          id: 'madeId',
+          id: '5',
           txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
@@ -126,7 +126,7 @@ function _createDemoData() {
           },
         },
         {
-          id: 'madeId',
+          id: '6',
           txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
           rate: 5,
           createdAt: new Date(2214123174455).toLocaleString('default', {
@@ -140,7 +140,7 @@ function _createDemoData() {
           },
         },
         {
-          id: 'madeId',
+          id: '7',
           txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
@@ -154,7 +154,7 @@ function _createDemoData() {
           },
         },
         {
-          id: 'madeId',
+          id: '8',
           txt: 'We loved the tree house! Everything was perfect!',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
@@ -168,7 +168,7 @@ function _createDemoData() {
           },
         },
         {
-          id: 'madeId',
+          id: '9',
           txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
           rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {

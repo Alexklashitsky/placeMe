@@ -1,6 +1,13 @@
 .filter-header{
     display: flex;
     justify-content: space-between;
+    padding-left: 4.5%;
+    padding-right: 4.6%;
+    padding-top: 1.0%;
+    align-items: center;
+
+    
+    
 }
 
 .round-button{
@@ -16,11 +23,13 @@
 
 .round-button button{
     background-color: white;
-    border-radius: 15px;
-    margin: 10px;
-   padding-left: 1rem;
+    border-radius: 50px;
+    margin: 4px;
+    padding: 0.7rem;
+    padding-left: 1rem;
     padding-right: 1rem;
-    font-size: 1.5rem;
+  
+    font-size: 0.9rem;
     border-width: 0.1px;
     border-color: rgba(214, 211, 211, 0.918);
     
@@ -41,8 +50,8 @@
 }
 
 .guests-modal{
-    height:30rem ;
-    width: 28rem;
+    height:21rem ;
+    width: 23rem;
     display: none;
     // visibility: hidden;
     position: absolute;
@@ -50,8 +59,8 @@
     background-color: whitesmoke;
     border-color: rgb(182, 177, 177);
     border-radius: 5%;
-    left: 62rem;
-    bottom: 16rem;
+    left: 75rem;
+    bottom: 22rem;
 
 }
 

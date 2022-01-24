@@ -2,27 +2,28 @@
 
 .guest-type{
     justify-content: space-between;
-    border-bottom: lightgrey solid 1px;
-    padding: 2rem;
+    border-bottom: white solid 1px;
+    padding: 1rem;
 }
 
 .gust-info {
     display: flex;
     flex-direction: column;
     align-content: space-between;
+    padding-left: 3%;
 
 }
-.gust-info .h3 {
+.gust-info h3 {
     font-size: 1rem;
     line-height: 1.4rem;
-    font-weight: 200;
+    font-weight: 100;
     
 }
 
 .gust-info p{
 font-size: 0.9rem;
 line-height: 1.2rem;
-font-weight: 400;
+font-weight: 100;
 color: rgb(113, 113, 113)
 }
 
@@ -38,6 +39,7 @@ color: rgb(113, 113, 113)
     font-weight: 400 ;
     font-size: 16px ;
     line-height: 20px ;
+    padding-right: 3%;
 
 }
 .guest-num button{
@@ -96,7 +98,7 @@ color: rgb(113, 113, 113)
 }
 
 .guest{
-    left: 23rem;
+    left: 18rem;
     bottom: 0.7rem;
 }
 

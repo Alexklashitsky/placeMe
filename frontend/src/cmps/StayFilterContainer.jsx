@@ -29,7 +29,8 @@ export class StayFilter extends Component {
         const { currModalShown } = this.state
         return (
 
-            <section className='filter-header flex' >
+            <section className='filter-header flex ' >
+                <div ></div>
                 {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
                 <section className='special-stay '>
                     <div>Houseboats</div>

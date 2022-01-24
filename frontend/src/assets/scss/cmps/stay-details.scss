@@ -133,7 +133,7 @@
   color: $gray;
   font-size: 17px;
   border-top: 1px solid rgb(190, 190, 190);
-  border-bottom: 1px solid #bebebe;
+
   padding: $stay-details-padding;
   font-family: circular-light;
   line-height: 24px;
@@ -167,7 +167,6 @@
     color: $dark-gray;
     font-size: 26px;
     margin-bottom: 30px;
-
     font-weight: 600;
   }
 }
@@ -182,11 +181,6 @@
 
   .txt {
     font-weight: 400;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
-    -webkit-box-orient: vertical;
   }
 
   .host-img {
