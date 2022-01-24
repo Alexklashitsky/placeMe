@@ -57,7 +57,9 @@ export function AppHeader() {
         {isHeader && (
           <div className='header-center'>
             <input type='text' />
+            <div className='small-search-button'> 
             <SearchIcon />
+            </div>
           </div>
         )}
         {!isHeader && !isDetails && (

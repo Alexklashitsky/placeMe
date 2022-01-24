@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function HomeCard({ src, title, description, price }) {
+export function HomeCityCard({ src, title, description, price }) {
   return (
     <div className='inspiration-card'>
             <div className='inspiration-card-img'>
@@ -8,12 +8,12 @@ export function HomeCard({ src, title, description, price }) {
             </div>
             <div className="card__info">
                 <h2>{title}</h2>
-                <h4>{description}</h4>
-                <h3>{price}</h3>
+                {/* <h2>{price}</h2>
+                <h4>{description}</h4> */}
             </div>
         </div>
   )
 }
 
-export default HomeCard
+export default HomeCityCard
 
