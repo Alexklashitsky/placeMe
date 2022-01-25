@@ -345,7 +345,7 @@ function _createDemoData() {
       ],
     },
     {
-      _id: '10006548',
+      _id: '10006595',
       name: 'Villa Cleopatra, by Cyprus-Villa-Retreats.com',
       type: 'villa',
       imgUrls: [

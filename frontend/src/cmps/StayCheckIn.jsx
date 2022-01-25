@@ -1,31 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { TestCal } from './test-cal';
+import { GuestsFilter } from './GuestsFilter';
+import { addOrder } from '../store/order.action';
+import { orderService } from '../services/order.service';
 
 export const StayCheckIn = ({ stay }) => {
   // const [Stay, setStay] = useState({});
-  const [isOrdered, toggleOrder] = useState(false);
-  const [order, setOrder] = useState({
-    totalPrice: 0,
-    startDate: '',
-    endDate: '',
-    guests: {
-      adults: 0,
-      kids: 0,
-    },
-    stay: {
-      _id: '',
-      name: '',
-      price: 0,
-    },
-    status: 'pending',
-  });
+  const [reserve, setIsReseved] = useState(null);
+  const [toggleCal, setToggleCal] = useState(false);
+  const [toggleGuests, setToggleGuests] = useState(false);
 
-  const getCurrDate = () => {
-    var date = new Date().toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    return date;
+  const order = useSelector((state) => state.orderModule.order);
+
+  const dispatch = useDispatch();
+
+  const onSubmit = () => {
+    orderService.save(reserve).then(dispatch(addOrder(reserve)));
   };
 
-  // description: user is pressing the button, activating a function which provide the order info - price, period, guests and name of stay
-  // the function should load the stay is received by prop from StayDetails. it should also receive the detials inputed by the guest (1. num of guest; 2. period)
+  const onToggleCal = () => {
+    setToggleCal(!toggleCal);
+  };
+  const onToggleGuests = () => {
+    setToggleGuests(!toggleGuests);
+  };
+
+  useEffect(() => {
+    setIsReseved({ ...order, stay: { ...order.stay, _id: stay._id, name: stay.name, price: stay.price } }); //object in object
+  }, [order]);
 
   return (
     <section className='button-main sticky'>
@@ -42,25 +45,22 @@ export const StayCheckIn = ({ stay }) => {
             <p className='reviews'>{stay.reviews.length} reviews </p>
           </section>
         </div>
+
         <div className='order-data'>
           <div className='date-picker'>
             <div className='date-input'>
               <label>CHECK-IN</label>
-              <input placeholder={getCurrDate()}></input>
+              <input onClick={onToggleCal} placeholder={order.startDate}></input>
             </div>
             <div className='date-input'>
               <label>CHECK-OUT</label>
-              <input placeholder={getCurrDate()}></input>
+              <input onClick={onToggleCal} placeholder={order.endDate}></input>
             </div>
-            {/* {isCalndarModal && <Calendar />} */}
           </div>
 
-          <div className='guest-input'>
-            <div>guests</div>
-            {/* <div>{order.guests}</div>
-            <div>{order.guests}</div> */}
+          <div className='guest-input' onClick={onToggleGuests}>
+            <p>guests</p>
           </div>
-          {/* {isGuestsModal && <GuestsFilter />} */}
         </div>
         <div className='btn-container'>
           <div className='cell'></div>
@@ -135,13 +135,15 @@ export const StayCheckIn = ({ stay }) => {
           <div className='cell'></div>
           <div className='cell'></div>
           <div className='content'>
-            <button className='action-btn'>
+            <button onClick={onSubmit} className='action-btn'>
               <span>Reserve</span>
             </button>
           </div>
         </div>
         <span className='charge'>You won't be charged yet</span>
       </section>
+      {toggleGuests && <GuestsFilter order={order} stay={stay} />}
+      {toggleCal && <TestCal order={order} stay={stay} />}
     </section>
   );
 };

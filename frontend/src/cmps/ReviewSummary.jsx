@@ -16,8 +16,8 @@ export const ReviewSummary = ({ stay }) => {
         <div className='rate'>
           <p>Cleanliness</p>
           <div className='rate-number'>
-            <div class='container'>
-              <div class='skills cleanliness'> </div>
+            <div className='container'>
+              <div className='skills cleanliness'> </div>
             </div>
             <p>4.5</p>
           </div>
@@ -26,8 +26,8 @@ export const ReviewSummary = ({ stay }) => {
         <div className='rate'>
           <p>Communication</p>
           <div className='rate-number'>
-            <div class='container'>
-              <div class='skills communication'></div>
+            <div className='container'>
+              <div className='skills communication'></div>
             </div>
             <p>4</p>
           </div>
@@ -36,8 +36,8 @@ export const ReviewSummary = ({ stay }) => {
         <div className='rate'>
           <p>Check-in</p>
           <div className='rate-number'>
-            <div class='container'>
-              <div class='skills check-in'></div>
+            <div className='container'>
+              <div className='skills check-in'></div>
             </div>
             <p>5</p>
           </div>
@@ -45,8 +45,8 @@ export const ReviewSummary = ({ stay }) => {
         <div className='rate'>
           <p>Accuracy</p>
           <div className='rate-number'>
-            <div class='container'>
-              <div class='skills accuracy'></div>
+            <div className='container'>
+              <div className='skills accuracy'></div>
             </div>
             <p>5</p>
           </div>
@@ -54,8 +54,8 @@ export const ReviewSummary = ({ stay }) => {
         <div className='rate'>
           <p>Location</p>
           <div className='rate-number'>
-            <div class='container'>
-              <div class='skills location'></div>
+            <div className='container'>
+              <div className='skills location'></div>
             </div>
             <p>5</p>
           </div>
@@ -63,8 +63,8 @@ export const ReviewSummary = ({ stay }) => {
         <div className='rate'>
           <p>Value</p>
           <div className='rate-number'>
-            <div class='container'>
-              <div class='skills value'></div>
+            <div className='container'>
+              <div className='skills value'></div>
             </div>
             <p>5</p>
           </div>

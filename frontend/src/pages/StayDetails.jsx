@@ -14,6 +14,8 @@ import { ReviewSummary } from '../cmps/ReviewSummary';
 //   return stayAverage;
 // }
 
+let counter = 0;
+
 function getAmenity(amenity) {
   switch (amenity) {
     case 'TV':
@@ -73,7 +75,6 @@ export function StayDetails(props) {
   };
 
   if (!stay) return <div>loading</div>;
-  console.log('stay:', stay);
 
   return (
     <div className='entire-layout stay-details-container'>
@@ -105,8 +106,8 @@ export function StayDetails(props) {
           </section>
         </div>
         <section className='stay-details-images'>
-          {stay.imgUrls.map((image) => (
-            <div className='image-container'>
+          {stay.imgUrls.map((image, index) => (
+            <div key={index} className='image-container'>
               <img src={image} />
             </div>
           ))}
@@ -135,8 +136,8 @@ export function StayDetails(props) {
             <section className='ameneties'>
               <h1 className='title'>What this place offers</h1>
               <section className='stay-details-ameneties'>
-                {stay.amenities.map((amenity) => (
-                  <div className='amenity'>
+                {stay.amenities.map((amenity, index) => (
+                  <div key={index} className='amenity'>
                     <span className={`${getAmenity(amenity)}`}></span>
                     <p>{amenity}</p>
                   </div>
@@ -155,8 +156,8 @@ export function StayDetails(props) {
         <ReviewSummary stay={stay} />
         <section className='stay-details-reviews'>
           <ul className='reviews-list-container clean-list'>
-            {stay.reviews.map((review) => (
-              <li className='review-preview-container'>
+            {stay.reviews.map((review, index) => (
+              <li key={index} className='review-preview-container'>
                 <section>
                   <div className='review-preview-header'>
                     <img className='host-img' src={review.by.imgUrl}></img>
