@@ -1,32 +1,35 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { loadStays } from '../store/stay.action.js';
-import { StayList } from './StayList';
+import { Link } from 'react-router-dom';
+export function HomeTopStays({ stay }) {
+  return (
+    <Link className='clean-link inspiration-card' to={`/stay/${stay._id}`}>
+      {/* <article className='inspiration-card'> */}
+
+      <div className='inspiration-card-img'>
+        <img src={stay.imgUrls[0]} alt='' />
+      </div>
+
+      <div className='card__info'>
+
+        <div className='address'>
+          <h2> {stay.loc.address}</h2>
+        </div>
+
+        <div className='price'>
+          <h3> $ {stay.price} /night</h3>
+        </div>
+
+        <div className='rate'>
+          <h3><span className='fas fa-star'></span> {stay.avgRate}</h3>
+        </div>
+{/* 
+        <div className='type'>
+          <h4 >{stay.type}</h4>
+        </div> */}
 
 
-class _HomeTopStays extends Component {
-  state = {};
-  componentDidMount() {
-    this.props.loadStays();
-  }
-  render() {
-    if (!this.props.stays) return 'no stays';
+      </div>
 
-    return (
-    <section className='center-layout'>
-      <StayList stays={this.props.stays} />
-    </section>
-    );
-  }
+      {/* </article> */}
+    </Link >
+  );
 }
-
-function mapStateToProps({ staysModule }) {
-  return {
-    stays: staysModule.stays,
-  };
-}
-const mapDispatchToProps = {
-  loadStays,
-};
-
-export const HomeTopStays = connect(mapStateToProps, mapDispatchToProps)(_HomeTopStays);
