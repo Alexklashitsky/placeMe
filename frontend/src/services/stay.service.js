@@ -33,7 +33,7 @@ function _createDemoData() {
         'https://a0.muscache.com/im/pictures/b4be5c14-ffdf-46c0-bee3-f4cd9de0a996.jpg?im_w=720',
         'https://a0.muscache.com/im/pictures/c1c19e8d-787c-4ba2-bc8f-6b9e14b6c7b0.jpg?im_w=720',
       ],
-      price: 498.0,
+      price: 100.0,
       summary:
         'TREEHOUSE is installed on four adult oaks. A wooden bridge leads directly to the terrace with a view of the surrounding trees. The house is connected to the electricity grid. Water is supplied in containers and is used for hand washing and basic hygiene. Inside our treehouse there is a chair and a sofa bed, basic kitchen equipment, electric kettle for water, plates etc. ',
       bedrooms: 1,
@@ -1643,19 +1643,19 @@ function getById(stayId) {
   return storageService.get(STORAGE_KEY, stayId);
 }
 
-async function getTopRatedStays(){
-let stays = await query()
-stays = stays.map(stay => getAverageScore(stay))
-stays = stays.sort((stay1, stay2)=>stay2.avgRate-stay1.avgRate)
-return stays.slice(0,4)
+async function getTopRatedStays() {
+  let stays = await query();
+  stays = stays.map((stay) => getAverageScore(stay));
+  stays = stays.sort((stay1, stay2) => stay2.avgRate - stay1.avgRate);
+  return stays.slice(0, 4);
 }
 
 function getAverageScore(stay) {
- const sumRate = stay.reviews.reduce((acc, review) => {
-return acc + review.rate
- }, 0) 
-stay.avgRate = sumRate/stay.reviews.length
-return stay
+  const sumRate = stay.reviews.reduce((acc, review) => {
+    return acc + review.rate;
+  }, 0);
+  stay.avgRate = sumRate / stay.reviews.length;
+  return stay;
 }
 
 function _saveStaysToStorage(stays) {

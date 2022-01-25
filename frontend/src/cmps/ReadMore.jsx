@@ -21,7 +21,7 @@ export function ReadMore({ text }) {
 
   return (
     <section className='txt'>
-      {showTxt(text, isLongTxtShown) + ' '}
+      {text.length > 150 ? showTxt(text, isLongTxtShown) + '...' : showTxt(text, isLongTxtShown) + ' '}
       {text.length > 150 && <p onClick={onToggle}>{isLongTxtShown ? ' Less...' : ' More...'}</p>}
     </section>
   );
