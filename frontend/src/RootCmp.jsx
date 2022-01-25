@@ -2,8 +2,7 @@ import { routes } from './routes.js';
 import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom';
 
 import { AppHeader } from './cmps/AppHeader.jsx';
-// import { Footer } from './cmps/AppFooter';
-// import { Home } from './pages/Home.jsx';
+import { AppFooter } from './cmps/AppFooter';
 
 import './assets/scss/main.scss';
 
@@ -19,7 +18,7 @@ export function RootCmp() {
             ))}
           </Switch>
         </main>
-        {/* <Footer /> */}
+        <AppFooter />
       </Router>
     </div>
   );

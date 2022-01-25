@@ -22,13 +22,13 @@ div.hero-container {
       height: 100%;
       margin: 0 80px;
       border-radius: 10px;
-      transform: translate(0, -20vh);
+      transform: translate(0, 0vh);
 
       .hero-text {
         position: absolute;
         top: 100%;
         left: 50%;
-        transform: translate(-50%, -10px);
+        transform: translate(-50%, -250px);
         color: #fff;
         padding-bottom: 24px;
         text-align: center;

@@ -15,6 +15,7 @@
 @import './basics/font-awesome';
 @import './cmps/StayCheckIn.scss';
 @import './cmps/Stay-Preview.scss';
+@import './cmps/Top-Stay-Preview.scss';
 @import './cmps/Stay-List.scss';
 @import './cmps/Stay-Filter.scss';
 @import './cmps/header';
@@ -24,5 +25,8 @@
 @import './cmps/additional-filter.scss';
 @import './cmps/review-summary.scss';
 @import './cmps/read-more.scss';
+@import './cmps/host-banner.scss';
+@import './cmps/footer.scss';
 //pages
 @import './pages/Home';
+@import './pages/become-host.scss';

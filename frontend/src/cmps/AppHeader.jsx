@@ -30,6 +30,10 @@ export function AppHeader() {
       setIsDetails(false);
       setIsHeader(false);
     }
+    if (location.pathname.includes('/BecomeHost/')) {
+      setIsDetails(false);
+      setIsHeader(false);
+    }
   }, [location]);
 
   const handleScroll = () => {
@@ -57,7 +61,9 @@ export function AppHeader() {
         {isHeader && (
           <div className='header-center'>
             <input type='text' />
+            <div className='small-search-button'> 
             <SearchIcon />
+            </div>
           </div>
         )}
         {!isHeader && !isDetails && (
