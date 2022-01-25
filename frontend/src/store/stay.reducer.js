@@ -2,6 +2,19 @@ import { userService } from '../services/user.service.js'
 
 
 const initialState = {
+    filterBy: {
+        freeCancel: false,
+        VerifiedPlace: false,
+        entirePlace: false,
+        hotelRoom: false,
+        privateRoom: false,
+        sharedRoom: false,
+        availability: {
+            startDate: null,
+            endDate: null
+        },
+        specialStay: ""
+    }
 
 }
 

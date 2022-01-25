@@ -2,7 +2,7 @@ import { Component, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateOrder } from '../store/order.action';
 
-export const GuestsFilter = ({ order, stay }) => {
+export const GuestsFilter = ({ order, stay, props }) => {
   const [guests, setGuests] = useState({
     adults: 0,
     children: 0,
@@ -19,6 +19,18 @@ export const GuestsFilter = ({ order, stay }) => {
   const onHandleGuests = (type, diff) => {
     guests[type] = guests[type] + diff;
     setGuests({ ...guests });
+    console.log('guests:', guests);
+    console.log('this.props:', this.props);
+
+
+    // this.props.handelFilterByChange('additionalFilter', { ...guests })
+
+
+
+
+
+
+
   };
 
   return (

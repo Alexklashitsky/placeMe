@@ -21,7 +21,13 @@ export class AdditionalFilter extends Component {
     const field = ev.target.name;
 
     // (!this.state.filterBy.freeCancel)
-    this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [field]: !prevState.filterBy[field] } }));
+    this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [field]: !prevState.filterBy[field] } }),
+      () => {
+        console.log('this.state:', this.state);
+        this.props.handelFilterByChange('additionalFilter', { ...this.state.filterBy })
+
+
+      });
     // () => {
 
     //     this.props.onSetFilter(this.state.filterBy)
