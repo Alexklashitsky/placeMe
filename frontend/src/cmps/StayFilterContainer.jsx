@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { TestCal } from './test-cal';
+import { TestCal } from './Calendar';
 import { GuestsFilter } from './GuestsFilter';
 import { AdditionalFilter } from '../cmps/AdditionalFilters';
 

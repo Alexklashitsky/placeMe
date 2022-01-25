@@ -61,8 +61,8 @@ export function AppHeader() {
         {isHeader && (
           <div className='header-center'>
             <input type='text' />
-            <div className='small-search-button'> 
-            <SearchIcon />
+            <div className='small-search-button'>
+              <SearchIcon />
             </div>
           </div>
         )}
