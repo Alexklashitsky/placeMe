@@ -1,28 +1,20 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import image from '../assets/imgs/resized_FI_Getty_Airbnb-host-welcoming-guests.jpg'
+import React from 'react'
+import image from '../assets/imgs/airbnb-rental-host-guests-KINDNESSCARD0720.jpg'
 
-
-export function BecomeHost() {
+function HostBanner() {
   return (
-
     <div>
-      <div className="become-host-container">
+      <div className="host-banner-container">
         <Link to='/BecomeHost'>
           <div className="host-banner">
             <img src={image} alt='img' />
             <div className="host-banner-text clean-link">
               <div>
-                Hosting
+                Join us!
               </div>
               <div>
-                makes Airbnb,
-              </div>
-              <div>
-                Airbnb
-              </div>
-              <div>
-                Try Hosting
+                Become a Host.
               </div>
             </div>
           </div>
@@ -32,4 +24,4 @@ export function BecomeHost() {
   )
 }
 
-
+export default HostBanner

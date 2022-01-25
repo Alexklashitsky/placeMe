@@ -1,12 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { stayService } from '../services/stay.service.js';
 import { loadStays } from '../store/stay.action.js';
 import { StayList } from '../cmps/StayList';
 import { StayFilter } from '../cmps/StayFilterContainer';
-import { CalendarComp } from '../cmps/Calendar'
-import { TestCal } from '../cmps/test-cal'
-
 
 class _StaySearch extends Component {
   state = {};

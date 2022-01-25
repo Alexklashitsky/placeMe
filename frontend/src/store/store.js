@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 
 import { staysReducer } from './stay.reducer.js';
 import { userReducer } from './user.reducer.js';
+import { orderReducer } from './order.reducer.js';
 
 const rootReducer = combineReducers({
   staysModule: staysReducer,
   userModule: userReducer,
+  orderModule: orderReducer,
 });
 
 export default createStore(rootReducer, applyMiddleware(thunk));

@@ -1,0 +1,42 @@
+.host-banner-container {
+  padding: 80px;
+  .host-banner {
+    overflow: hidden;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 80vh;
+    border-radius: 10px;
+    position: relative;
+
+    img {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 140%;
+      width: 140%;
+      object-fit: cover;
+      transform: translate(12vw, 12vh);
+    }
+    .host-banner-text {
+      position: absolute;
+      /* top: 100%; */
+      left: 0%;
+      // transform: translate(-100%, 0px);
+      color: #fff;
+      padding: 40px 12px;
+      // padding-bottom: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 3rem;
+      width: 30%;
+      height: 100%;
+      background-color: #f1374dda;
+      backdrop-filter: blur(10px) saturate(40%);
+      font-size: 80px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+  }
+}

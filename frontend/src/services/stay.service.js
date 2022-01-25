@@ -7,7 +7,7 @@ let staysToSave = [];
 export const stayService = {
   query,
   getById,
-
+  getTopRatedStays,
   // remove,
   // getEmptyCar
 };
@@ -345,7 +345,7 @@ function _createDemoData() {
       ],
     },
     {
-      _id: '10006548',
+      _id: '10006595',
       name: 'Villa Cleopatra, by Cyprus-Villa-Retreats.com',
       type: 'villa',
       imgUrls: [
@@ -1641,6 +1641,21 @@ function _createDemoData() {
 
 function getById(stayId) {
   return storageService.get(STORAGE_KEY, stayId);
+}
+
+async function getTopRatedStays(){
+let stays = await query()
+stays = stays.map(stay => getAverageScore(stay))
+stays = stays.sort((stay1, stay2)=>stay2.avgRate-stay1.avgRate)
+return stays.slice(0,4)
+}
+
+function getAverageScore(stay) {
+ const sumRate = stay.reviews.reduce((acc, review) => {
+return acc + review.rate
+ }, 0) 
+stay.avgRate = sumRate/stay.reviews.length
+return stay
 }
 
 function _saveStaysToStorage(stays) {

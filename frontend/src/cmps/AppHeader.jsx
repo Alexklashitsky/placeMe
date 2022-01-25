@@ -30,6 +30,10 @@ export function AppHeader() {
       setIsDetails(false);
       setIsHeader(false);
     }
+    if (location.pathname.includes('/BecomeHost/')) {
+      setIsDetails(false);
+      setIsHeader(false);
+    }
   }, [location]);
 
   const handleScroll = () => {
