@@ -6,12 +6,12 @@ import HostBanner from '../cmps/HostBanner.jsx'
 
 export function Home() {
   return (
-    <section className="entire-layout">
+    <section className="full">
       <Hero />
-      <div className="inspiration-container center-layout">
+      <div className="inspiration-container main-root">
         <InspirationCards />
       </div>
-     <HostBanner/>
+      <HostBanner />
       {/* <div className="inspiration-container center-layout">   
       <InspirationCards/>
       </div> */}

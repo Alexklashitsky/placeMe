@@ -12,10 +12,10 @@
     img {
       border-radius: 10px;
       overflow: hidden;
-      height: 140%;
-      width: 140%;
+      height: 100%;
+      width: 100%;
       object-fit: cover;
-      transform: translate(12vw, 12vh);
+      transform: translate(23vw, 0vh);
     }
     .host-banner-text {
       position: absolute;
@@ -32,11 +32,11 @@
       font-size: 3rem;
       width: 30%;
       height: 100%;
-      background-color: #f1374dda;
+      background-color: #f1374dfb;
       backdrop-filter: blur(10px) saturate(40%);
       font-size: 80px;
       overflow: hidden;
-      border-radius: 10px;
+      // border-radius: 10px;
     }
   }
 }

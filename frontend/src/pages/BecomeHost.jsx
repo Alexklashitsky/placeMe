@@ -6,7 +6,7 @@ import image from '../assets/imgs/resized_FI_Getty_Airbnb-host-welcoming-guests.
 export function BecomeHost() {
   return (
 
-    <div>
+    <div className="full">
       <div className="become-host-container">
         <Link to='/BecomeHost'>
           <div className="host-banner">
