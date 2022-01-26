@@ -13,6 +13,9 @@ export const StayCheckIn = ({ stay }) => {
   const [toggleCal, setToggleCal] = useState(false);
   const [toggleGuests, setToggleGuests] = useState(false);
 
+  var loggedInUser = sessionStorage.getItem('loggedinUser');
+  console.log('loggedInUser:', loggedInUser._id);
+
   const order = useSelector((state) => state?.ordersModule?.order);
   const dispatch = useDispatch();
 
@@ -21,8 +24,8 @@ export const StayCheckIn = ({ stay }) => {
       ...order,
       hostId: stay.host._id,
       buyer: {
-        _id: 'u101',
-        fullname: 'Tsur Drori',
+        _id: loggedInUser._id,
+        fullname: loggedInUser.fullname,
       },
     };
     console.log('orderToSend:', orderToSend);
