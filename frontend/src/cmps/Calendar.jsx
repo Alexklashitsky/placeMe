@@ -10,13 +10,12 @@ import { updateOrder } from '../store/order.action';
 import { useDispatch } from 'react-redux';
 import { utilService } from '../services/util.service.js';
 
-export function TestCal({ order, stay, onToggleCal }) {
+export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClicked }) {
   const [value, setValue] = React.useState([null, null]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!stay) return;
     if (!value[0]) return;
 
     const startDate = utilService.convert(value[0]);
@@ -31,7 +30,11 @@ export function TestCal({ order, stay, onToggleCal }) {
     date2 = new Date(date2.split('/')[2], date2.split('/')[1] - 1, date2.split('/')[0]);
     let timeDiff = Math.abs(date2.getTime() - today.getTime());
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    console.log('cal');
 
+    handelDateChange(startDate, endDate)
+
+    if (!stay) return;
     const totalPrice = diffDays * stay.price;
 
     const orderToUpdate = { ...order, startDate, endDate, totalPrice };
@@ -65,6 +68,9 @@ export function TestCal({ order, stay, onToggleCal }) {
           />
         </LocalizationProvider>
       </div>
+      <button className='save' onClick={() => onSaveClicked()} >
+        save
+      </button>
     </div>
   );
   // console.log('startProps:', startProps);
