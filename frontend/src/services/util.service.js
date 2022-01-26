@@ -3,7 +3,18 @@ export const utilService = {
   makeLorem,
   getRandomIntInclusive,
   convert,
+  getDayInDd,
+  getReviews,
 };
+
+function getReviews(stay) {
+  const reviews = stay.reviews;
+  const stayAverage =
+    reviews.reduce(function (sum, value) {
+      return sum + value.rate;
+    }, 0) / reviews.length;
+  return stayAverage;
+}
 
 function convert(str) {
   let date = new Date(str),
@@ -12,7 +23,7 @@ function convert(str) {
 
   return [day, mnth, date.getFullYear()].join('/');
 }
-getDayInDd();
+
 function getDayInDd() {
   var today = new Date();
   var dd = today.getDate();
