@@ -49,6 +49,7 @@ export function TestCal({ order, stay, onToggleCal }) {
             disablePast
             displayStaticWrapperAs='desktop'
             value={value}
+            autoOk={true}
             onChange={(newValue) => {
               setValue(newValue);
             }}

@@ -85,6 +85,12 @@
   }
 }
 
+.screen-details {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+}
+
 .divider {
   display: flex;
   justify-content: space-between;

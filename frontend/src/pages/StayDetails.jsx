@@ -74,6 +74,7 @@ export function StayDetails(props) {
 
   return (
     <div className='entire-layout stay-details-container'>
+      {/* <div className='screen-details'></div> */}
       {!modal ? <div></div> : <CheckIn stay={stay} />}
       <div className='center-layout'>
         <div className='stay-header'>
