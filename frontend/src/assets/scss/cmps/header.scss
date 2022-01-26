@@ -270,6 +270,10 @@ header.header {
       &:hover {
         box-shadow: 2px 9px 15px -9px rgba(0, 0, 0, 0.21);
       }
+      .hamburger-container{
+        display: flex;
+        color: #404040;
+      }
     }
   }
 }

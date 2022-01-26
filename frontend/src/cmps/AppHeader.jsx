@@ -4,6 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GuestsFilter } from './GuestsFilter';
+import { HamburgerMenu } from './HamburgerMenu';
+import { LoginSignupModal } from './LoginSignupModal';
 
 export function AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -12,6 +14,8 @@ export function AppHeader() {
   const [toggleHamburger, setToggleHamburger] = useState(false);
   const [isWhiteHeader, setIsWhiteHeader] = useState(false);
   const [isDetails, setIsDetails] = useState(false);
+  const [toggleLoginModal, setToggleLoginModal] = useState(false);
+
   const location = useLocation();
 
   const onToggleLocation = () => {
@@ -119,7 +123,7 @@ export function AppHeader() {
             </div>
           </div>
 
-          <div className='guests-container' onClick={onToggleGuests} d>
+          <div className='guests-container' onClick={onToggleGuests}>
             <div className='container-border'>
               <ul className='clean-list'>
                 <li>Guests</li>
@@ -152,8 +156,20 @@ export function AppHeader() {
         </div>
 
         <div className='menu-container'>
-          <MenuIcon />
-          <AccountCircleIcon />
+          <div className='hamburger-container' onClick={onToggleHamburger}>
+            <MenuIcon />
+            <AccountCircleIcon />
+          </div>
+          {toggleHamburger && (
+            <HamburgerMenu
+              onToggleHamburger={onToggleHamburger}
+              setToggleLoginModal={setToggleLoginModal}
+              toggleLoginModal={toggleLoginModal}
+            />
+          )}
+          {toggleLoginModal && (
+            <LoginSignupModal setToggleLoginModal={setToggleLoginModal} toggleLoginModal={toggleLoginModal} />
+          )}
         </div>
       </div>
     </header>

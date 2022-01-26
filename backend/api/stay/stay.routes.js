@@ -1,22 +1,22 @@
-const express = require('express')
-const { requireAuth, requireAdmin } = require('../../middlewares/requireAuth.middleware')
-const { log } = require('../../middlewares/logger.middleware')
-const { getReviews } = require('../review/review.controller')
-const { getStays, getStayById, addStay, updateStay, removeStay } = require('./stay.controller')
+const express = require('express');
+const { requireAuth, requireAdmin } = require('../../middlewares/requireAuth.middleware');
+const { log } = require('../../middlewares/logger.middleware');
+const { getReviews } = require('../review/review.controller');
+const { getStays, getStayById, addStay, updateStay, removeStay } = require('./stay.controller');
 
-const router = express.Router()
+//3
+const router = express.Router();
 
-router.get('/', getStays)
-router.get('/:id', getStayById)
+router.get('/', getStays);
+router.get('/:id', getStayById);
 
 //host only!
 
 //dev version
 
-router.post('/', addStay)
-router.put('/:id', updateStay)
-router.delete('/:id', removeStay)
-
+router.post('/', addStay);
+router.put('/:id', updateStay);
+router.delete('/:id', removeStay);
 
 //prod version!
 
@@ -24,6 +24,4 @@ router.delete('/:id', removeStay)
 // router.put('/:id', requireAuth, requireAdmin, updateStay)
 // router.delete('/:id', requireAuth, requireAdmin, removeStay)
 
-
-
-module.exports = router
+module.exports = router;
