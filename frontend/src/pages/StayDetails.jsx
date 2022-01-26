@@ -7,6 +7,9 @@ import { CheckIn } from '../cmps/CheckInHeader';
 import { ReviewSummary } from '../cmps/ReviewSummary';
 import { utilService } from '../services/util.service';
 import { MyMap } from '../cmps/Map';
+import { StayDetailsPics } from '../cmps/StayDetailsPics';
+import { StayReviews } from '../cmps/StayReviews';
+import { StayDetailsHeader } from '../cmps/StayDetailsHeader';
 
 let counter = 0;
 
@@ -30,6 +33,7 @@ export function StayDetails(props) {
   const [stay, setStay] = useState(false);
   const [modal, setModal] = useState(false);
   const [isLongText, setIsLongText] = useState(false);
+  const [currModal, setCurrModal] = useState(false);
 
   const toggleText = () => {
     setIsLongText(!isLongText);
@@ -70,45 +74,12 @@ export function StayDetails(props) {
 
   if (!stay) return <div>loading</div>;
 
-  let averageRate = utilService.getReviews(stay);
-
   return (
     <div className='entire-layout stay-details-container'>
-      {/* <div className='screen-details'></div> */}
       {!modal ? <div></div> : <CheckIn stay={stay} />}
       <div className='center-layout'>
-        <div className='stay-header'>
-          <h1 className='stay-name'>{stay.name}</h1>
-          <section className='stay-details-header'>
-            <section className='stay-info'>
-              <span className='fas fa-star'></span>
-              <p className='stay-rate'>{averageRate.toFixed(2)}</p>
-              <p className='stay-details-dot'>·</p>
-              <p className='reviews'>{stay.reviews.length} reviews </p>
-              <p className='stay-details-dot'> · </p>
-              <a href='' className='stay-address'>
-                {stay.loc.address}
-              </a>
-            </section>
-            <section className='social'>
-              <span className='fas fa-share'>
-                {'  '}
-                <span className='text'> Share</span>{' '}
-              </span>
-              <span className='far fa-empty-heart'>
-                {'  '}
-                <span className='text'> Save</span>
-              </span>
-            </section>
-          </section>
-        </div>
-        <section className='stay-details-images'>
-          {stay.imgUrls.map((image, index) => (
-            <div key={index} className='image-container'>
-              <img src={image} />
-            </div>
-          ))}
-        </section>
+        <StayDetailsHeader stay={stay} />
+        <StayDetailsPics stay={stay} />
         <section className='divider'>
           <section className='left-side'>
             <section className='stay-detail-host-description'>
@@ -151,26 +122,7 @@ export function StayDetails(props) {
           </section>
         </section>
         <ReviewSummary stay={stay} />
-        <section className='stay-details-reviews'>
-          <ul className='reviews-list-container clean-list'>
-            {stay.reviews.map((review, index) => (
-              <li key={index} className='review-preview-container'>
-                <section>
-                  <div className='review-preview-header'>
-                    <img className='host-img' src={review.by.imgUrl}></img>
-                    <div className='review-preview-text-container'>
-                      <li className='fullname'>{review.by.fullname}</li>
-                      <li className='date'>{review.createdAt}</li>
-                    </div>
-                  </div>
-                  <span className='txt'>
-                    <ReadMore id={review.id} text={review.txt} isLongTxtShown={isLongText} onToggleTxt={toggleText} />
-                  </span>
-                </section>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <StayReviews stay={stay} />
         <div>
           <MyMap stay={stay} />
         </div>

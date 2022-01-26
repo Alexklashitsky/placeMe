@@ -1,45 +1,53 @@
-// import {userService} from '../services/user.service.js'
-// import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
+import { userService } from '../services/user.service.js';
 
-// export function login(credentials) {
-//     return (dispatch) => {
-//         userService.login(credentials)
-//         .then(user => {
-//             // console.log('Added Car', savedCar);
-//             const action = {type: 'SET_USER', user}
-//             dispatch(action)
-//             showSuccessMsg('Loggein')
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot login')
-//         })
-//     }
-// }
-// export function signup(credentials) {
-//     return (dispatch) => {
-//         userService.signup(credentials)
-//         .then(user => {
-//             // console.log('Added Car', savedCar);
-//             const action = {type: 'SET_USER', user}
-//             dispatch(action)
-//             showSuccessMsg('Signed up')
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot signup')
-//         })
-//     }
-// }
-// export function logout() {
-//     return (dispatch) => {
-//         userService.logout()
-//         .then(() => {
-//             // console.log('Added Car', savedCar);
-//             const action = {type: 'SET_USER', user: null}
-//             dispatch(action)
-//             showSuccessMsg('Logged out')
-//         })
-//         .catch(err => {
-//             showErrorMsg('Cannot logout')
-//         })
-//     }
-// }
+export function login(credentials) {
+    console.log('the cred in useract', credentials)
+    return async (dispatch) => {
+        try {
+            const user = await userService.login(credentials)
+            dispatch({ type: 'SET_USER', user })
+        } catch (err) {
+            console.log('no user found', err)
+        }
+    }
+}
+
+export function signup(credentials) {
+    return async (dispatch) => {
+        try {
+            const user = await userService.signup(credentials)
+            dispatch({ type: 'SET_USER', user })
+        } catch (err) {
+            console.log('Cannot signup')
+        }
+    }
+}
+
+export function logout() {
+    return async (dispatch) => {
+        try {
+            await userService.logout()
+            dispatch({ type: 'SET_USER', user: null })
+
+        } catch (err) {
+            console.log('Cannot logout');
+        }
+    }
+}
+
+// userService.login(credentials).then(user => {
+//     dispatch({ type: 'SET_USER', user })
+// })
+//     .catch(err => {
+//         console.log('no user found', err)
+//     })
+
+// userService.signup(credentials)
+// .then(user => {
+//     dispatch({ type: 'SET_USER', user })
+//     // showSuccessMsg('Signed up')
+// })
+
+// userService.logout().then(
+//     dispatch({ type: 'SET_USER', user: null })
+// )

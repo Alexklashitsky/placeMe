@@ -4,7 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GuestsFilter } from './GuestsFilter';
-
+import { HamburgerMenu } from './HamburgerMenu';
+import { LoginSignupModal } from './LoginSignupModal';
 
 export function AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -13,6 +14,8 @@ export function AppHeader() {
   const [toggleHamburger, setToggleHamburger] = useState(false);
   const [isWhiteHeader, setIsWhiteHeader] = useState(false);
   const [isDetails, setIsDetails] = useState(false);
+  const [toggleLoginModal, setToggleLoginModal] = useState(false);
+
   const location = useLocation();
 
   const onToggleLocation = () => {
@@ -32,16 +35,17 @@ export function AppHeader() {
   useEffect(() => {
     window.removeEventListener('scroll', handleScroll);
     window.addEventListener('scroll', handleScroll);
+
     if (location.pathname === '/') {
       setIsWhiteHeader(false);
     }
     if (location.pathname.includes('/stay')) {
       setIsDetails(true);
+      setIsWhiteHeader(true);
     }
     if (location.pathname.includes('/StaySearch')) {
       setIsDetails(false);
       setIsWhiteHeader(true);
-
     }
     if (location.pathname.includes('/BecomeHost')) {
       setIsDetails(false);
@@ -67,20 +71,20 @@ export function AppHeader() {
 
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails ? 'details details-header' : ''} `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
+        isDetails ? 'details details-header' : ''
+      } `}>
       <Link to='/' className='header_icon clean-link'>
         <h1 onClick={backPage}>PlaceMe</h1>
       </Link>
 
       <div className={`header-center-container`}>
-
         <div className={`header-center hidden-search`}>
           <input type='text' />
           <div className='small-search-button'>
             <SearchIcon />
           </div>
         </div>
-
 
         <div className='header-center header-bar hidden-bar '>
           <div className='location-container'>
@@ -119,9 +123,9 @@ export function AppHeader() {
             </div>
           </div>
 
-          <div className='guests-container' onClick={onToggleGuests}d>
+          <div className='guests-container' onClick={onToggleGuests}>
             <div className='container-border'>
-              <ul className='clean-list' >
+              <ul className='clean-list'>
                 <li>Guests</li>
                 <li>
                   {' '}
@@ -152,8 +156,20 @@ export function AppHeader() {
         </div>
 
         <div className='menu-container'>
-          <MenuIcon />
-          <AccountCircleIcon />
+          <div className='hamburger-container' onClick={onToggleHamburger}>
+            <MenuIcon />
+            <AccountCircleIcon />
+          </div>
+          {toggleHamburger && (
+            <HamburgerMenu
+              onToggleHamburger={onToggleHamburger}
+              setToggleLoginModal={setToggleLoginModal}
+              toggleLoginModal={toggleLoginModal}
+            />
+          )}
+          {toggleLoginModal && (
+            <LoginSignupModal setToggleLoginModal={setToggleLoginModal} toggleLoginModal={toggleLoginModal} />
+          )}
         </div>
       </div>
     </header>

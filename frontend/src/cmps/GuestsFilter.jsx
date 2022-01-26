@@ -13,10 +13,9 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
   const dispatch = useDispatch();
   useEffect(() => {
     const orderToUpdate = { ...order, guests };
-    if (handelFilterByChange) handelFilterByChange('guests', guests)
+    if (handelFilterByChange) handelFilterByChange('guests', guests);
     dispatch(updateOrder(orderToUpdate));
-  }, [guests]
-  );
+  }, [guests]);
 
   const onHandleGuests = (type, diff) => {
     guests[type] = guests[type] + diff;
@@ -24,15 +23,7 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
     console.log('guests:', guests);
     console.log('this.props:', this.props);
 
-
     // this.props.handelFilterByChange('additionalFilter', { ...guests })
-
-
-
-
-
-
-
   };
 
   return (

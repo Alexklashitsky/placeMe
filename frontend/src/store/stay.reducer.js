@@ -1,5 +1,4 @@
-import { userService } from '../services/user.service.js'
-
+import { userService } from '../services/user.service.js';
 
 const initialState = {
     stays: null,
@@ -20,8 +19,8 @@ const initialState = {
 
 
 export function staysReducer(state = initialState, action) {
-
     let newState = state;
+
 
     switch (action.type) {
 

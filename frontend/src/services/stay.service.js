@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 import { userService } from './user.service.js';
+import axios from 'axios';
 const STORAGE_KEY = 'stay';
 let staysToSave = [];
 
@@ -12,12 +13,21 @@ export const stayService = {
   // getEmptyCar
 };
 
-async function query() {
-  let stays = await storageService.query(STORAGE_KEY);
-  if (!stays) {
-    stays = await _createDemoData();
+// async function query() {
+//   let stays = await storageService.query(STORAGE_KEY); // 1. httpservice.get(/api/stay/)
+//   if (!stays) {
+//     stays = await _createDemoData();
+//   }
+//   return stays;
+// }
+
+async function query(filterBy) {
+  try {
+    const stay = await axios.get('http://localhost:3030/api/stay/', { params: { filterBy: JSON.stringify(filterBy) } });
+    return stay.data;
+  } catch (err) {
+    console.log('Cannot get stay', err);
   }
-  return stays;
 }
 
 function _createDemoData() {
@@ -1640,22 +1650,30 @@ function _createDemoData() {
 }
 
 function getById(stayId) {
-  return storageService.get(STORAGE_KEY, stayId);
+  return axios
+    .get(`http://localhost:3030/api/stay/${stayId}`)
+    .then((res) => res.data)
+    .catch((err) => {
+      console.log(err.response.status);
+    });
 }
+// function getById(stayId) {
+//   return storageService.get(STORAGE_KEY, stayId);
+// }
 
 async function getTopRatedStays() {
-  let stays = await query()
-  stays = stays.map(stay => getAverageScore(stay))
-  stays = stays.sort((stay1, stay2) => stay2.avgRate - stay1.avgRate)
-  return stays.slice(0, 4)
+  let stays = await query();
+  stays = stays.map((stay) => getAverageScore(stay));
+  stays = stays.sort((stay1, stay2) => stay2.avgRate - stay1.avgRate);
+  return stays.slice(0, 4);
 }
 
 function getAverageScore(stay) {
   const sumRate = stay.reviews.reduce((acc, review) => {
-    return acc + review.rate
-  }, 0)
-  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2)
-  return stay
+    return acc + review.rate;
+  }, 0);
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
+  return stay;
 }
 
 function _saveStaysToStorage(stays) {

@@ -18,6 +18,8 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
   useEffect(() => {
     if (!value[0]) return;
 
+    console.log('value:', value);
+
     const startDate = utilService.convert(value[0]);
     let endDate = utilService.convert(value[1]);
 
@@ -39,10 +41,8 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
 
     const orderToUpdate = { ...order, startDate, endDate, totalPrice };
     dispatch(updateOrder(orderToUpdate));
+    if (value.every((date) => date)) onToggleCal();
   }, [value]);
-
-  //start end
-  //setorder
 
   return (
     <div className='calendar-div'>
@@ -52,7 +52,6 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
             disablePast
             displayStaticWrapperAs='desktop'
             value={value}
-            autoOk={true}
             onChange={(newValue) => {
               setValue(newValue);
             }}
