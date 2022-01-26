@@ -1,20 +1,41 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { TestCal } from './test-cal';
+import { TestCal } from './Calendar';
 import { GuestsFilter } from './GuestsFilter';
 import { AdditionalFilter } from '../cmps/AdditionalFilters';
+
 
 import 'react-day-picker/lib/style.css';
 
 // import { Button } from "@material-ui/core";
 
-export class StayFilter extends Component {
+export class _StayFilter extends Component {
   state = {
     currModalShown: '',
+    filterBy: {
+      specialStay: ''
+
+    }
   };
 
   onOpenModal(value) {
     this.setState({ currModalShown: value });
+  }
+  handelFilterByChange = (field, value) => {
+    console.log('field:', field);
+    console.log('value:', value);
+
+
+
+
+    this.setState(prevState => ({ ...prevState, filterBy: { ...prevState.filterBy, [field]: value } }))
+
+
+  }
+
+  handelDateChange() {
+
+
   }
 
   render() {
@@ -24,13 +45,13 @@ export class StayFilter extends Component {
         <div></div>
         {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
         <section className='special-stay '>
-          <div>Houseboats</div>
-          <div>Beachfront</div>
-          <div>Cabins</div>
-          <div>Treehouse</div>
-          <div>Ski in/Ski out</div>
-          <div>Amazing Places</div>
-          <div>farms</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Houseboats')}>Houseboats</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')} >Beachfront</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Cabins')} >Cabins</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Treehouse')} >Treehouse</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')} >Ski in/Ski out</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>Amazing Places</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'farms')}>farms</div>
         </section>
 
         <div className='round-button'>
@@ -47,12 +68,25 @@ export class StayFilter extends Component {
           </button>
         </div>
         <div className={'guests-modal' + ' ' + `${this.state.currModalShown === 'guests' ? 'shown' : ''}`}>
-          <GuestsFilter />
+          <GuestsFilter handelFilterByChange={this.handelFilterByChange} />
         </div>
         <div className={'filters-modal' + ' ' + `${this.state.currModalShown === 'filters' ? 'shown' : ''}`}>
-          <AdditionalFilter />
+          <AdditionalFilter handelFilterByChange={this.handelFilterByChange} />
         </div>
       </section>
     );
   }
 }
+
+function mapStateToProps({ stayModule }) {
+  return {
+    // filterBy: stayModule.filterBy
+
+  }
+}
+
+const mapDispatchToProps = {
+
+}
+
+export const StayFilter = connect(mapStateToProps, mapDispatchToProps)(_StayFilter)

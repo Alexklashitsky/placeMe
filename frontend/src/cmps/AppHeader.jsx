@@ -119,7 +119,7 @@ export function AppHeader() {
             </div>
           </div>
 
-          <div className='guests-container' onClick={onToggleGuests}>
+          <div className='guests-container' onClick={onToggleGuests}d>
             <div className='container-border'>
               <ul className='clean-list' >
                 <li>Guests</li>

@@ -43,8 +43,8 @@ async function addStay(req, res) {
 async function updateStay(req, res) {
     try {
         const stay = req.body;
-        const updatedToy = await stayService.update(stay)
-        res.json(updatedToy)
+        const updatedStay = await stayService.update(stay)
+        res.json(updatedStay)
     } catch (err) {
         logger.error('Failed to update stay', err)
         res.status(500).send({ err: 'Failed to update stay' })

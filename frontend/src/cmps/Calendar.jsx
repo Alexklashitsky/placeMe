@@ -1,71 +1,71 @@
-import { Component } from 'react';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
-import { Calendar } from 'react-date-range';
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import StaticDateRangePicker from '@material-ui/lab/StaticDateRangePicker';
+import { useEffect, useState } from 'react';
+import DateRangePicker from '@material-ui/lab/DateRangePicker';
+import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
+import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
+import Box from '@mui/material/Box';
+import { updateOrder } from '../store/order.action';
+import { useDispatch } from 'react-redux';
+import { utilService } from '../services/util.service.js';
 
-import { DateRangePicker } from 'react-date-range';
-// import 'react-dates/initialize';
-// import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
-// import 'react-dates/lib/css/_datepicker.css';
+export function TestCal({ order, stay, onToggleCal }) {
+  const [value, setValue] = React.useState([null, null]);
 
-// alex
-export class CalendarComp extends Component {
-  handleSelect(ranges) {
-    // {
-    //   selection: {
-    //     startDate: [native Date Object],
-    //     endDate: [native Date Object],
-    //   }
-    // }
-  }
-  render() {
-    const selectionRange = {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection',
-    };
-    return <DateRangePicker ranges={[selectionRange]} onChange={this.handleSelect} />;
-  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!stay) return;
+    if (!value[0]) return;
+
+    const startDate = utilService.convert(value[0]);
+    let endDate = utilService.convert(value[1]);
+
+    let today = startDate;
+    today = new Date(today.split('/')[2], today.split('/')[1] - 1, today.split('/')[0]);
+    if (endDate.includes('1970')) {
+      endDate = '25/01/2022';
+    }
+    let date2 = endDate;
+    date2 = new Date(date2.split('/')[2], date2.split('/')[1] - 1, date2.split('/')[0]);
+    let timeDiff = Math.abs(date2.getTime() - today.getTime());
+    let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    const totalPrice = diffDays * stay.price;
+
+    const orderToUpdate = { ...order, startDate, endDate, totalPrice };
+    dispatch(updateOrder(orderToUpdate));
+  }, [value]);
+
+  //start end
+  //setorder
+
+  return (
+    <div className='calendar-div'>
+      <div className='date-range'>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <StaticDateRangePicker
+            disablePast
+            displayStaticWrapperAs='desktop'
+            value={value}
+            onChange={(newValue) => {
+              setValue(newValue);
+            }}
+            renderInput={(startProps, endProps) => (
+              <div>
+                <React.Fragment>
+                  <TextField {...startProps} />
+                  <Box sx={{ mx: 2 }}> to </Box>
+                  <TextField {...endProps} />
+                </React.Fragment>
+              </div>
+            )}
+          />
+        </LocalizationProvider>
+      </div>
+    </div>
+  );
+  // console.log('startProps:', startProps);
+  // console.log('endProps:', endProps);
 }
-
-// //zur
-
-// import React, { useState } from 'react';
-// // import './Search.css';
-// import "react-date-range/dist/styles.css"; // main style file
-// import "react-date-range/dist/theme/default.css"; // theme css file
-// import { DateRangePicker } from "react-date-range";
-// // import { Button } from "@material-ui/core";
-// // import PeopleIcon from "@material-ui/icons/People";
-// import { useHistory } from "react-router-dom";
-
-// // DATE PICKER COMPONENT
-// function Search() {
-//     const history = useHistory();
-//     const [startDate, setStartDate] = useState(new Date());
-//     const [endDate, setEndDate] = useState(new Date());
-
-//     const selectionRange = {
-//         startDate: startDate,
-//         endDate: endDate,
-//         key: "selection",
-//     };
-
-//     function handleSelect(ranges) {
-//         setStartDate(ranges.selection.startDate);
-//         setEndDate(ranges.selection.endDate);
-//     }
-
-//     return (
-//         <div className='search'>
-//             <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} />
-//             <h2>
-//                 Number of guests <PeopleIcon />
-//             </h2>
-//             <input min={0} defaultValue={2} type="number" />
-//             <Button onClick={() => history.push('/search')}>Search Airbnb</Button>
-//         </div>
-//     )
-// }
-
-// export default Search

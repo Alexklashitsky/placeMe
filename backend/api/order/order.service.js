@@ -34,13 +34,55 @@ async function getById(orderId) {
     }
 }
 
+async function add(order) {
+    try {
+        order.createdBy = req.session.user
+
+        const collection = await dbService.getCollection('order')
+        const addedToy = await collection.insertOne(order)
+        return addedToy
+    } catch (err) {
+        logger.error('cannot insert stay', err)
+        throw err
+    }
+}
+
+async function update(order) {
+    try {
+        let id = ObjectId(order._id)
+        delete order._id
+        const collection = await dbService.getCollection('order')
+        await collection.updateOne({ "_id": id }, { $set: { ...order } })
+        return order
+    } catch (err) {
+        console.log('the err in update', err)
+        logger.error(`cannot update stay ${order}`, err)
+        throw err
+    }
+}
+
+async function remove(orderId) {
+    try {
+        const collection = await dbService.getCollection('order')
+        await collection.deleteOne({ '_id': ObjectId(orderId) })
+        return orderId
+    } catch (err) {
+        logger.error(`cannot remove toy ${orderId}`, err)
+        throw err
+    }
+}
+
+
+
+
+
 
 module.exports = {
-    // remove,
+    remove,
     query,
     getById,
-    // add,
-    // update,
+    add,
+    update,
 }
 
 

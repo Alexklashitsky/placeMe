@@ -91,7 +91,7 @@
 
   .left-side {
     justify-items: flex-end;
-    z-index: 100;
+
     width: 57%;
   }
   .right-side {
@@ -181,6 +181,9 @@
 
   .txt {
     font-weight: 400;
+    .txt {
+      color: rgb(34, 34, 34);
+    }
   }
 
   .host-img {
@@ -210,5 +213,10 @@
     flex-direction: column;
     line-height: 24px;
     font-size: 16px;
+  }
+  p {
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
   }
 }

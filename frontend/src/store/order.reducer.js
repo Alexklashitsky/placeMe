@@ -1,32 +1,14 @@
+import { orderService } from '../services/order.service';
+
 const initialState = {
-  orders: [],
-  order: {
-    totalPrice: 0,
-    startDate: '',
-    endDate: '',
-    guests: {
-      adults: 0,
-      kids: 0,
-      infants: 0,
-      Pets: 0,
-    },
-    stay: {
-      _id: '',
-      name: '',
-      price: 0,
-    },
-    status: 'pending',
-  },
+  order: orderService.getOrder(),
 };
 
 export function orderReducer(state = initialState, action = {}) {
   //was action={}
   switch (action.type) {
-    case 'UPDATE_ORDER':
+    case 'SET_ORDER':
       return { ...state, order: action.order };
-    case 'ADD_ORDER':
-      return { ...state, order: [...state.orders, action.order] };
-
     default:
   }
 

@@ -35,7 +35,7 @@
   .container {
     display: flex;
     height: 5px;
-    width: 100%;
+    min-width: 100%;
     border-radius: 10px;
     background-color: rgb(212, 212, 212);
   }
@@ -43,8 +43,6 @@
 
 .skills {
   color: #000;
-  height: 1px;
-  height: 100%;
   border-radius: 10px;
 
   &.cleanliness {
@@ -56,11 +54,11 @@
     background-color: black;
   }
   &.check-in {
-    width: 100%;
+    width: 85%;
     background-color: black;
   }
   &.accuracy {
-    width: 100%;
+    width: 60%;
     background-color: black;
   }
   &.value {
