@@ -1643,19 +1643,19 @@ function getById(stayId) {
   return storageService.get(STORAGE_KEY, stayId);
 }
 
-async function getTopRatedStays(){
-let stays = await query()
-stays = stays.map(stay => getAverageScore(stay))
-stays = stays.sort((stay1, stay2)=>stay2.avgRate-stay1.avgRate)
-return stays.slice(0,4)
+async function getTopRatedStays() {
+  let stays = await query()
+  stays = stays.map(stay => getAverageScore(stay))
+  stays = stays.sort((stay1, stay2) => stay2.avgRate - stay1.avgRate)
+  return stays.slice(0, 4)
 }
 
 function getAverageScore(stay) {
- const sumRate = stay.reviews.reduce((acc, review) => {
-return acc + review.rate
- }, 0) 
-stay.avgRate = sumRate/stay.reviews.length
-return stay
+  const sumRate = stay.reviews.reduce((acc, review) => {
+    return acc + review.rate
+  }, 0)
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2)
+  return stay
 }
 
 function _saveStaysToStorage(stays) {

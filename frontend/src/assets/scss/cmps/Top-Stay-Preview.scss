@@ -8,29 +8,32 @@
 //   margin-top: 24px;
 
 .top-cards-container {
-  display: flex;
-  padding: 0px 80px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  gap: 1.5rem;
   .inspiration-card {
-    margin: 30px 0px 30px 0;
+    // margin: 30px 0px 30px 0;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 600ms ease-in;
     cursor: pointer;
-    width: 24vw;
+    position: relative;
+    // width: 24vw;
     .inspiration-card-img {
-      min-width: 150px;
-      width: 24vw;
-      height: 36vh;
-
+      // min-width: 150px;
+      // width: 24vw;
+      // // height: 36vh;
+      @include aspect-ratio(1, 1.2);
       & > img {
         object-fit: cover;
         width: 100%;
-        height: 150%;
+        // height: 150%;
+        height: 100%;
         // transform: translate(-100px, 0px);
       }
     }
     &:not(:last-child) {
-      margin: 30px 30px 30px 0;
+      // margin: 30px 30px 30px 0;
     }
     &:hover {
       box-shadow: 0px 6px 18px -9px rgba(0, 0, 0, 0.849);
@@ -41,29 +44,40 @@
       width: 100%;
       height: 120px;
       border: 1;
-      backdrop-filter: blur(10px) saturate(40%);
+      backdrop-filter: blur(10px) saturate(80%);
       background-color: #2525258e;
       // position: relative;
       color: #e9e9e9;
-      // padding-top: 10px;
+      padding-top: 10px;
+      position: absolute;
+      bottom: 0;
       div {
         // padding: 8px;
         width: 100%;
         &.address {
           // width: 55%;
           // margin-right: 12px;
+          position: relative;
+          left: 12px;
+          
         }
         &.price {
           // text-align: right;
           width: 50%;
           // padding: 8px;
           display: inline-block;
+          position: relative;
+          bottom: -25px;
+          left: 12px;
         }
         &.rate {
           display: inline-block;
           width: 50%;
-          padding-right: 0;
+          // padding-right: 0;
           text-align: right;
+          position: relative;
+          bottom: -25px;
+          right: 12px;
         }
         & > h2 {
           font-size: 1.4rem;
@@ -73,20 +87,27 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          margin: 12px 0px -4px 12px;
-          padding: 8px 0 0 0;
+          // margin: 12px 0px -4px 12px;
+          // padding: 8px 0 0 0;
         }
         & > h3 {
           font-size: 1.2rem;
           font-weight: 400;
-          margin: 36px 12px 12px 12px;
+          // margin: 36px 12px 12px 12px;
 
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          span{
+            // margin-bottom: 2px;
+            // position: absolute;
+            // right: 12px;
+            // bottom: 6px;
+          }
           .fas{
           &.fa-star::before {
-              font-size: 20px;
+              font-size: 1.2rem;
+
           }
           }
         }

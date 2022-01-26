@@ -8,16 +8,16 @@ import './assets/scss/main.scss';
 
 export function RootCmp() {
   return (
-    <div className='App'>
+    <div className='App main-root'>
       <Router>
         <AppHeader />
-        <main className='main-root'>
+        {/* <main> */}
           <Switch>
             {routes.map((route) => (
               <Route key={route.path} exact component={route.component} path={route.path} />
             ))}
           </Switch>
-        </main>
+        {/* </main> */}
         <AppFooter />
       </Router>
     </div>
