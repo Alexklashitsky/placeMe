@@ -7,7 +7,7 @@ import { orderReducer } from './order.reducer.js';
 
 const rootReducer = combineReducers({
   staysModule: staysReducer,
-  // userModule: userReducer,
+  userModule: userReducer,
   orderModule: orderReducer,
 });
 
