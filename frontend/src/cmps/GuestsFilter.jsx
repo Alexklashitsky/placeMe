@@ -2,7 +2,7 @@ import { Component, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateOrder } from '../store/order.action';
 
-export const GuestsFilter = ({ order, stay, handelFilterByChange }) => {
+export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked }) => {
   const [guests, setGuests] = useState({
     adults: 0,
     children: 0,
@@ -79,7 +79,7 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange }) => {
             </div>
           </div>
         </div>
-        <button className='save guest'>save</button>
+        <button className='save guest' onClick={() => onSaveClicked()}>save</button>
         <button className='clear '>clear</button>
       </div>
     </section>

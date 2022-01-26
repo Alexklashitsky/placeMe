@@ -40,7 +40,7 @@ export class AdditionalFilter extends Component {
     return (
       <section>
         <div className='additional-filter-types-header'>
-          <button>x</button>
+          <button onClick={() => this.props.onOpenModal('')} >x</button>
           <p>More filters</p>
         </div>
         <div className='additional-filter-types flex'>
@@ -104,6 +104,7 @@ export class AdditionalFilter extends Component {
               </div>
             </div>
           </div>
+          <button className='save show-stays' onClick={() => this.props.onSaveClicked()}>Show stays</button>
         </div>
       </section>
     );
