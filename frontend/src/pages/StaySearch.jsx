@@ -9,6 +9,7 @@ class _StaySearch extends Component {
   componentDidMount() {
     this.props.loadStays();
   }
+
   render() {
     if (!this.props.stays) return 'no stays';
 

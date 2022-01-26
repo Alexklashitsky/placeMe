@@ -8,6 +8,18 @@ export function updateOrder(order) {
   };
 }
 
+export function loadOrders() {
+  return (dispatch, getState) => {
+    const {
+      ordersModule: { filterBy },
+    } = getState();
+    orderService.query(filterBy).then((orders) => {
+      const action = { type: 'SET_ORDERS', orders };
+      dispatch(action);
+    });
+  };
+}
+
 export function reserveOrder(order) {
   return async (dispatch, getState) => {
     await orderService.save(order);

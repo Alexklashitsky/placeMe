@@ -19,6 +19,8 @@ export function TestCal({ order, stay, onToggleCal }) {
     if (!stay) return;
     if (!value[0]) return;
 
+    console.log('value:', value);
+
     const startDate = utilService.convert(value[0]);
     let endDate = utilService.convert(value[1]);
 
@@ -36,10 +38,8 @@ export function TestCal({ order, stay, onToggleCal }) {
 
     const orderToUpdate = { ...order, startDate, endDate, totalPrice };
     dispatch(updateOrder(orderToUpdate));
+    if (value.every((date) => date)) onToggleCal();
   }, [value]);
-
-  //start end
-  //setorder
 
   return (
     <div className='calendar-div'>
@@ -49,7 +49,6 @@ export function TestCal({ order, stay, onToggleCal }) {
             disablePast
             displayStaticWrapperAs='desktop'
             value={value}
-            autoOk={true}
             onChange={(newValue) => {
               setValue(newValue);
             }}

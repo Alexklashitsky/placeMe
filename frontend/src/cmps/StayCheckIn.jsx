@@ -10,16 +10,23 @@ let today = utilService.getDayInDd();
 
 export const StayCheckIn = ({ stay }) => {
   let averageRate = utilService.getReviews(stay);
-  // const [Stay, setStay] = useState({});
-  const [reserve, setIsReseved] = useState(null);
   const [toggleCal, setToggleCal] = useState(false);
   const [toggleGuests, setToggleGuests] = useState(false);
 
-  const order = useSelector((state) => state.orderModule.order);
+  const order = useSelector((state) => state?.ordersModule?.order);
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    dispatch(reserveOrder(order));
+    const orderToSend = {
+      ...order,
+      hostId: stay.host._id,
+      buyer: {
+        _id: 'u101',
+        fullname: 'Tsur Drori',
+      },
+    };
+    console.log('orderToSend:', orderToSend);
+    dispatch(reserveOrder(orderToSend));
   };
 
   const onToggleCal = () => {
@@ -30,6 +37,7 @@ export const StayCheckIn = ({ stay }) => {
   };
 
   useEffect(() => {
+    if (!order) return;
     let totalPrice = !order.totalPrice ? stay.price : order.totalPrice;
 
     const updatedOrder = {
@@ -41,8 +49,11 @@ export const StayCheckIn = ({ stay }) => {
     dispatch(updateOrder(updatedOrder));
   }, []);
 
+  if (!order) return <div>loading</div>;
+
   return (
     <section className='button-main sticky'>
+      {toggleCal && <div onClick={onToggleCal} className='screen-details'></div>}
       <section className='order-container'>
         <div className='order-form-header'>
           <p>
@@ -72,6 +83,7 @@ export const StayCheckIn = ({ stay }) => {
           <div className='guest-input' onClick={onToggleGuests}>
             <h4>guests</h4>
             <div>
+              {toggleGuests && <div onClick={setToggleGuests} className='screen-details'></div>}
               <div className='guests'>
                 {!order?.guests?.adults ? <p>guests</p> : <p>{order.guests.adults + order.guests.children} guests</p>}
                 {!order?.guests?.infants ? <React.Fragment></React.Fragment> : <p>{order.guests.infants} infants</p>}
