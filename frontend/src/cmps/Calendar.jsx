@@ -42,26 +42,29 @@ export function TestCal({ order, stay, onToggleCal }) {
   //setorder
 
   return (
-    <div className='date-range'>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <StaticDateRangePicker
-          disablePast
-          displayStaticWrapperAs='desktop'
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
-          }}
-          renderInput={(startProps, endProps) => (
-            <div>
-              <React.Fragment>
-                <TextField {...startProps} />
-                <Box sx={{ mx: 2 }}> to </Box>
-                <TextField {...endProps} />
-              </React.Fragment>
-            </div>
-          )}
-        />
-      </LocalizationProvider>
+    <div className='calendar-div'>
+      <div className='date-range'>
+        <LocalizationProvider dateAdapter={AdapterDateFns}>
+          <StaticDateRangePicker
+            disablePast
+            displayStaticWrapperAs='desktop'
+            value={value}
+            autoOk={true}
+            onChange={(newValue) => {
+              setValue(newValue);
+            }}
+            renderInput={(startProps, endProps) => (
+              <div>
+                <React.Fragment>
+                  <TextField {...startProps} />
+                  <Box sx={{ mx: 2 }}> to </Box>
+                  <TextField {...endProps} />
+                </React.Fragment>
+              </div>
+            )}
+          />
+        </LocalizationProvider>
+      </div>
     </div>
   );
   // console.log('startProps:', startProps);

@@ -85,13 +85,19 @@
   }
 }
 
+.screen-details {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+}
+
 .divider {
   display: flex;
   justify-content: space-between;
 
   .left-side {
     justify-items: flex-end;
-    z-index: 100;
+
     width: 57%;
   }
   .right-side {

@@ -4,8 +4,12 @@ import { TestCal } from './Calendar';
 import { GuestsFilter } from './GuestsFilter';
 import { reserveOrder, updateOrder } from '../store/order.action';
 import { orderService } from '../services/order.service';
+import { utilService } from '../services/util.service';
+
+let today = utilService.getDayInDd();
 
 export const StayCheckIn = ({ stay }) => {
+  let averageRate = utilService.getReviews(stay);
   // const [Stay, setStay] = useState({});
   const [reserve, setIsReseved] = useState(null);
   const [toggleCal, setToggleCal] = useState(false);
@@ -37,11 +41,6 @@ export const StayCheckIn = ({ stay }) => {
     dispatch(updateOrder(updatedOrder));
   }, []);
 
-  useEffect(() => {
-    if (!order) return;
-    let newEndDate = order.endDate;
-  }, [order.endDate]);
-
   return (
     <section className='button-main sticky'>
       <section className='order-container'>
@@ -52,7 +51,7 @@ export const StayCheckIn = ({ stay }) => {
           </p>
           <section className='reserve-reviews'>
             <span className='fas fa-star'></span>
-            <p className='stay-rate'> {stay.reviews[0].rate} </p>
+            <p className='stay-rate'> {averageRate.toFixed(2)} </p>
             <p className='stay-details-dot'> · </p>
             <p className='reviews'>{stay.reviews.length} reviews </p>
           </section>
@@ -62,11 +61,11 @@ export const StayCheckIn = ({ stay }) => {
           <div className='date-picker'>
             <div className='date-input'>
               <label>CHECK-IN</label>
-              <input onClick={onToggleCal} placeholder={!order.startDate ? '1' : order.startDate}></input>
+              <input onClick={onToggleCal} placeholder={!order.startDate ? today : order.startDate}></input>
             </div>
             <div className='date-input'>
               <label>CHECK-OUT</label>
-              <input onClick={onToggleCal} placeholder={order.endDate}></input>
+              <input onClick={onToggleCal} placeholder={!order.endDate ? today : order.endDate}></input>
             </div>
           </div>
 

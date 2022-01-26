@@ -19,7 +19,7 @@ export function HomeTopStays({ stay }) {
         </div>
 
         <div className='rate'>
-          <h3><span className='fas fa-star'></span> {stay.avgRate}</h3>
+          <h3> {stay.avgRate} <span className='fas fa-star'></span></h3>
         </div>
 {/* 
         <div className='type'>

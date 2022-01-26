@@ -50,8 +50,8 @@ function _createDemoData() {
         country: 'Slovakia',
         countryCode: 'PT',
         address: 'Modra, Modra,Slovakia, Slovakia',
-        lat: -8.61308,
-        lng: 41.1413,
+        lat: 48.33397,
+        lng: 17.30711,
       },
       reviews: [
         {
@@ -99,7 +99,7 @@ function _createDemoData() {
         {
           id: '4',
           txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
-          rate: 1,
+          rate: 5,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -114,7 +114,7 @@ function _createDemoData() {
         {
           id: '5',
           txt: 'Ania and Peter are sympathetic couple with inspirational life style what changed our staying to the more amazing experience. Thanks for nature which gave us beautiful sounds and my opinion is that we were at the right time in the right place. In May, nature wakes up, so it is even more of an experience to sleep in the treehouse. You must see! We liked it everything and the most outside shower with refreshing water. We are giving them 10 from 10.If you are nature lovers go and experience staying in OAKTREEHOUSE by your self. You can ask Ania and Peter what to do around, they will recommend it you hiking, biking, wine testing etc.',
-          rate: 1,
+          rate: 5,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -142,7 +142,7 @@ function _createDemoData() {
         {
           id: '7',
           txt: 'Perfection to a very tiny detail, one of a kind experience! We really enjoyed the stay and especially the great sleep in the middle of forrest :) Would definitely love to come back.',
-          rate: 1,
+          rate: 5,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -156,7 +156,7 @@ function _createDemoData() {
         {
           id: '8',
           txt: 'We loved the tree house! Everything was perfect!',
-          rate: 1,
+          rate: 5,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -170,7 +170,7 @@ function _createDemoData() {
         {
           id: '9',
           txt: 'Great location, nice people, good communication - definitly to recommend! We booked as a birthday surprise for friends and they have been super happy!',
-          rate: 1,
+          rate: 5,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -218,7 +218,7 @@ function _createDemoData() {
         {
           id: 'madeId',
           txt: 'Fabulously cozy apartment. You have everything you need. There are a lot of little things that impress those who sleep there. The ladybug gummies was amaizing..',
-          rate: 4.93,
+          rate: 1,
           createdAt: new Date(2217123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -232,7 +232,7 @@ function _createDemoData() {
         {
           id: 'madeId',
           txt: 'The perfect place for my wedding preparations and photos! Cozy, clean, awesome with amazing light for the photographer. ',
-          rate: 5,
+          rate: 1,
           createdAt: new Date(2114123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -246,7 +246,7 @@ function _createDemoData() {
         {
           id: 'madeId',
           txt: 'This is truly one of the best experiences to go through! The location is amazing! Walking around is very nice and peaceful! A big supermarket is nearby and overall staying there is a big escape from everyday life and that is amazing on its own! I really recommend this place for everyone!',
-          rate: 5,
+          rate: 1,
           createdAt: new Date(2214124174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -289,7 +289,7 @@ function _createDemoData() {
         {
           id: 'madeId',
           txt: 'Amazing host helped me to prepare unforgettable engagement night at spectacular place like this.',
-          rate: 5,
+          rate: 1,
           createdAt: new Date(2214123174455).toLocaleString('default', {
             month: 'long',
             year: 'numeric',
@@ -1644,18 +1644,18 @@ function getById(stayId) {
 }
 
 async function getTopRatedStays() {
-  let stays = await query();
-  stays = stays.map((stay) => getAverageScore(stay));
-  stays = stays.sort((stay1, stay2) => stay2.avgRate - stay1.avgRate);
-  return stays.slice(0, 4);
+  let stays = await query()
+  stays = stays.map(stay => getAverageScore(stay))
+  stays = stays.sort((stay1, stay2) => stay2.avgRate - stay1.avgRate)
+  return stays.slice(0, 4)
 }
 
 function getAverageScore(stay) {
   const sumRate = stay.reviews.reduce((acc, review) => {
-    return acc + review.rate;
-  }, 0);
-  stay.avgRate = sumRate / stay.reviews.length;
-  return stay;
+    return acc + review.rate
+  }, 0)
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2)
+  return stay
 }
 
 function _saveStaysToStorage(stays) {

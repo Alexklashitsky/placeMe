@@ -5,7 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 export function AppFooter() {
   return (
-    <div className="app-footer-container">
+    <div className="app-footer-container full">
       <div className="app-footer">
         <div className="app-footer-column">
           <h3>Support</h3>

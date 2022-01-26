@@ -5,14 +5,8 @@ import { stayService } from '../services/stay.service';
 import { ReadMore } from '../cmps/ReadMore';
 import { CheckIn } from '../cmps/CheckInHeader';
 import { ReviewSummary } from '../cmps/ReviewSummary';
-// function getReviews() {
-//   const reviews = stay.reviews;
-//   const stayAverage =
-//     reviews.reduce(function (sum, value) {
-//       return sum + value.rate;
-//     }, 0) / reviews.length;
-//   return stayAverage;
-// }
+import { utilService } from '../services/util.service';
+import { MyMap } from '../cmps/Map';
 
 let counter = 0;
 
@@ -76,8 +70,11 @@ export function StayDetails(props) {
 
   if (!stay) return <div>loading</div>;
 
+  let averageRate = utilService.getReviews(stay);
+
   return (
     <div className='entire-layout stay-details-container'>
+      {/* <div className='screen-details'></div> */}
       {!modal ? <div></div> : <CheckIn stay={stay} />}
       <div className='center-layout'>
         <div className='stay-header'>
@@ -85,7 +82,7 @@ export function StayDetails(props) {
           <section className='stay-details-header'>
             <section className='stay-info'>
               <span className='fas fa-star'></span>
-              <p className='stay-rate'>{stay.reviews[0].rate}</p>
+              <p className='stay-rate'>{averageRate.toFixed(2)}</p>
               <p className='stay-details-dot'>·</p>
               <p className='reviews'>{stay.reviews.length} reviews </p>
               <p className='stay-details-dot'> · </p>
@@ -168,13 +165,15 @@ export function StayDetails(props) {
                   </div>
                   <span className='txt'>
                     <ReadMore id={review.id} text={review.txt} isLongTxtShown={isLongText} onToggleTxt={toggleText} />
-                    {/* {review.txt} */}
                   </span>
                 </section>
               </li>
             ))}
           </ul>
         </section>
+        <div>
+          <MyMap stay={stay} />
+        </div>
       </div>
     </div>
   );
