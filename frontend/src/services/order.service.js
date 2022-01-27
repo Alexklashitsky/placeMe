@@ -17,9 +17,11 @@ export const orderService = {
 //   return await storageService.post(STORAGE_KEY, order);
 // }
 
-async function query() {
+async function query(filterBy) {
   try {
-    const order = await axios.get('http://localhost:3030/api/order/');
+    const order = await axios.get('http://localhost:3030/api/order/', {
+      params: { filterBy: JSON.stringify(filterBy) },
+    });
     return order.data;
   } catch (err) {
     console.log('Cannot get orders', err);

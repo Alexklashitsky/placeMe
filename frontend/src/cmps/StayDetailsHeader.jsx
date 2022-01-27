@@ -1,8 +1,9 @@
 import React from 'react';
-import { utilService } from '../services/util.service';
 
+import { stayService } from '../services/stay.service';
 export const StayDetailsHeader = ({ stay }) => {
-  let averageRate = utilService.getReviews(stay);
+  let averageRate = stayService.getAverageScoreDetails(stay);
+
   return (
     <div>
       <div className='stay-header'>
@@ -10,7 +11,7 @@ export const StayDetailsHeader = ({ stay }) => {
         <section className='stay-details-header'>
           <section className='stay-info'>
             <span className='fas fa-star'></span>
-            <p className='stay-rate'>{averageRate.toFixed(2)}</p>
+            <p className='stay-rate'>{averageRate}</p>
             <p className='stay-details-dot'>·</p>
             <p className='reviews'>{stay.reviews.length} reviews </p>
             <p className='stay-details-dot'> · </p>

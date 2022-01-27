@@ -34,7 +34,9 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     console.log('cal');
 
-    handelDateChange(startDate, endDate)
+    if (handelDateChange) {
+      handelDateChange(startDate, endDate);
+    }
 
     if (!stay) return;
     const totalPrice = diffDays * stay.price;
@@ -67,7 +69,7 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
           />
         </LocalizationProvider>
       </div>
-      <button className='save' onClick={() => onSaveClicked()} >
+      <button className='save' onClick={() => onSaveClicked()}>
         save
       </button>
     </div>

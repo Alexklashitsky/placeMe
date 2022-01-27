@@ -1,37 +1,25 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { loadOrders } from '../../store/order.action';
+import { OrderList } from '../Order/OrderList';
 
-class _UserOrders extends Component {
-  state = {};
-  componentDidMount() {
-    this.props.loadOrders();
-  }
+export const UserOrders = () => {
+  const user = useSelector((state) => state?.userModule?.user);
+  const orders = useSelector((state) => state?.ordersModule?.orders);
 
-  render() {
-    if (!this.props.orders) return 'no orders';
-    console.log('this.props.orders:', this.props.orders);
+  const dispatch = useDispatch();
 
-    return (
-      <div>
-        <section>
-          <h1>Order</h1>
-          <pre>{this.props.orders[0]._id}</pre>
-          <pre>{this.props.orders[0].buyer.fullname}</pre>
-          <pre>{this.props.orders[0].stay.name}</pre>
-        </section>
-      </div>
-    );
-  }
-}
+  console.log('user:', user);
+  console.log('orders:', orders);
 
-function mapStateToProps({ ordersModule }) {
-  return {
-    orders: ordersModule.orders,
-  };
-}
-const mapDispatchToProps = {
-  loadOrders,
+  useEffect(() => {
+    dispatch(loadOrders());
+  }, []);
+
+  if (!orders) return <h1>Loading...</h1>;
+  return (
+    <section>
+      <OrderList orders={orders} />
+    </section>
+  );
 };
-
-export const UserOrders = connect(mapStateToProps, mapDispatchToProps)(_UserOrders);

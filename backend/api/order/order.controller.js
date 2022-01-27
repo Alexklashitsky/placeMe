@@ -1,8 +1,9 @@
 const orderService = require('./order.service.js');
+
 async function getOrders(req, res) {
   try {
-    let { filterBy } = req.query;
-    console.log('the filter by parse', filterBy);
+    let filterBy = req.query;
+    console.log('the filter by parse', req.query);
     // filterBy = JSON.parse(filterBy);
     const orders = await orderService.query(filterBy);
     res.json(orders);
@@ -29,7 +30,7 @@ async function addOrder(req, res) {
 
   try {
     const order = req.body;
-    // order.createdBy = req.session.user;
+    order.buyer = req.session.user;
     const addedOrder = await orderService.add(order);
     res.json(addedOrder);
   } catch (err) {

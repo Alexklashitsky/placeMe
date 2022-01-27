@@ -14,7 +14,6 @@ header.header {
     background-color: white;
     color: rgb(34, 34, 34);
     height: 80px;
-    justify-content: space-around;
   }
 
   &.white-header {
@@ -270,7 +269,7 @@ header.header {
       &:hover {
         box-shadow: 2px 9px 15px -9px rgba(0, 0, 0, 0.21);
       }
-      .hamburger-container{
+      .hamburger-container {
         display: flex;
         color: #404040;
       }
