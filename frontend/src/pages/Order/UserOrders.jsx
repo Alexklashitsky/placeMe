@@ -10,11 +10,11 @@ export const UserOrders = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadOrders());
+    dispatch(loadOrders({ hostId: user._id }));
   }, []);
 
   if (!orders) return <h1>Loading...</h1>;
-  console.log('user:', user);
+
   return (
     <section>
       <OrderList orders={orders} />

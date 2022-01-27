@@ -23,7 +23,11 @@ async function query(filterBy) {
 function buildCriteria(filterBy) {
   const criteria = {};
   if (filterBy.userId) {
-    criteria['host._id'] = ObjectId(filterBy.userId);
+    //if key user id
+    criteria['buyer._id'] = ObjectId(filterBy.userId);
+  }
+  if (filterBy.hostId) {
+    criteria['host._id'] = ObjectId(filterBy.hostId);
   }
   return criteria;
 }

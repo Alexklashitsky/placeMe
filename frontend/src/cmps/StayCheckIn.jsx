@@ -6,14 +6,12 @@ import { reserveOrder, updateOrder } from '../store/order.action';
 import { orderService } from '../services/order.service';
 import { utilService } from '../services/util.service';
 
-let today = utilService.getDayInDd();
+const today = utilService.getDayInDd();
 
 export const StayCheckIn = ({ stay }) => {
   let averageRate = utilService.getReviews(stay);
   const [toggleCal, setToggleCal] = useState(false);
   const [toggleGuests, setToggleGuests] = useState(false);
-
-  var loggedInUser = sessionStorage.getItem('loggedinUser');
 
   const order = useSelector((state) => state?.ordersModule?.order);
   const user = useSelector((state) => state?.userModule?.user);

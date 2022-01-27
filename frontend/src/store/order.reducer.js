@@ -2,6 +2,7 @@ import { orderService } from '../services/order.service';
 
 const initialState = {
   order: orderService.getOrder(),
+  orders: [],
 };
 
 export function ordersReducer(state = initialState, action = {}) {
@@ -14,7 +15,7 @@ export function ordersReducer(state = initialState, action = {}) {
     case 'UPDATE_ORDER':
       return {
         ...state,
-        orders: state.order.map((order) => {
+        orders: state.orders.map((order) => {
           return order._id === action.order._id ? action.order : order;
         }),
       };

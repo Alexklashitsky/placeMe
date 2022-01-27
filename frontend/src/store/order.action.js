@@ -21,14 +21,12 @@ export function updateOrderStatus(orderToUpdate) {
 }
 
 export function loadOrders(filterBy) {
-  return (dispatch, getState) => {
-    const {
-      ordersModule: { filterBy },
-    } = getState();
-    orderService.query(filterBy).then((orders) => {
-      const action = { type: 'SET_ORDERS', orders };
-      dispatch(action);
-    });
+  return async (dispatch, getState) => {
+    const orders = await orderService.query(filterBy);
+    console.log('loadOrders:', orders);
+
+    const action = { type: 'SET_ORDERS', orders };
+    dispatch(action);
   };
 }
 
