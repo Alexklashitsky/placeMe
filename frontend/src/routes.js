@@ -3,6 +3,7 @@ import { StayDetails } from './pages/StayDetails';
 import { StaySearch } from './pages/StaySearch';
 import { BecomeHost } from './pages/BecomeHost.jsx';
 import { UserOrders } from './pages/Order/UserOrders';
+import { GuestTrips } from './pages/GuestTrips';
 export const routes = [
   {
     path: '/',
@@ -21,7 +22,11 @@ export const routes = [
     component: BecomeHost,
   },
   {
-    path: '/order',
+    path: '/Orders',
     component: UserOrders,
+  },
+  {
+    path: '/Trips',
+    component: GuestTrips,
   },
 ];

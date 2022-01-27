@@ -7,17 +7,25 @@ async function query(filterBy) {
   console.log('the filter in service', filterBy);
 
   try {
-    console.log('im in try');
-    const collection = await dbService.getCollection('order');
-    // let stays = await collection.find(criteria).toArray()
-    let orders = await collection.find({}).toArray();
+    const criteria = buildCriteria(filterBy);
+    console.log('criteria:', criteria);
 
+    const collection = await dbService.getCollection('order');
+    let orders = await collection.find(criteria).toArray();
     return orders;
   } catch (err) {
     console.log('the err', err);
     logger.error('cannot find orders', err);
     throw err;
   }
+}
+
+function buildCriteria(filterBy) {
+  const criteria = {};
+  if (filterBy.userId) {
+    criteria['host._id'] = ObjectId(filterBy.userId);
+  }
+  return criteria;
 }
 
 async function getById(orderId) {

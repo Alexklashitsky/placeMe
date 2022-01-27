@@ -67,7 +67,7 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
           />
         </LocalizationProvider>
       </div>
-      <button className='save' onClick={() => onSaveClicked()} >
+      <button className='save' onClick={() => onSaveClicked()}>
         save
       </button>
     </div>

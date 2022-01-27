@@ -1,7 +1,12 @@
 import React, { Component, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
-export function HamburgerMenu({onToggleHamburger, toggleLoginModal, setToggleLoginModal}) {
+
+export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLoginModal }) {
+
+  
+  // const user = useSelector((state) => state?.userModule?.user);
 
 
   useEffect(() => {
@@ -17,9 +22,12 @@ export function HamburgerMenu({onToggleHamburger, toggleLoginModal, setToggleLog
   return (
     <section className='hamburger-menu'>
 
-      <div onClick={onToggleLoginModal}>Log in</div>
-      <div onClick={onToggleLoginModal}>Sign up</div>
-      <div>Host your home</div>
+      <div onClick={onToggleLoginModal}>Log in / Sign up</div>
+      {/* <div onClick={onToggleLoginModal}>Sign up</div> */}
+      <Link to='/Trips' className='clean-link' onClick={onToggleHamburger}> <div>Trips </div></Link>
+      {/* {isHost && <div><Link to='/Orders' className='clean-link'> Orders </Link></div>} */}
+      <Link to='/Orders' className='clean-link' onClick={onToggleHamburger}> <div>Orders</div> </Link>
+      <Link to='/BecomeHost' className='clean-link' onClick={onToggleHamburger}> <div>Host your home</div></Link>
     </section>
   )
 }

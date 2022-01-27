@@ -10,6 +10,8 @@ export const stayService = {
   query,
   getById,
   getTopRatedStays,
+  getAverageScore,
+  getAverageScoreDetails,
   // remove,
   // getEmptyCar
 };
@@ -1671,11 +1673,21 @@ async function getTopRatedStays() {
 }
 
 function getAverageScore(stay) {
+  console.log('stay:', stay);
   const sumRate = stay.reviews.reduce((acc, review) => {
     return acc + review.rate;
   }, 0);
   stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
   return stay;
+}
+
+function getAverageScoreDetails(stay) {
+  console.log('stay:', stay);
+  const sumRate = stay.reviews.reduce((acc, review) => {
+    return acc + review.rate;
+  }, 0);
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
+  return stay.avgRate;
 }
 
 function _saveStaysToStorage(stays) {
