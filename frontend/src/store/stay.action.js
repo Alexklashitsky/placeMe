@@ -16,10 +16,12 @@ export function setFilterBy(filterBy) {
 
   return (dispatch, getState) => {
 
-
     const action = { type: 'SET_FILTER', filterBy };
     dispatch(action);
-    ;
+    stayService.query(filterBy).then((stays) => {
+      const action = { type: 'SET_STAYS', stays };
+      dispatch(action);
+    });
   };
 
 
