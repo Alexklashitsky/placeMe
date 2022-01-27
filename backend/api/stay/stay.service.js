@@ -10,9 +10,10 @@ async function query(filterBy) {
 
   try {
     console.log('im in try');
+    const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('stay');
     // let stays = await collection.find(criteria).toArray()
-    let stays = await collection.find({}).toArray();
+    let stays = await collection.find(criteria).toArray();
 
     return stays;
   } catch (err) {
@@ -69,6 +70,45 @@ async function update(stay) {
     logger.error(`cannot update stay ${stay}`, err);
     throw err;
   }
+}
+
+function _buildCriteria(filterBy) {
+  const criteria = {}
+
+  if (filterBy.guests) {
+    let totalGuests = filterBy.guests.adults + filterBy.guests.children + filterBy.guests.infants
+    console.log('totalGuests:', totalGuests);
+
+    criteria.capacity = { $gte: totalGuests }
+  }
+
+  // if (filterBy.freeCancel) {
+  //   criteria.freeCancel = { $exists: true }
+  // }
+  // if (filterBy.VerifiedPlace) {
+  //   criteria.VerifiedPlace = { $exists: true }
+  // }
+  // if (filterBy.entirePlace) {
+  //   criteria.entirePlace = { $exists: true }
+  //
+
+  // if (filterBy.hotelRoom) {
+  //   criteria.hotelRoom = { $exists: true }
+  // }
+  // if (filterBy.privateRoom) {
+  //   criteria.privateRoom = { $exists: true }
+  // }
+  // if (filterBy.sharedRoom) {
+  //   criteria.sharedRoom = { $exists: true }
+  // }
+
+
+
+
+  console.log('criteria:', criteria);
+
+  return criteria
+
 }
 
 module.exports = {

@@ -17,9 +17,11 @@ export const orderService = {
 //   return await storageService.post(STORAGE_KEY, order);
 // }
 
-async function query() {
+async function query(filterBy) {
   try {
-    const order = await axios.get('http://localhost:3030/api/order/');
+    const order = await axios.get('http://localhost:3030/api/order/', {
+      params: { filterBy: JSON.stringify(filterBy) },
+    });
     return order.data;
   } catch (err) {
     console.log('Cannot get orders', err);
@@ -43,10 +45,9 @@ async function save(orderToSave) {
   if (orderToSave._id) {
     try {
       const order = await httpService.put(`order/${orderToSave._id}`, orderToSave);
-
       return order.data;
     } catch (err) {
-      console.log('Cannot save toy', err);
+      console.log('Cannot save order', err);
     }
   } else {
     try {
@@ -54,7 +55,7 @@ async function save(orderToSave) {
       console.log('orderToSave:', orderToSave);
       return order.data;
     } catch (err) {
-      console.log('Cannot save toy', err);
+      console.log('Cannot save order', err);
     }
   }
 }

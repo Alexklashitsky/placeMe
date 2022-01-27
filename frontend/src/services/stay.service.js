@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 import { userService } from './user.service.js';
 import axios from 'axios';
+import { httpService } from './http.service.js';
 const STORAGE_KEY = 'stay';
 let staysToSave = [];
 
@@ -9,6 +10,8 @@ export const stayService = {
   query,
   getById,
   getTopRatedStays,
+  getAverageScore,
+  getAverageScoreDetails,
   // remove,
   // getEmptyCar
 };
@@ -23,8 +26,8 @@ export const stayService = {
 
 async function query(filterBy) {
   try {
-    const stay = await axios.get('http://localhost:3030/api/stay/', { params: { filterBy: JSON.stringify(filterBy) } });
-    return stay.data;
+    const stay = await httpService.get('stay/', filterBy);
+    return stay;
   } catch (err) {
     console.log('Cannot get stay', err);
   }
@@ -1674,6 +1677,14 @@ function getAverageScore(stay) {
   }, 0);
   stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
   return stay;
+}
+
+function getAverageScoreDetails(stay) {
+  const sumRate = stay.reviews.reduce((acc, review) => {
+    return acc + review.rate;
+  }, 0);
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
+  return stay.avgRate;
 }
 
 function _saveStaysToStorage(stays) {

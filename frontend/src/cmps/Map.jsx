@@ -42,10 +42,8 @@ class _MyMap extends Component {
         <Map google={this.props.google} zoom={14} initialCenter={center} center={center} onClick={this.mapClicked}>
           <Marker
             icon={{
-              path: airBnb,
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(0, 35),
-              size: new google.maps.Size(500, 500),
+              url: airBnb,
+              scaledSize: new this.props.google.maps.Size(1, 1),
             }}
             onClick={this.onMarkerClick}
             name={'Current location'}

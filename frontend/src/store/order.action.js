@@ -8,7 +8,19 @@ export function updateOrder(order) {
   };
 }
 
-export function loadOrders() {
+export function updateOrderStatus(orderToUpdate) {
+  console.log('orderToUpdate:', orderToUpdate);
+  return async (dispatch) => {
+    try {
+      const order = await orderService.save(orderToUpdate);
+      dispatch({ type: 'UPDATE_ORDER', order });
+    } catch (err) {
+      console.log('Cannot update order');
+    }
+  };
+}
+
+export function loadOrders(filterBy) {
   return (dispatch, getState) => {
     const {
       ordersModule: { filterBy },
