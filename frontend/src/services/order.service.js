@@ -19,10 +19,8 @@ export const orderService = {
 
 async function query(filterBy) {
   try {
-    const order = await axios.get('http://localhost:3030/api/order/', {
-      params: { filterBy: JSON.stringify(filterBy) },
-    });
-    return order.data;
+    const order = await httpService.get('order/', filterBy);
+    return order;
   } catch (err) {
     console.log('Cannot get orders', err);
   }
@@ -30,11 +28,9 @@ async function query(filterBy) {
 
 // getOrder - checks if there's an order in session storage - if not returns an empty order.
 async function getOrder() {
-  let order = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-  if (!order) {
-    order = getEmptyOrder();
-    _setOrder(order);
-  }
+  const order = JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || getEmptyOrder();
+
+  _setOrder(order);
   return order;
 }
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateOrderStatus } from '../../store/order.action';
 
 export function OrderPreview({ order }) {
-  const [option, setOption] = useState('pending');
+  const [option, setOption] = useState(order.status);
 
   const dispatch = useDispatch();
 
