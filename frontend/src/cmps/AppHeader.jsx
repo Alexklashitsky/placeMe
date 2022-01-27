@@ -72,8 +72,7 @@ export function AppHeader() {
   return (
     <header
       className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
-        isDetails ? 'details details-header' : ''
-      } `}>
+        isDetails && 'details details-header'} `}>
       <Link to='/' className='header_icon clean-link'>
         <h1 onClick={backPage}>PlaceMe</h1>
       </Link>
@@ -150,7 +149,7 @@ export function AppHeader() {
           </Link>
         </div>
         <div className='nav-link'>
-          <Link to='/' className='clean-link'>
+          <Link to='/BecomeHost' className='clean-link'>
             Become a Host{' '}
           </Link>
         </div>
