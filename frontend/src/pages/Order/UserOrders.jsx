@@ -14,6 +14,7 @@ export const UserOrders = () => {
   }, []);
 
   if (!orders) return <h1>Loading...</h1>;
+  console.log('user:', user);
   return (
     <section>
       <OrderList orders={orders} />

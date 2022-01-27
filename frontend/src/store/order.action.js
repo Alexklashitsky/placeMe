@@ -10,7 +10,6 @@ export function updateOrder(order) {
 
 export function updateOrderStatus(orderToUpdate) {
   console.log('orderToUpdate:', orderToUpdate);
-
   return async (dispatch) => {
     try {
       const order = await orderService.save(orderToUpdate);
@@ -21,7 +20,7 @@ export function updateOrderStatus(orderToUpdate) {
   };
 }
 
-export function loadOrders() {
+export function loadOrders(filterBy) {
   return (dispatch, getState) => {
     const {
       ordersModule: { filterBy },
