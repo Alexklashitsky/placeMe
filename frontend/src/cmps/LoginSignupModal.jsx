@@ -69,7 +69,7 @@ class _LoginSignupModal extends React.Component {
                 </div>
 
                 <div className='login-signup-form'>
-                    <div className='login-welcome-title'> Welcome to PlaceMe </div>
+                    <div className='login-welcome-title'> Welcome to Hosty </div>
 
                     {!isSignup && (
                         <form className='login-form' onSubmit={this.onLogin}>
@@ -125,6 +125,8 @@ class _LoginSignupModal extends React.Component {
                             </form>
                         )}
                     </div>
+
+                    <div>New to Hosty?</div>
 
                     <div className='toggle-signup-login-button'>
                         <div className='clean-link' onClick={this.toggleSignup}>
