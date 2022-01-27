@@ -9,9 +9,6 @@ export const UserOrders = () => {
 
   const dispatch = useDispatch();
 
-  console.log('user:', user);
-  console.log('orders:', orders);
-
   useEffect(() => {
     dispatch(loadOrders());
   }, []);

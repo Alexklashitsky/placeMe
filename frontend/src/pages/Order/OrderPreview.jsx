@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateOrderStatus } from '../../store/order.action';
 
 export function OrderPreview({ order }) {
   const [option, setOption] = useState('pending');
 
+  const dispatch = useDispatch();
+
   function handleSelectChange(event) {
     setOption(event.target.value);
+    const orderToUpdate = {
+      ...order,
+      status: event.target.value,
+    };
+
+    dispatch(updateOrderStatus(orderToUpdate));
   }
 
+  const orders = useSelector((state) => state?.ordersModule?.orders);
   return (
     <div className='order-card'>
       <div>

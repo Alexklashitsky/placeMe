@@ -45,10 +45,9 @@ async function save(orderToSave) {
   if (orderToSave._id) {
     try {
       const order = await httpService.put(`order/${orderToSave._id}`, orderToSave);
-
       return order.data;
     } catch (err) {
-      console.log('Cannot save toy', err);
+      console.log('Cannot save order', err);
     }
   } else {
     try {
@@ -56,7 +55,7 @@ async function save(orderToSave) {
       console.log('orderToSave:', orderToSave);
       return order.data;
     } catch (err) {
-      console.log('Cannot save toy', err);
+      console.log('Cannot save order', err);
     }
   }
 }

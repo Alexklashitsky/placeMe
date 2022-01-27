@@ -26,9 +26,8 @@ export const stayService = {
 
 async function query(filterBy) {
   try {
-    console.log('from service', filterBy);
     const stay = await httpService.get('stay/', filterBy);
-    return stay
+    return stay;
   } catch (err) {
     console.log('Cannot get stay', err);
   }
@@ -1673,7 +1672,6 @@ async function getTopRatedStays() {
 }
 
 function getAverageScore(stay) {
-  console.log('stay:', stay);
   const sumRate = stay.reviews.reduce((acc, review) => {
     return acc + review.rate;
   }, 0);
@@ -1682,7 +1680,6 @@ function getAverageScore(stay) {
 }
 
 function getAverageScoreDetails(stay) {
-  console.log('stay:', stay);
   const sumRate = stay.reviews.reduce((acc, review) => {
     return acc + review.rate;
   }, 0);
