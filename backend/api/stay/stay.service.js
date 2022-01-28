@@ -78,29 +78,18 @@ function _buildCriteria(filterBy) {
   if (filterBy.guests) {
     let totalGuests = filterBy.guests.adults + filterBy.guests.children + filterBy.guests.infants
     console.log('totalGuests:', totalGuests);
-
-    criteria.capacity = { $gte: totalGuests }
+    if (totalGuests) criteria.capacity = { $gte: totalGuests }
   }
 
-  // if (filterBy.freeCancel) {
-  //   criteria.freeCancel = { $exists: true }
-  // }
-  // if (filterBy.VerifiedPlace) {
-  //   criteria.VerifiedPlace = { $exists: true }
-  // }
-  // if (filterBy.entirePlace) {
-  //   criteria.entirePlace = { $exists: true }
-  //
+  if (filterBy.additionalFilters) {
+    criteria.additionalFilters = { $in: filterBy.additionalFilters }
+  }
 
-  // if (filterBy.hotelRoom) {
-  //   criteria.hotelRoom = { $exists: true }
-  // }
-  // if (filterBy.privateRoom) {
-  //   criteria.privateRoom = { $exists: true }
-  // }
-  // if (filterBy.sharedRoom) {
-  //   criteria.sharedRoom = { $exists: true }
-  // }
+  if (filterBy.name) {
+    const regex = new RegExp(filterBy.name, 'i')
+    criteria.name = { $regex: regex }
+  }
+
 
 
 

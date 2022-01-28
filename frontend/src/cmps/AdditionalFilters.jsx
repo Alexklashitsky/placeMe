@@ -14,17 +14,23 @@ export class AdditionalFilter extends Component {
       hotelRoom: false,
       privateRoom: false,
       sharedRoom: false,
+      // additionalFilters: []
     },
+
   };
 
   toggleCheck = (ev) => {
-    const field = ev.target.name;
+    const filter = ev.target.name;
 
     // (!this.state.filterBy.freeCancel)
-    this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [field]: !prevState.filterBy[field] } }),
+    this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [filter]: !prevState.filterBy[filter] }, }),
       () => {
-        console.log('this.state:', this.state);
-        this.props.handelFilterByChange('additionalFilter', { ...this.state.filterBy })
+        const additionalFilters = []
+
+        for (const filter in this.state.filterBy) {
+          if (this.state.filterBy[filter]) additionalFilters.push(filter)
+        }
+        this.props.handelFilterByChange('additionalFilters', additionalFilters)
 
 
       });
@@ -66,7 +72,7 @@ export class AdditionalFilter extends Component {
                 <input
                   name='entirePlace'
                   type='checkbox'
-                  checked={this.state.entirePlace}
+                  checked={this.state.filterBy.entirePlace}
                   onChange={this.toggleCheck}
                 />
                 <div className='check-box-desc'>

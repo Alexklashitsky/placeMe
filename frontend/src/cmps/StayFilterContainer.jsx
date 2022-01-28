@@ -14,7 +14,8 @@ export class _StayFilter extends Component {
   state = {
     currModalShown: '',
     filterBy: {
-      specialStay: ''
+      specialStay: '',
+      additionalFilter: []
 
     }
   };

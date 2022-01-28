@@ -15,6 +15,12 @@ export function AppHeader() {
   const [isWhiteHeader, setIsWhiteHeader] = useState(false);
   const [isDetails, setIsDetails] = useState(false);
   const [toggleLoginModal, setToggleLoginModal] = useState(false);
+  // const [handleChange, onHandleChange] = useState(false)
+  const [filterByText, setFilterByText] = useState('')
+  console.log('input:', filterByText);
+
+
+  // let search = 'ddd'
 
   const location = useLocation();
 
@@ -69,17 +75,24 @@ export function AppHeader() {
     setIsDetails(false);
   };
 
+  const onHandleChange = (ev) => {
+    console.log('ev:', ev);
+
+
+  }
+  console.log('input:', filterByText);
+
+
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
-        isDetails && 'details details-header'} `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'} `}>
       <Link to='/' className='header_icon clean-link'>
         <h1 onClick={backPage}>PlaceMe</h1>
       </Link>
 
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
-          <input type='text' />
+          <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
           <div className='small-search-button'>
             <SearchIcon />
           </div>

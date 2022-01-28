@@ -9,6 +9,7 @@ const initialState = {
         hotelRoom: false,
         privateRoom: false,
         sharedRoom: false,
+        additionalFilters: [],
 
         startDate: null,
         endDate: null
