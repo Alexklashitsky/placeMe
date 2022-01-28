@@ -51,18 +51,13 @@ class _LoginSignupModal extends React.Component {
         this.setState({ isSignup: !this.state.isSignup });
     };
 
-    onToggleLoginModal = () => {
-        console.log('toggle login modal: ', this.props.toggleLoginModal);
-        this.props.setToggleLoginModal(!this.props.toggleLoginModal);
-    };
-
     render() {
         const { username, password, fullname } = this.state.credentials;
         const { isSignup } = this.state;
         return (
             <div className='login-signup-modal'>
                 <div className='login-header-container'>
-                    <div className='close-button' onClick={this.onToggleLoginModal}>
+                    <div className='close-button' onClick={this.props.onToggleLoginModal}>
                         ✖
                     </div>
                     <div className='login-title'>Log in or sign up</div>
@@ -144,6 +139,7 @@ class _LoginSignupModal extends React.Component {
                         cookiePolicy={'single_host_origin'}
                     />
                 </div>
+
             </div>
         );
     }

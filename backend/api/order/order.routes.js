@@ -6,10 +6,10 @@ const router = express.Router();
 
 //dev
 router.get('/', getOrders);
-router.get('/:id', getOrderById);
-router.post('/', addOrder);
-router.put('/:id', updateOrder);
-router.delete('/:id', removeOrder);
+router.get('/:id',  getOrderById);
+router.post('/', requireAuth,addOrder);
+router.put('/:id', requireAuth,updateOrder);
+router.delete('/:id', requireAuth,removeOrder);
 
 //prod
 // router.get('/', requireAuth, getOrders)
