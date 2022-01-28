@@ -6,7 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GuestsFilter } from './GuestsFilter';
 import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
-import  logo  from "../assets/imgs/1181191_airbnb_icon.svg"
+import logo from '../assets/imgs/1181191_airbnb_icon.svg';
 
 export function AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -16,6 +16,7 @@ export function AppHeader() {
   const [isWhiteHeader, setIsWhiteHeader] = useState(false);
   const [isDetails, setIsDetails] = useState(false);
   const [toggleLoginModal, setToggleLoginModal] = useState(false);
+  const [input, setInput] = useState('');
 
   const location = useLocation();
 
@@ -81,19 +82,16 @@ export function AppHeader() {
   // src\assets\imgs\1181191_airbnb_icon.svg
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'} `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
+        isDetails && 'details details-header'
+      } `}>
       <Link to='/' className='header_icon clean-link'>
-        <img
-          className="header-logo"
-          src={logo}
-          alt="sfsdfs"
-        />
+        <img className='header-logo' src={logo} alt='sfsdfs' />
         <h1 onClick={backPage}>Hosty</h1>
       </Link>
 
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
-          <input type='text' />
           <div className='small-search-button'>
             <SearchIcon />
           </div>

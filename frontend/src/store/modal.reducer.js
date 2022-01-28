@@ -1,18 +1,19 @@
-
 const initialState = {
-    currModalShown: ''
-}
+  currModalShown: '',
+  msg: null,
+};
 
 export function modalReducer(state = initialState, action) {
+  let newState = state;
+  console.log('action:', action);
 
-    let newState = state;
-
-    switch (action.type) {
-        case 'MODAL_TOGGLE':
-            newState = { ...state, currModalShown: { ...action.currModalShown } }
-            break;
-
-
-    }
-    return newState;
+  switch (action.type) {
+    case 'MODAL_TOGGLE':
+      newState = { ...state, currModalShown: { ...action.currModalShown } };
+      break;
+    case 'SET_MSG':
+      newState = { ...state, msg: action.msg };
+      break;
+  }
+  return newState;
 }

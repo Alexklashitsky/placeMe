@@ -29,26 +29,21 @@ async function query(filterBy) {
 // getOrder - checks if there's an order in session storage - if not returns an empty order.
 async function getOrder() {
   const order = JSON.parse(sessionStorage.getItem(STORAGE_KEY)) || getEmptyOrder();
-
   _setOrder(order);
   return order;
 }
 
 //save
 async function save(orderToSave) {
-  console.log('orderToSave:', orderToSave);
-
   if (orderToSave._id) {
     try {
-      const order = await httpService.put(`order/${orderToSave._id}`, orderToSave);
-      return order.data;
+      await httpService.put(`order/${orderToSave._id}`, orderToSave);
     } catch (err) {
       console.log('Cannot save order', err);
     }
   } else {
     try {
       const order = await httpService.post('order/', orderToSave);
-      console.log('orderToSave:', orderToSave);
       return order.data;
     } catch (err) {
       console.log('Cannot save order', err);

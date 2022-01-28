@@ -13,12 +13,10 @@ export function ordersReducer(state = initialState, action = {}) {
     case 'SET_ORDERS':
       return { ...state, orders: [...action.orders] };
     case 'UPDATE_ORDER':
-      return {
-        ...state,
-        orders: state.orders.map((order) => {
-          return order._id === action.order._id ? action.order : order;
-        }),
-      };
+      const orders = state.orders.map((order) => {
+        return order._id === action.orderToUpdate._id ? action.orderToUpdate : order;
+      });
+      return { ...state, orders };
     default:
       break;
   }

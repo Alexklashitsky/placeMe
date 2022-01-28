@@ -5,6 +5,7 @@ import { GuestsFilter } from './GuestsFilter';
 import { reserveOrder, updateOrder } from '../store/order.action';
 import { orderService } from '../services/order.service';
 import { utilService } from '../services/util.service';
+import { updateText } from '../store/modal.action';
 
 const today = utilService.getDayInDd();
 
@@ -14,7 +15,7 @@ export const StayCheckIn = ({ stay }) => {
   const [toggleGuests, setToggleGuests] = useState(false);
 
   const order = useSelector((state) => state?.ordersModule?.order);
-  const user = useSelector((state) => state?.userModule?.user);
+  const message = useSelector((state) => state?.modalModule.msg);
 
   const dispatch = useDispatch();
 
@@ -25,6 +26,7 @@ export const StayCheckIn = ({ stay }) => {
     };
 
     dispatch(reserveOrder(orderToSend));
+    dispatch(updateText({ txt: 'Order Reserved!', type: 'success' }));
   };
 
   const onToggleCal = () => {
@@ -169,6 +171,7 @@ export const StayCheckIn = ({ stay }) => {
         </div>
         <span className='charge'>You won't be charged yet</span>
       </section>
+
       {toggleGuests && <GuestsFilter order={order} stay={stay} />}
       {toggleCal && <TestCal order={order} stay={stay} onToggleCal={onToggleCal} />}
     </section>

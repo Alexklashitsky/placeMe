@@ -45,11 +45,16 @@ async function getById(orderId) {
   }
 }
 
-async function add(order ,buyer) {
+async function add(order, buyer) {
   console.log('order:', order);
 
   try {
-    const updatedOrder = { ...order, host: { ...order.host, _id: ObjectId(order.host._id) }, status: 'pending', buyer: {...buyer, _id: ObjectId(buyer._id)} };
+    const updatedOrder = {
+      ...order,
+      host: { ...order.host, _id: ObjectId(order.host._id) },
+      status: 'pending',
+      buyer: { ...buyer, _id: ObjectId(buyer._id) },
+    };
     const collection = await dbService.getCollection('order');
     await collection.insertOne(updatedOrder);
     return order;
@@ -62,12 +67,15 @@ async function add(order ,buyer) {
 async function update(order) {
   console.log('order:', order);
 
+  const orderToUpdate = {
+    status: order.status,
+  };
+
   try {
     let id = ObjectId(order._id);
     delete order._id;
     const collection = await dbService.getCollection('order');
-    await collection.updateOne({ _id: id }, { $set: { ...order } });
-    return order;
+    await collection.updateOne({ _id: id }, { $set: { ...orderToUpdate } });
   } catch (err) {
     console.log('the err in update', err);
     logger.error(`cannot update stay ${order}`, err);
