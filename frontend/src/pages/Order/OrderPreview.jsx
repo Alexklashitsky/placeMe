@@ -4,7 +4,9 @@ import { updateOrderStatus } from '../../store/order.action';
 
 export function OrderPreview({ order }) {
   const [option, setOption] = useState();
+  const [input, setInput] = useState('');
 
+  console.log(input);
   const dispatch = useDispatch();
 
   function handleSelectChange(event) {
@@ -20,12 +22,12 @@ export function OrderPreview({ order }) {
   const orders = useSelector((state) => state?.ordersModule?.orders);
   return (
     <div className='order-card'>
-      <div>
-        Between : {order.startDate} - {order.endDate}
-      </div>
-      <div> Total Price : {order.totalPrice} </div>
-      <div> Status : {order.status} </div>
-      <div> Name : {order.stay.name} </div>
+      <div>{order.buyer.fullname}</div>
+      <div>{order.startDate}</div>
+      <div>{order.endDate}</div>
+      <div> {order.status} </div>
+      <div>{order.totalPrice} </div>
+
       <select value={option} onChange={handleSelectChange} className='selector'>
         <option value='pending'>Pending</option>
         <option value='cancel'>Cancel</option>

@@ -9,11 +9,11 @@ export function updateOrder(order) {
 }
 
 export function updateOrderStatus(orderToUpdate) {
-  console.log('orderToUpdate:', orderToUpdate);
   return async (dispatch) => {
     try {
-      const order = await orderService.save(orderToUpdate);
-      dispatch({ type: 'UPDATE_ORDER', order });
+      console.log('order from action:', orderToUpdate);
+      dispatch({ type: 'UPDATE_ORDER', orderToUpdate });
+      await orderService.save(orderToUpdate);
     } catch (err) {
       console.log('Cannot update order');
     }
@@ -23,7 +23,6 @@ export function updateOrderStatus(orderToUpdate) {
 export function loadOrders(filterBy) {
   return async (dispatch, getState) => {
     const orders = await orderService.query(filterBy);
-    console.log('loadOrders:', orders);
 
     const action = { type: 'SET_ORDERS', orders };
     dispatch(action);

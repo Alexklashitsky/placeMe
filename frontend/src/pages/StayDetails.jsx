@@ -9,6 +9,7 @@ import { utilService } from '../services/util.service';
 import { MyMap } from '../cmps/Map';
 import { StayDetailsPics } from '../cmps/StayDetailsPics';
 import { StayReviews } from '../cmps/StayReviews';
+import { UserMsg } from '../cmps/UserMsg';
 import { StayDetailsHeader } from '../cmps/StayDetailsHeader';
 
 let counter = 0;
@@ -77,6 +78,7 @@ export function StayDetails(props) {
   return (
     <div className='entire-layout stay-details-container'>
       {!modal ? <div></div> : <CheckIn stay={stay} />}
+      <UserMsg />
       <div className='center-layout'>
         <StayDetailsHeader stay={stay} />
         <StayDetailsPics stay={stay} />
