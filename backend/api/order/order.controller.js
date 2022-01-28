@@ -30,8 +30,9 @@ async function addOrder(req, res) {
 
   try {
     const order = req.body;
-    order.buyer = req.session.user;
-    const addedOrder = await orderService.add(order);
+    console.log(req.session.user)
+    const buyer = req.session.user;
+    const addedOrder = await orderService.add(order, buyer);
     res.json(addedOrder);
   } catch (err) {
     logger.error('Failed to add order', err);

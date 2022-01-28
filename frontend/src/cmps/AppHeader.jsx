@@ -31,6 +31,11 @@ export function AppHeader() {
   const onToggleHamburger = () => {
     setToggleHamburger(!toggleHamburger);
   };
+
+  const onToggleLoginModal = () => {
+    // console.log('toggle login modal: ', this.props.toggleLoginModal);
+    setToggleLoginModal(!toggleLoginModal);
+};
   //SCROLL USE EFFECT
 
   useEffect(() => {
@@ -164,6 +169,9 @@ export function AppHeader() {
             <MenuIcon />
             <AccountCircleIcon />
           </div>
+          {toggleHamburger && <div onClick={onToggleHamburger} className='bg'></div>}
+          {toggleLoginModal && <div onClick={onToggleLoginModal} className='bg'></div>}
+
           {toggleHamburger && (
             <HamburgerMenu
               onToggleHamburger={onToggleHamburger}
@@ -172,8 +180,9 @@ export function AppHeader() {
             />
           )}
           {toggleLoginModal && (
-            <LoginSignupModal setToggleLoginModal={setToggleLoginModal} toggleLoginModal={toggleLoginModal} />
+            <LoginSignupModal onToggleLoginModal={onToggleLoginModal} />
           )}
+
         </div>
       </div>
     </header>

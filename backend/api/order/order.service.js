@@ -45,11 +45,11 @@ async function getById(orderId) {
   }
 }
 
-async function add(order) {
+async function add(order ,buyer) {
   console.log('order:', order);
 
   try {
-    const updatedOrder = { ...order, status: 'pending' };
+    const updatedOrder = { ...order, host: { ...order.host, _id: ObjectId(order.host._id) }, status: 'pending', buyer: {...buyer, _id: ObjectId(buyer._id)} };
     const collection = await dbService.getCollection('order');
     await collection.insertOne(updatedOrder);
     return order;

@@ -16,10 +16,10 @@ export function BecomeHost() {
                 Hosting
               </div>
               <div>
-                makes Airbnb,
+                makes Hosty,
               </div>
               <div>
-                Airbnb
+                Hosty!
               </div>
               <div>
                 Try Hosting

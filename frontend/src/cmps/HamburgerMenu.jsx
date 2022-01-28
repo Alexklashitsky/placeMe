@@ -28,6 +28,7 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
       {/* {isHost && <div><Link to='/Orders' className='clean-link'> Orders </Link></div>} */}
       <Link to='/Orders' className='clean-link' onClick={onToggleHamburger}> <div>Orders</div> </Link>
       <Link to='/BecomeHost' className='clean-link' onClick={onToggleHamburger}> <div>Host your home</div></Link>
+
     </section>
   )
 }
