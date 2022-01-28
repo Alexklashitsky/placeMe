@@ -17,6 +17,7 @@ export const GuestTrips = () => {
   if (orders.length === 0) return <h1>No Trips to show</h1>;
   return (
     <section>
+      <h1>Your Trips</h1>
       <TripList orders={orders} />
     </section>
   );

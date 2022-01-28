@@ -53,7 +53,11 @@ export function AppHeader() {
       setIsDetails(false);
       setIsWhiteHeader(true);
     }
-    if (location.pathname.includes('/BecomeHost')) {
+    if (location.pathname.includes('/Trips')) {
+      setIsDetails(false);
+      setIsWhiteHeader(true);
+    }
+    if (location.pathname.includes('/Orders')) {
       setIsDetails(false);
       setIsWhiteHeader(true);
     }

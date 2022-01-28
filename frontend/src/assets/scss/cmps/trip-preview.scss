@@ -4,6 +4,7 @@
   overflow: hidden;
   transition: transform 600ms ease-in;
   position: relative;
+  margin-top: 24px;
   // width: 24vw;
   .trip-card-container {
     display: flex;
@@ -35,7 +36,7 @@
     .trip-img-container {
       // display: inline-block;
       width: 45vw;
-      height: 30vh;
+      height: 45vh;
       @include aspect-ratio(1, 1.2);
       & > img {
         object-fit: cover;
