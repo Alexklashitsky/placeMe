@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { UserMsg } from './UserMsg';
 
 export function AppFooter() {
   return (
-    <div className="app-footer-container full">
-      <div className="app-footer">
-        <div className="app-footer-column">
+    <div className='app-footer-container full'>
+      <UserMsg />
+      <div className='app-footer'>
+        <div className='app-footer-column'>
           <h3>Support</h3>
           <h4>Help Center</h4>
           <h4>Safety Information</h4>
@@ -17,14 +19,14 @@ export function AppFooter() {
           <h4>Report a neghborhood concern</h4>
         </div>
 
-        <div className="app-footer-column">
+        <div className='app-footer-column'>
           <h3>Community</h3>
           <h4>Support Afghan refugees</h4>
           <h4>Celebrating diversity & belonging</h4>
           <h4>Combating discrimination</h4>
         </div>
 
-        <div className="app-footer-column">
+        <div className='app-footer-column'>
           <h3>hosting</h3>
           <h4>Try hosting</h4>
           <h4>AirCover: protection for Hosts</h4>
@@ -33,7 +35,7 @@ export function AppFooter() {
           <h4>How to host responsibly</h4>
         </div>
 
-        <div className="app-footer-column">
+        <div className='app-footer-column'>
           <h3>About</h3>
           <h4>Newsroom</h4>
           <h4>Learn about new features</h4>
@@ -44,19 +46,22 @@ export function AppFooter() {
         </div>
       </div>
 
-      <div className="app-footer-endline">
+      <div className='app-footer-endline'>
         <div>
           © 2022 no rights reserved, this is a clone of the Airbnb website for learning purposes ·Privacy·Terms·Sitemap
-          
         </div>
         <div>
-         <span><FacebookIcon/> </span> 
-         <span><TwitterIcon/></span> 
-         <span><InstagramIcon/></span> 
-          
+          <span>
+            <FacebookIcon />{' '}
+          </span>
+          <span>
+            <TwitterIcon />
+          </span>
+          <span>
+            <InstagramIcon />
+          </span>
         </div>
-        
       </div>
     </div>
-  )
+  );
 }

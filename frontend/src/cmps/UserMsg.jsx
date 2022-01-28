@@ -1,23 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateText } from '../store/modal.action';
 
 export const UserMsg = () => {
-  let timeOutId;
+  const timeOutId = useRef();
 
   const message = useSelector((state) => state?.modalModule.msg);
-  console.log('message:', message);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (timeOutId) clearTimeout(timeOutId);
-    timeOutId = setTimeout(() => {
+    if (timeOutId.current) clearTimeout(timeOutId.current);
+
+    timeOutId.current = setTimeout(() => {
       closeMsg();
     }, 2000);
-  }, []);
+  }, [message]);
 
   const closeMsg = () => {
+    console.log('closing');
     dispatch(updateText(null));
   };
 
