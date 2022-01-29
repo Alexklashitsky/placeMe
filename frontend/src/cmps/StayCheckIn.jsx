@@ -34,18 +34,17 @@ export const StayCheckIn = ({ stay }) => {
       ...order,
       host: stay.host,
     };
-    dispatch(reserveOrder(orderToSend));
-    dispatch(updateText({ txt: 'Order Reserved!', type: 'success' }));
-    // if (!loggedIn) {
-    //   dispatch(updateText({ txt: 'Login first!', type: 'fail' }));
-    //   return;
-    // }
-    // if (!firstClick) {
-    //   dispatch(reserveOrder(orderToSend));
-    //   dispatch(updateText({ txt: 'Order Reserved!', type: 'success' }));
-    //   setReserved(true);
-    //   setToggleFirstClick(true);
-    // }
+
+    if (!loggedIn) {
+      dispatch(updateText({ txt: 'Login first!', type: 'fail' }));
+      return;
+    }
+    if (!firstClick) {
+      dispatch(reserveOrder(orderToSend));
+      dispatch(updateText({ txt: 'Order Reserved!', type: 'success' }));
+      setReserved(true);
+      setToggleFirstClick(true);
+    }
   };
 
   const onToggleCal = () => {
