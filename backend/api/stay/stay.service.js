@@ -92,7 +92,7 @@ function _buildCriteria(filterBy) {
       { ['loc.country']: regex }
     ]
   }
-  console.log('filterBy.priceRange.minPrice:', filterBy.priceRange.minPrice);
+  // console.log('filterBy.priceRange.minPrice:', filterBy.priceRange.minPrice);
 
 
   // if (filterBy.priceRange.minPrice) {

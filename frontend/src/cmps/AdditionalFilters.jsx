@@ -59,7 +59,7 @@ export class AdditionalFilter extends Component {
     return (
       <section>
         <div className='additional-filter-types-header'>
-          <button onClick={() => this.props.onOpenModal('')} >x</button>
+          <button onClick={() => this.props.onOpenModal('')}>x</button>
           <p>More filters</p>
         </div>
         <div className='additional-filter-types flex'>

@@ -79,3 +79,33 @@
 
   content: '\f005';
 }
+
+.fas.fa-star-dashboard::before {
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  content: '\f005';
+}
+
+.fas.fa-plus-dashboard::before {
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  content: '\f067';
+}
+
+.fas.fa-home-dashboard::before {
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  content: '\f015';
+}
+
+.fas.fa-note-dashboard::before {
+  color: rgb(34, 34, 34);
+  font-size: 16px;
+  content: '\f328';
+}
+
+.fas.fa-wallet-dashboard::before {
+  color: rgb(34, 34, 34);
+  font-size: 40px;
+  content: '\f555';
+}

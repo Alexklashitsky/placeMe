@@ -11,6 +11,7 @@ import { GuestsFilter } from './GuestsFilter';
 import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
 import { setFilterBy } from '../store/stay.action'
+import logo from '../assets/imgs/1181191_airbnb_icon.svg';
 
 
 
@@ -31,7 +32,33 @@ export function _AppHeader() {
 
   // let search = 'ddd'
 
+  const [input, setInput] = useState('');
+  const [marker, setMarker] = useState(false);
   const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const user = useSelector((state) => state?.userModule.user);
+
+  // const dispatch = useDispatch();
+  useEffect(() => {
+    if (!user) {
+      setLoggedIn(false);
+    } else {
+      setLoggedIn(true);
+    }
+  }, [user]);
+
+  const notification = useSelector((state) => state?.ordersModule.notification);
+
+  useEffect(() => {
+    console.log('notification:', notification);
+
+    if (!notification) {
+      setMarker(false);
+    } else {
+      setMarker(true);
+    }
+  }, [notification]);
 
   const onToggleLocation = () => {
     setToggleLocation(!toggleLocation);
@@ -57,6 +84,10 @@ export function _AppHeader() {
     dispatch(setFilterBy(submittedFilter))
     //   setFilter(filterBy)
   }
+  const onToggleLoginModal = () => {
+    // console.log('toggle login modal: ', this.props.toggleLoginModal);
+    setToggleLoginModal(!toggleLoginModal);
+  };
   //SCROLL USE EFFECT
 
   useEffect(() => {
@@ -74,7 +105,11 @@ export function _AppHeader() {
       setIsDetails(false);
       setIsWhiteHeader(true);
     }
-    if (location.pathname.includes('/BecomeHost')) {
+    if (location.pathname.includes('/Trips')) {
+      setIsDetails(false);
+      setIsWhiteHeader(true);
+    }
+    if (location.pathname.includes('/Orders')) {
       setIsDetails(false);
       setIsWhiteHeader(true);
     }
@@ -95,20 +130,14 @@ export function _AppHeader() {
     setIsWhiteHeader(false);
     setIsDetails(false);
   };
-
-  const onHandleChange = (ev) => {
-    console.log('ev:', ev);
-
-
-  }
-  console.log('input:', filterByText);
-
-
+  // src\assets\imgs\1181191_airbnb_icon.svg
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'} `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'
+        } `}>
       <Link to='/' className='header_icon clean-link'>
-        <h1 onClick={backPage}>PlaceMe</h1>
+        <img className='header-logo' src={logo} alt='sfsdfs' />
+        <h1 onClick={backPage}>Hosty</h1>
       </Link>
       <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
 
@@ -190,26 +219,32 @@ export function _AppHeader() {
             Become a Host{' '}
           </Link>
         </div>
-
+        <div>{!user ? <span>None </span> : user.username}</div>
         <div className='menu-container'>
           <button onClick={() => onSetFilter({ filterByText })} >  click me</button>
           <div className='hamburger-container' onClick={onToggleHamburger}>
-            <MenuIcon />
-            <AccountCircleIcon />
+            {notification ? <div className='red-dot'>🔴</div> : <div></div>}
+
+            <div className={!loggedIn ? 'hamburger-container' : 'hamburger-container-red'} onClick={onToggleHamburger}>
+              <MenuIcon />
+              <AccountCircleIcon />
+            </div>
+            {toggleHamburger && <div onClick={onToggleHamburger} className='bg'></div>}
+            {toggleLoginModal && <div onClick={onToggleLoginModal} className='bg'></div>}
+
+            {toggleHamburger && (
+              <HamburgerMenu
+                onToggleHamburger={onToggleHamburger}
+                setToggleLoginModal={setToggleLoginModal}
+                toggleLoginModal={toggleLoginModal}
+              />
+            )}
+            {toggleLoginModal && <LoginSignupModal onToggleLoginModal={onToggleLoginModal} />}
           </div>
-          {toggleHamburger && (
-            <HamburgerMenu
-              onToggleHamburger={onToggleHamburger}
-              setToggleLoginModal={setToggleLoginModal}
-              toggleLoginModal={toggleLoginModal}
-            />
-          )}
-          {toggleLoginModal && (
-            <LoginSignupModal setToggleLoginModal={setToggleLoginModal} toggleLoginModal={toggleLoginModal} />
-          )}
-        </div>
-      </div>
-    </header>
+        </div >
+      </div >
+
+    </header >
   );
 }
 

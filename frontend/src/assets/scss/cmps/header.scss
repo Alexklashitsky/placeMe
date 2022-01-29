@@ -12,8 +12,22 @@ header.header {
   // height: 80px;
   &.details-header.details {
     background-color: white;
-    color: rgb(34, 34, 34);
+    color: #222222;
     height: 80px;
+    grid-auto-flow: row;
+    display: flex;
+    /* grid-template-columns: 2fr 10fr 2fr; */
+    padding: 0 100px 0;
+    .header-center-container {
+      position: relative;
+      width: 100vw;
+      height: 100%;
+      .header-center {
+        position: absolute;
+        left: 48%;
+        top: 19%;
+      }
+    }
   }
 
   &.white-header {
@@ -21,11 +35,17 @@ header.header {
     color: rgb(34, 34, 34);
     height: 80px;
     a.header_icon {
-      // object-fit: contain;
-      // height: 100px;
       margin-left: 80px;
       z-index: 10;
       color: rgb(255, 56, 92);
+      display: inline-flex;
+      .header-logo {
+        height: 35px;
+        filter: invert(37%) sepia(81%) saturate(2858%) hue-rotate(327deg) brightness(98%) contrast(108%);
+      }
+      h1 {
+        font-size: 24px;
+      }
     }
     .hidden-bar {
       opacity: 0;
@@ -55,6 +75,18 @@ header.header {
     font-size: 16px;
     margin-left: 80px;
     z-index: 10;
+    display: inline-flex;
+    color: white;
+    font-size: 16px;
+    h1 {
+      font-size: 24px;
+    }
+    .header-logo {
+      // object-fit: contain;
+      height: 35px;
+      // margin-left: 20px;
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
+    }
   }
   .test-input{
     background-color: red;
@@ -84,7 +116,7 @@ header.header {
     border: 1px solid lightgray;
     border-radius: 999px;
     max-width: 300px;
-    min-width: 150px;
+    min-width: 300px;
     flex-direction: row;
     align-content: center;
     justify-content: space-between;
@@ -273,6 +305,7 @@ header.header {
       justify-content: space-evenly;
       align-items: center;
       background-color: white;
+      position: relative;
       z-index: 10;
       color: rgb(34, 34, 34);
       &:hover {
@@ -282,6 +315,15 @@ header.header {
       .hamburger-container {
         display: flex;
         color: #404040;
+      }
+      .hamburger-container-red {
+        display: flex;
+        color: #ff385c;
+      }
+      .red-dot {
+        position: absolute;
+        bottom: 60%;
+        left: 80%;
       }
     }
   }

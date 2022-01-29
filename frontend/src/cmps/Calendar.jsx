@@ -18,8 +18,6 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
   useEffect(() => {
     if (!value[0]) return;
 
-    console.log('value:', value);
-
     const startDate = utilService.convert(value[0]);
     let endDate = utilService.convert(value[1]);
 
@@ -32,9 +30,8 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
     date2 = new Date(date2.split('/')[2], date2.split('/')[1] - 1, date2.split('/')[0]);
     let timeDiff = Math.abs(date2.getTime() - today.getTime());
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    console.log('cal');
 
-    if (handelDateChange) handelDateChange(startDate, endDate)
+    if (handelDateChange) handelDateChange(startDate, endDate);
 
     if (!stay) return;
     const totalPrice = diffDays * stay.price;
@@ -72,6 +69,4 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
       </button>
     </div>
   );
-  // console.log('startProps:', startProps);
-  // console.log('endProps:', endProps);
 }

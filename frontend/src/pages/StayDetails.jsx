@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import { StayCheckIn } from '../cmps/StayCheckIn';
 import { useParams } from 'react-router-dom';
 import { stayService } from '../services/stay.service';
-import { ReadMore } from '../cmps/ReadMore';
 import { CheckIn } from '../cmps/CheckInHeader';
 import { ReviewSummary } from '../cmps/ReviewSummary';
-import { utilService } from '../services/util.service';
 import { MyMap } from '../cmps/Map';
 import { StayDetailsPics } from '../cmps/StayDetailsPics';
 import { StayReviews } from '../cmps/StayReviews';
 import { StayDetailsHeader } from '../cmps/StayDetailsHeader';
+import { CircularIndeterminate } from '../cmps/Loader';
 
 let counter = 0;
 
@@ -72,12 +71,12 @@ export function StayDetails(props) {
     }
   };
 
-  if (!stay) return <div>loading</div>;
+  if (!stay) return <CircularIndeterminate />;
 
   return (
     <div className='entire-layout stay-details-container'>
       {!modal ? <div></div> : <CheckIn stay={stay} />}
-      <div className='center-layout'>
+      <div id='jump-to-photos' className='center-layout'>
         <StayDetailsHeader stay={stay} />
         <StayDetailsPics stay={stay} />
         <section className='divider'>
@@ -101,7 +100,7 @@ export function StayDetails(props) {
               </section>
             </section>
             <section className='stay-details-description'>{stay.summary}</section>
-            <section className='ameneties'>
+            <section id='jump-to-amenities' className='ameneties'>
               <h1 className='title'>What this place offers</h1>
               <section className='stay-details-ameneties'>
                 {stay.amenities.map((amenity, index) => (
@@ -121,10 +120,16 @@ export function StayDetails(props) {
             <StayCheckIn stay={stay} />
           </section>
         </section>
-        <ReviewSummary stay={stay} />
-        <StayReviews stay={stay} />
-        <div>
-          <MyMap stay={stay} />
+        <div id='jump-to-reviews'>
+          <ReviewSummary stay={stay} />
+          <StayReviews stay={stay} />
+        </div>
+        <div id='jump-to-location'>
+          <section className='map'>
+            <span className='map-title'>Where you'll be</span>
+            <span className='map-location'>{stay.loc.address}</span>
+            <MyMap stay={stay} />
+          </section>
         </div>
       </div>
     </div>

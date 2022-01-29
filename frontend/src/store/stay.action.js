@@ -17,7 +17,6 @@ export function setFilterBy(filterBy) {
 
   console.log('fiter form store');
   return (dispatch, getState) => {
-
     const action = { type: 'SET_FILTER', filterBy };
     dispatch(action);
     stayService.query(filterBy).then((stays) => {
@@ -25,6 +24,4 @@ export function setFilterBy(filterBy) {
       dispatch(action);
     });
   };
-
-
 }

@@ -23,59 +23,36 @@ export class _StayFilter extends Component {
 
   componentDidMount() {
     console.log('start');
-
-
-
   }
 
   componentDidUpdate() {
     // console.log('this.:', this.state);
-    const currState = this.state.filterBy
-    console.log('currState:', currState);
+    const currState = this.state.filterBy;
   }
-
 
   onOpenModal = (value) => {
     this.setState({ currModalShown: value });
-
-  }
+  };
   handelFilterByChange = (field, value) => {
-    console.log('field:', field);
-    console.log('value:', value);
-
-
-
-
-    this.setState(prevState => ({ ...prevState, filterBy: { ...prevState.filterBy, [field]: value } }))
-    if (field === 'specialStay') this.onSubmitFilterBy()
-
-
-  }
+    this.setState((prevState) => ({ ...prevState, filterBy: { ...prevState.filterBy, [field]: value } }));
+    if (field === 'specialStay') this.onSubmitFilterBy();
+  };
 
   onSaveClicked = () => {
-
-    console.log('save');
-
-    this.onOpenModal('')
-    this.onSubmitFilterBy()
-  }
+    this.onOpenModal('');
+    this.onSubmitFilterBy();
+  };
 
   onSubmitFilterBy = () => {
-    console.log('submit');
-
-    this.props.setFilterBy(this.state.filterBy)
-  }
+    this.props.setFilterBy(this.state.filterBy);
+  };
 
   handelDateChange = (start, end) => {
-    if (start) this.handelFilterByChange('startDate', start)
-    if (end) this.handelFilterByChange('endDate', end)
+    if (start) this.handelFilterByChange('startDate', start);
+    if (end) this.handelFilterByChange('endDate', end);
 
     // console.log('end:', end);
-
-
-
-
-  }
+  };
 
   render() {
     const { currModalShown } = this.state;
@@ -85,10 +62,10 @@ export class _StayFilter extends Component {
         {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
         <section className='special-stay '>
           <div onClick={() => this.handelFilterByChange('specialStay', 'Houseboats')}>Houseboats</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')} >Beachfront</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Cabins')} >Cabins</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Treehouse')} >Treehouse</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')} >Ski in/Ski out</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>Beachfront</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>Cabins</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Treehouse')}>Treehouse</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>Ski in/Ski out</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>Amazing Places</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'farms')}>farms</div>
         </section>
@@ -109,8 +86,11 @@ export class _StayFilter extends Component {
           <GuestsFilter handelFilterByChange={this.handelFilterByChange} onSaveClicked={this.onSaveClicked} />
         </div>
         <div className={'filters-modal' + ' ' + `${this.state.currModalShown === 'filters' ? 'shown' : ''}`}>
-          <AdditionalFilter handelFilterByChange={this.handelFilterByChange} onSaveClicked={this.onSaveClicked}
-            onOpenModal={this.onOpenModal} />
+          <AdditionalFilter
+            handelFilterByChange={this.handelFilterByChange}
+            onSaveClicked={this.onSaveClicked}
+            onOpenModal={this.onOpenModal}
+          />
         </div>
       </section>
     );
@@ -120,13 +100,11 @@ export class _StayFilter extends Component {
 function mapStateToProps({ stayModule }) {
   return {
     // filterBy: stayModule.filterBy
-
-  }
+  };
 }
 
 const mapDispatchToProps = {
-  setFilterBy
+  setFilterBy,
+};
 
-}
-
-export const StayFilter = connect(mapStateToProps, mapDispatchToProps)(_StayFilter)
+export const StayFilter = connect(mapStateToProps, mapDispatchToProps)(_StayFilter);

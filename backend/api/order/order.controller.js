@@ -6,6 +6,7 @@ async function getOrders(req, res) {
     console.log('the filter by parse', req.query);
     // filterBy = JSON.parse(filterBy);
     const orders = await orderService.query(filterBy);
+    console.log(orders);
     res.json(orders);
   } catch (err) {
     console.log(err);
@@ -17,8 +18,8 @@ async function getOrders(req, res) {
 async function getOrderById(req, res) {
   try {
     const orderId = req.params.id;
-    const order = await orderService.getById(orderId);
-    res.json(order);
+    await orderService.getById(orderId);
+    res.json('Success!');
   } catch (err) {
     logger.error('Failed to get order', err);
     res.status(500).send({ err: 'Failed to get order' });
@@ -30,8 +31,9 @@ async function addOrder(req, res) {
 
   try {
     const order = req.body;
-    order.buyer = req.session.user;
-    const addedOrder = await orderService.add(order);
+    console.log(req.session.user)
+    const buyer = req.session.user;
+    const addedOrder = await orderService.add(order, buyer);
     res.json(addedOrder);
   } catch (err) {
     logger.error('Failed to add order', err);
@@ -42,6 +44,8 @@ async function addOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body;
+    console.log('req.body:', req.body);
+
     const updatedOrder = await orderService.update(order);
     res.json(updatedOrder);
   } catch (err) {
