@@ -4,6 +4,7 @@ import Switch from '@mui/material/Switch';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { VerifiedUserTwoTone } from '@mui/icons-material';
+import { RangeSlider } from './priceRange'
 
 export class AdditionalFilter extends Component {
   state = {
@@ -14,8 +15,14 @@ export class AdditionalFilter extends Component {
       hotelRoom: false,
       privateRoom: false,
       sharedRoom: false,
+
+
       // additionalFilters: []
     },
+    filterByPrice: {
+      maxPrice: Infinity,
+      minPrice: 0
+    }
 
   };
 
@@ -39,6 +46,12 @@ export class AdditionalFilter extends Component {
     //     this.props.onSetFilter(this.state.filterBy)
     // })
   };
+
+  handelPriceRange = (field, value) => {
+    this.setState((prevState) => ({ filterByPrice: value }), () => {
+      this.props.handelFilterByChange('priceRange', this.state.filterByPrice)
+    })
+  }
 
   render() {
     const { filterBy } = this.state;
@@ -64,6 +77,7 @@ export class AdditionalFilter extends Component {
           </div>
           <Switch {...label} />
         </div>
+
         <div className='additional-filter-types'>
           <h3>Type of place</h3>
           <div>
@@ -110,6 +124,7 @@ export class AdditionalFilter extends Component {
               </div>
             </div>
           </div>
+          <div><RangeSlider handelPriceRange={this.handelPriceRange} /></div>
           <button className='save show-stays' onClick={() => this.props.onSaveClicked()}>Show stays</button>
         </div>
       </section>

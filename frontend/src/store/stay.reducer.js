@@ -10,11 +10,16 @@ const initialState = {
         privateRoom: false,
         sharedRoom: false,
         additionalFilters: [],
+        minPrice: 0,
+        maxPrice: Infinity,
 
         startDate: null,
-        endDate: null
-    },
-    specialStay: ""
+        endDate: null,
+
+        specialStay: "",
+        name: ''
+
+    }
 }
 
 

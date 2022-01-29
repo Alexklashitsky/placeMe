@@ -87,8 +87,23 @@ function _buildCriteria(filterBy) {
 
   if (filterBy.name) {
     const regex = new RegExp(filterBy.name, 'i')
-    criteria.name = { $regex: regex }
+    criteria.$or = [
+      { name: regex },
+      { ['loc.country']: regex }
+    ]
   }
+  console.log('filterBy.priceRange.minPrice:', filterBy.priceRange.minPrice);
+
+
+  // if (filterBy.priceRange.minPrice) {
+  //   // criteria.price = { $gte: +filterBy.priceRange.minPrice }
+
+  // }
+
+  // if (filterBy.name) {
+  //   const regex = new RegExp(filterBy.name, 'i')
+  //   criteria.loc.country = { $regex: regex }
+  // }
 
 
 

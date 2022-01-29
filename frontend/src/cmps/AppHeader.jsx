@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux'
+
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GuestsFilter } from './GuestsFilter';
 import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
+import { setFilterBy } from '../store/stay.action'
 
-export function AppHeader() {
+
+
+export function _AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
   const [toggleCal, setToggleCal] = useState(false);
   const [toggleGuests, setToggleGuests] = useState(false);
@@ -16,8 +23,10 @@ export function AppHeader() {
   const [isDetails, setIsDetails] = useState(false);
   const [toggleLoginModal, setToggleLoginModal] = useState(false);
   // const [handleChange, onHandleChange] = useState(false)
-  const [filterByText, setFilterByText] = useState('')
-  console.log('input:', filterByText);
+  const [filterByText, setFilterByText] = useState(null)
+  const filters = useSelector((state) => state.staysModule.filterBy)
+  const dispatch = useDispatch()
+
 
 
   // let search = 'ddd'
@@ -36,6 +45,18 @@ export function AppHeader() {
   const onToggleHamburger = () => {
     setToggleHamburger(!toggleHamburger);
   };
+
+  const onSetFilter = (filterBy) => {
+
+    console.log('the new filter', filterBy)
+    const submittedFilter = {
+      ...filters, name: filterBy.filterByText
+    }
+    console.log('submittedFilter:', submittedFilter);
+
+    dispatch(setFilterBy(submittedFilter))
+    //   setFilter(filterBy)
+  }
   //SCROLL USE EFFECT
 
   useEffect(() => {
@@ -89,13 +110,15 @@ export function AppHeader() {
       <Link to='/' className='header_icon clean-link'>
         <h1 onClick={backPage}>PlaceMe</h1>
       </Link>
+      <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
+
 
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
-          <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
           <div className='small-search-button'>
-            <SearchIcon />
+            <SearchIcon onClick={() => onSetFilter(filterByText)} />
           </div>
+
         </div>
 
         <div className='header-center header-bar hidden-bar '>
@@ -105,11 +128,12 @@ export function AppHeader() {
                 <li>Location</li>
                 <li>
                   {' '}
-                  <input placeholder='where are you going' type='text' />
+                  <input placeholder='where are you going' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
                 </li>
               </ul>
             </div>
           </div>
+
 
           <div className='date-container'>
             <div className='container-border'>
@@ -168,6 +192,7 @@ export function AppHeader() {
         </div>
 
         <div className='menu-container'>
+          <button onClick={() => onSetFilter({ filterByText })} >  click me</button>
           <div className='hamburger-container' onClick={onToggleHamburger}>
             <MenuIcon />
             <AccountCircleIcon />
@@ -187,3 +212,19 @@ export function AppHeader() {
     </header>
   );
 }
+
+function mapStateToProps({ stayModule }) {
+  return {
+    // stays: stayModule.stay,
+    // filterBy: stayModule.filterBy
+
+  }
+}
+
+const mapDispatchToProps = {
+
+  setFilterBy
+}
+
+export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)
+
