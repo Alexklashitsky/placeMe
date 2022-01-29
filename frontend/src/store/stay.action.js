@@ -13,6 +13,9 @@ export function loadStays() {
 }
 
 export function setFilterBy(filterBy) {
+
+
+  console.log('fiter form store');
   return (dispatch, getState) => {
     const action = { type: 'SET_FILTER', filterBy };
     dispatch(action);

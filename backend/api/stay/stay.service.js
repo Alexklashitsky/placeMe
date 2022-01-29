@@ -78,29 +78,33 @@ function _buildCriteria(filterBy) {
   if (filterBy.guests) {
     let totalGuests = filterBy.guests.adults + filterBy.guests.children + filterBy.guests.infants
     console.log('totalGuests:', totalGuests);
-
-    criteria.capacity = { $gte: totalGuests }
+    if (totalGuests) criteria.capacity = { $gte: totalGuests }
   }
 
-  // if (filterBy.freeCancel) {
-  //   criteria.freeCancel = { $exists: true }
-  // }
-  // if (filterBy.VerifiedPlace) {
-  //   criteria.VerifiedPlace = { $exists: true }
-  // }
-  // if (filterBy.entirePlace) {
-  //   criteria.entirePlace = { $exists: true }
-  //
+  if (filterBy.additionalFilters) {
+    criteria.additionalFilters = { $in: filterBy.additionalFilters }
+  }
 
-  // if (filterBy.hotelRoom) {
-  //   criteria.hotelRoom = { $exists: true }
+  if (filterBy.name) {
+    const regex = new RegExp(filterBy.name, 'i')
+    criteria.$or = [
+      { name: regex },
+      { ['loc.country']: regex }
+    ]
+  }
+  // console.log('filterBy.priceRange.minPrice:', filterBy.priceRange.minPrice);
+
+
+  // if (filterBy.priceRange.minPrice) {
+  //   // criteria.price = { $gte: +filterBy.priceRange.minPrice }
+
   // }
-  // if (filterBy.privateRoom) {
-  //   criteria.privateRoom = { $exists: true }
+
+  // if (filterBy.name) {
+  //   const regex = new RegExp(filterBy.name, 'i')
+  //   criteria.loc.country = { $regex: regex }
   // }
-  // if (filterBy.sharedRoom) {
-  //   criteria.sharedRoom = { $exists: true }
-  // }
+
 
 
 

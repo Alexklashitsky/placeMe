@@ -4,6 +4,7 @@ import Switch from '@mui/material/Switch';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { VerifiedUserTwoTone } from '@mui/icons-material';
+import { RangeSlider } from './priceRange'
 
 export class AdditionalFilter extends Component {
   state = {
@@ -14,24 +15,43 @@ export class AdditionalFilter extends Component {
       hotelRoom: false,
       privateRoom: false,
       sharedRoom: false,
+
+
+      // additionalFilters: []
     },
+    filterByPrice: {
+      maxPrice: Infinity,
+      minPrice: 0
+    }
+
   };
 
   toggleCheck = (ev) => {
-    const field = ev.target.name;
+    const filter = ev.target.name;
 
     // (!this.state.filterBy.freeCancel)
-    this.setState(
-      (prevState) => ({ filterBy: { ...prevState.filterBy, [field]: !prevState.filterBy[field] } }),
+    this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [filter]: !prevState.filterBy[filter] }, }),
       () => {
-        this.props.handelFilterByChange('additionalFilter', { ...this.state.filterBy });
-      }
-    );
+        const additionalFilters = []
+
+        for (const filter in this.state.filterBy) {
+          if (this.state.filterBy[filter]) additionalFilters.push(filter)
+        }
+        this.props.handelFilterByChange('additionalFilters', additionalFilters)
+
+
+      });
     // () => {
 
     //     this.props.onSetFilter(this.state.filterBy)
     // })
   };
+
+  handelPriceRange = (field, value) => {
+    this.setState((prevState) => ({ filterByPrice: value }), () => {
+      this.props.handelFilterByChange('priceRange', this.state.filterByPrice)
+    })
+  }
 
   render() {
     const { filterBy } = this.state;
@@ -57,6 +77,7 @@ export class AdditionalFilter extends Component {
           </div>
           <Switch {...label} />
         </div>
+
         <div className='additional-filter-types'>
           <h3>Type of place</h3>
           <div>
@@ -65,7 +86,7 @@ export class AdditionalFilter extends Component {
                 <input
                   name='entirePlace'
                   type='checkbox'
-                  checked={this.state.entirePlace}
+                  checked={this.state.filterBy.entirePlace}
                   onChange={this.toggleCheck}
                 />
                 <div className='check-box-desc'>
@@ -103,9 +124,8 @@ export class AdditionalFilter extends Component {
               </div>
             </div>
           </div>
-          <button className='save show-stays' onClick={() => this.props.onSaveClicked()}>
-            Show stays
-          </button>
+          <div><RangeSlider handelPriceRange={this.handelPriceRange} /></div>
+          <button className='save show-stays' onClick={() => this.props.onSaveClicked()}>Show stays</button>
         </div>
       </section>
     );
