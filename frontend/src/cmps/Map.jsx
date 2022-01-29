@@ -43,15 +43,15 @@ class _MyMap extends Component {
           <Marker
             icon={{
               url: airBnb,
-              scaledSize: new this.props.google.maps.Size(1, 1),
+              scaledSize: new this.props.google.maps.Size(30, 30),
             }}
             onClick={this.onMarkerClick}
             name={'Current location'}
             position={center}
           />
-          <InfoWindow visible={this.isInfoWindowOpen} position={center} onClose={this.onInfoWindowClose}>
+          <InfoWindow visible={this.state.isInfoWindowOpen} position={center} onClose={this.onInfoWindowClose}>
             <div>
-              <h1>Hello</h1>
+              <p>Exact location provided after booking.</p>
             </div>
           </InfoWindow>
         </Map>

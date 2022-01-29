@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
-import { UserMsg } from './UserMsg';
+import { UserMsg } from '../cmps/UserMsg';
+import { socketService } from '../services/socket.service';
+import { setNotification } from '../store/order.action';
 
 export function AppFooter() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state?.userModule.user);
+  useEffect(() => {
+    socketService.setup();
+    if (user) {
+      socketService.on('order-sent', (order) => {
+        console.log('received');
+        dispatch(setNotification(true));
+      });
+      return () => {
+        socketService.off('order-sent');
+        socketService.terminate();
+      };
+    }
+  }, []);
+
   return (
     <div className='app-footer-container full'>
-      <UserMsg />
       <div className='app-footer'>
         <div className='app-footer-column'>
           <h3>Support</h3>
@@ -61,6 +79,7 @@ export function AppFooter() {
             <InstagramIcon />
           </span>
         </div>
+        <UserMsg />
       </div>
     </div>
   );

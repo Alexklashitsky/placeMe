@@ -20,8 +20,6 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
   const onHandleGuests = (type, diff) => {
     guests[type] = guests[type] + diff;
     setGuests({ ...guests });
-    console.log('guests:', guests);
-    console.log('this.props:', this.props);
 
     // this.props.handelFilterByChange('additionalFilter', { ...guests })
   };
@@ -79,7 +77,9 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
             </div>
           </div>
         </div>
-        <button className='save guest' onClick={() => onSaveClicked()}>save</button>
+        <button className='save guest' onClick={() => onSaveClicked()}>
+          save
+        </button>
         <button className='clear '>clear</button>
       </div>
     </section>

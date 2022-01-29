@@ -3,6 +3,8 @@ const logger = require('../../services/logger.service');
 const ObjectId = require('mongodb').ObjectId;
 const stayService = require('../stay/stay.service');
 
+//our pipe pile
+
 async function query(filterBy) {
   console.log('the filter in service', filterBy);
 
@@ -40,7 +42,7 @@ async function getById(orderId) {
     // console.log('the stay in service', stay)
     return order;
   } catch (err) {
-    logger.error(`while finding toy ${orderId}`, err);
+    logger.error(`while finding order ${orderId}`, err);
     throw err;
   }
 }

@@ -1,9 +1,17 @@
-import { stayService } from '../services/stay.service.js';
 import { orderService } from '../services/order.service.js';
+import { socketService } from '../services/socket.service';
 
 export function updateOrder(order) {
   return (dispatch, getState) => {
     const action = { type: 'SET_ORDER', order };
+    dispatch(action);
+  };
+}
+
+export function setNotification(value) {
+  return (dispatch) => {
+    const action = { type: 'SET_NOTIFICATION', value };
+    console.log('action:', action);
     dispatch(action);
   };
 }
@@ -23,7 +31,6 @@ export function updateOrderStatus(orderToUpdate) {
 export function loadOrders(filterBy) {
   return async (dispatch, getState) => {
     const orders = await orderService.query(filterBy);
-
     const action = { type: 'SET_ORDERS', orders };
     dispatch(action);
   };
@@ -33,6 +40,7 @@ export function reserveOrder(order) {
   return async (dispatch, getState) => {
     await orderService.save(order);
     const action = { type: 'SET_ORDER', order: orderService.getEmptyOrder() };
+    socketService.emit('send-order', order);
     dispatch(action);
   };
 }

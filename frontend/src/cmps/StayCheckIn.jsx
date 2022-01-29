@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TestCal } from './Calendar';
 import { GuestsFilter } from './GuestsFilter';
 import { reserveOrder, updateOrder } from '../store/order.action';
-import { orderService } from '../services/order.service';
 import { utilService } from '../services/util.service';
 import { updateText } from '../store/modal.action';
 
@@ -11,11 +10,22 @@ const today = utilService.getDayInDd();
 
 export const StayCheckIn = ({ stay }) => {
   let averageRate = utilService.getReviews(stay);
+  const [firstClick, setToggleFirstClick] = useState(false);
   const [toggleCal, setToggleCal] = useState(false);
   const [toggleGuests, setToggleGuests] = useState(false);
+  const [reserved, setReserved] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const order = useSelector((state) => state?.ordersModule?.order);
-  const message = useSelector((state) => state?.modalModule.msg);
+  const user = useSelector((state) => state?.userModule.user);
+
+  useEffect(() => {
+    if (!user) {
+      setLoggedIn(false);
+    } else {
+      setLoggedIn(true);
+    }
+  }, [user]);
 
   const dispatch = useDispatch();
 
@@ -24,9 +34,18 @@ export const StayCheckIn = ({ stay }) => {
       ...order,
       host: stay.host,
     };
-
     dispatch(reserveOrder(orderToSend));
     dispatch(updateText({ txt: 'Order Reserved!', type: 'success' }));
+    // if (!loggedIn) {
+    //   dispatch(updateText({ txt: 'Login first!', type: 'fail' }));
+    //   return;
+    // }
+    // if (!firstClick) {
+    //   dispatch(reserveOrder(orderToSend));
+    //   dispatch(updateText({ txt: 'Order Reserved!', type: 'success' }));
+    //   setReserved(true);
+    //   setToggleFirstClick(true);
+    // }
   };
 
   const onToggleCal = () => {
@@ -91,7 +110,7 @@ export const StayCheckIn = ({ stay }) => {
             </div>
           </div>
         </div>
-        <div onClick={onSubmit} className='btn-container'>
+        <div onClick={onSubmit} className={!reserved ? 'btn-container' : 'btn-container-disabled'}>
           <div className='cell'></div>
           <div className='cell'></div>
           <div className='cell'></div>
@@ -164,8 +183,8 @@ export const StayCheckIn = ({ stay }) => {
           <div className='cell'></div>
           <div className='cell'></div>
           <div className='content'>
-            <button className='action-btn'>
-              <span>Reserve</span>
+            <button className={!reserved ? 'action-btn' : 'action-btn-disabled'}>
+              {!reserved ? <span>Reserve</span> : <span>Reserved order!</span>}
             </button>
           </div>
         </div>

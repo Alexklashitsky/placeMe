@@ -21,13 +21,12 @@ export class AdditionalFilter extends Component {
     const field = ev.target.name;
 
     // (!this.state.filterBy.freeCancel)
-    this.setState((prevState) => ({ filterBy: { ...prevState.filterBy, [field]: !prevState.filterBy[field] } }),
+    this.setState(
+      (prevState) => ({ filterBy: { ...prevState.filterBy, [field]: !prevState.filterBy[field] } }),
       () => {
-        console.log('this.state:', this.state);
-        this.props.handelFilterByChange('additionalFilter', { ...this.state.filterBy })
-
-
-      });
+        this.props.handelFilterByChange('additionalFilter', { ...this.state.filterBy });
+      }
+    );
     // () => {
 
     //     this.props.onSetFilter(this.state.filterBy)
@@ -40,7 +39,7 @@ export class AdditionalFilter extends Component {
     return (
       <section>
         <div className='additional-filter-types-header'>
-          <button onClick={() => this.props.onOpenModal('')} >x</button>
+          <button onClick={() => this.props.onOpenModal('')}>x</button>
           <p>More filters</p>
         </div>
         <div className='additional-filter-types flex'>
@@ -104,7 +103,9 @@ export class AdditionalFilter extends Component {
               </div>
             </div>
           </div>
-          <button className='save show-stays' onClick={() => this.props.onSaveClicked()}>Show stays</button>
+          <button className='save show-stays' onClick={() => this.props.onSaveClicked()}>
+            Show stays
+          </button>
         </div>
       </section>
     );

@@ -18,7 +18,6 @@ export const UserMsg = () => {
   }, [message]);
 
   const closeMsg = () => {
-    console.log('closing');
     dispatch(updateText(null));
   };
 

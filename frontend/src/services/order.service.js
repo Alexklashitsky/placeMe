@@ -1,5 +1,3 @@
-import { storageService } from '../services/async-storage.service';
-import axios from 'axios';
 import { httpService } from './http.service';
 
 const STORAGE_KEY = 'order';

@@ -6,7 +6,6 @@ export function OrderPreview({ order }) {
   const [option, setOption] = useState();
   const [input, setInput] = useState('');
 
-  console.log(input);
   const dispatch = useDispatch();
 
   function handleSelectChange(event) {

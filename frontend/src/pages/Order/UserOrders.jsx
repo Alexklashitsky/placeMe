@@ -9,7 +9,6 @@ export const UserOrders = () => {
   const user = useSelector((state) => state?.userModule?.user);
   const orders = useSelector((state) => state?.ordersModule?.orders);
   const stays = useSelector((state) => state?.staysModule?.stays);
-  console.log('stays:', stays);
 
   const dispatch = useDispatch();
 

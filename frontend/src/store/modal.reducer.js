@@ -5,7 +5,6 @@ const initialState = {
 
 export function modalReducer(state = initialState, action) {
   let newState = state;
-  console.log('action:', action);
 
   switch (action.type) {
     case 'MODAL_TOGGLE':

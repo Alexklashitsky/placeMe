@@ -6,6 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GuestsFilter } from './GuestsFilter';
 import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
+import { useSelector, useDispatch } from 'react-redux';
 import logo from '../assets/imgs/1181191_airbnb_icon.svg';
 
 export function AppHeader() {
@@ -17,8 +18,32 @@ export function AppHeader() {
   const [isDetails, setIsDetails] = useState(false);
   const [toggleLoginModal, setToggleLoginModal] = useState(false);
   const [input, setInput] = useState('');
-
+  const [marker, setMarker] = useState(false);
   const location = useLocation();
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const user = useSelector((state) => state?.userModule.user);
+
+  // const dispatch = useDispatch();
+  useEffect(() => {
+    if (!user) {
+      setLoggedIn(false);
+    } else {
+      setLoggedIn(true);
+    }
+  }, [user]);
+
+  const notification = useSelector((state) => state?.ordersModule.notification);
+
+  useEffect(() => {
+    console.log('notification:', notification);
+
+    if (!notification) {
+      setMarker(false);
+    } else {
+      setMarker(true);
+    }
+  }, [notification]);
 
   const onToggleLocation = () => {
     setToggleLocation(!toggleLocation);
@@ -36,7 +61,7 @@ export function AppHeader() {
   const onToggleLoginModal = () => {
     // console.log('toggle login modal: ', this.props.toggleLoginModal);
     setToggleLoginModal(!toggleLoginModal);
-};
+  };
   //SCROLL USE EFFECT
 
   useEffect(() => {
@@ -165,9 +190,11 @@ export function AppHeader() {
             Become a Host{' '}
           </Link>
         </div>
-
+        <div>{!user ? <span>None </span> : user.username}</div>
         <div className='menu-container'>
-          <div className='hamburger-container' onClick={onToggleHamburger}>
+          {notification ? <div className='red-dot'>🔴</div> : <div></div>}
+
+          <div className={!loggedIn ? 'hamburger-container' : 'hamburger-container-red'} onClick={onToggleHamburger}>
             <MenuIcon />
             <AccountCircleIcon />
           </div>
@@ -181,10 +208,7 @@ export function AppHeader() {
               toggleLoginModal={toggleLoginModal}
             />
           )}
-          {toggleLoginModal && (
-            <LoginSignupModal onToggleLoginModal={onToggleLoginModal} />
-          )}
-
+          {toggleLoginModal && <LoginSignupModal onToggleLoginModal={onToggleLoginModal} />}
         </div>
       </div>
     </header>

@@ -8,32 +8,30 @@ import { updateOrderStatus } from '../store/order.action';
 export function TripPreview({ order }) {
   const [stay, setStay] = useState(null);
 
-  useEffect(async() => {
-    const stay = await stayService.getById(order.stay._id)
-    setStay(stay)
+  useEffect(async () => {
+    const stay = await stayService.getById(order.stay._id);
+    setStay(stay);
   }, []);
-  
-  function getStayName(stay){
-    if (!stay) return 
-    const stayName = utilService.capitalizeTheFirstLetterOfEachWord(stay.name)
-    return stayName
+
+  function getStayName(stay) {
+    if (!stay) return;
+    const stayName = utilService.capitalizeTheFirstLetterOfEachWord(stay.name);
+    return stayName;
   }
-  
 
-  console.log('stay: ', stay);
   function tripStatusMassage(status) {
-    
-
     switch (status) {
       case 'pending':
-        return `Your trip request to ${getStayName(stay)} is pending the Host approval`
+        return `Your trip request to ${getStayName(stay)} is pending the Host approval`;
       case 'Approve':
-        return `Your trip to ${getStayName(stay)} was approved by the Host`
+        return `Your trip to ${getStayName(stay)} was approved by the Host`;
       case 'Cancel':
-        return `ths Host could not accept your trip order to ${getStayName(stay)}, our apologies for the inconvenience. You are more than welcome to try other venues or contact the host to arrange for an alternative arrangement`
+        return `ths Host could not accept your trip order to ${getStayName(
+          stay
+        )}, our apologies for the inconvenience. You are more than welcome to try other venues or contact the host to arrange for an alternative arrangement`;
     }
   }
-  console.log(stay)
+  console.log(stay);
   if (!stay) return 'loading';
   return (
     <div className='trip-card'>
@@ -50,9 +48,7 @@ export function TripPreview({ order }) {
           <div className='contact-button'>contact host</div>
         </div>
       </div>
-        <div className='trip-status'>
-          {tripStatusMassage(order.status)}
-        </div>
+      <div className='trip-status'>{tripStatusMassage(order.status)}</div>
     </div>
   );
 }

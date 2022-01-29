@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loadStays } from '../store/stay.action.js';
 import { StayList } from '../cmps/StayList';
 import { StayFilter } from '../cmps/StayFilterContainer';
+import { CircularIndeterminate } from '../cmps/Loader';
 
 class _StaySearch extends Component {
   state = {};
@@ -11,7 +12,7 @@ class _StaySearch extends Component {
   }
 
   render() {
-    if (!this.props.stays) return 'no stays';
+    if (!this.props.stays) return <CircularIndeterminate />;
 
     return (
       <section>
