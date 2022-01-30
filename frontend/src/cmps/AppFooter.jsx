@@ -10,6 +10,7 @@ import { setNotification } from '../store/order.action';
 export function AppFooter() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.userModule.user);
+
   useEffect(() => {
     socketService.setup();
     if (user) {
@@ -17,7 +18,13 @@ export function AppFooter() {
         console.log('received');
         dispatch(setNotification(true));
       });
+
+      socketService.on('order-status-updated', (order) => {
+        console.log('received update');
+        dispatch(setNotification(true));
+      });
       return () => {
+        socketService.off('order-status-updated');
         socketService.off('order-sent');
         socketService.terminate();
       };

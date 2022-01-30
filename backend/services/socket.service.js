@@ -11,7 +11,6 @@ function connectSockets(http, session) {
   });
 
   gIo.on('connection', (socket) => {
-    console.log('New socket', socket.id);
     socket.on('disconnect', (socket) => {
       console.log('Someone disconnected');
     });
@@ -29,10 +28,13 @@ function connectSockets(http, session) {
 
     socket.on('send-order', (order) => {
       socket.to(order.host._id).emit('order-sent', order);
-      console.log('order:', order);
+      console.log('order:', order.host._id);
     });
+
     socket.on('update-order-status', (order) => {
       socket.to(order.buyer._id).emit('order-status-updated', order);
+      console.log('order:', order);
+      console.log('order.buyer._id:', order.buyer._id);
     });
   });
 }

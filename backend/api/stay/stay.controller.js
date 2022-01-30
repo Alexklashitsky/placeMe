@@ -5,7 +5,7 @@ const logger = require('../../services/logger.service');
 async function getStays(req, res) {
   try {
     let filterBy = req.query;
-    console.log('the filter by parse', filterBy);
+
     // filterBy = JSON.parse(filterBy);
     const stays = await stayService.query(filterBy);
     res.json(stays);
@@ -19,7 +19,6 @@ async function getStays(req, res) {
 async function getStayById(req, res) {
   try {
     const stayId = req.params.id;
-    // console.log('stayId:', stayId);
 
     const stay = await stayService.getById(stayId);
     res.json(stay);

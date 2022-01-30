@@ -15,7 +15,6 @@ export const StayCheckIn = ({ stay }) => {
   const [toggleGuests, setToggleGuests] = useState(false);
   const [reserved, setReserved] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-
   const order = useSelector((state) => state?.ordersModule?.order);
   const user = useSelector((state) => state?.userModule.user);
 

@@ -17,14 +17,19 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
     setToggleLoginModal(!toggleLoginModal);
   };
 
+  const loggedInUser = useSelector((state) => state?.userModule.user);
+
   //clear notification
 
   const clearNotification = () => {
+    if (!loggedInUser) {
+      setToggleLoginModal(true);
+      return;
+    }
     dispatch(setNotification(false));
   };
 
   //logout
-  const user = useSelector((state) => state?.userModule?.user);
 
   const onLogout = () => {
     dispatch(logout());

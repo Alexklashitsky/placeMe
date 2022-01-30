@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { stayService } from '../services/stay.service';
 import { utilService } from '../services/util.service';
-
-import { updateOrderStatus } from '../store/order.action';
 
 export function TripPreview({ order }) {
   const [stay, setStay] = useState(null);

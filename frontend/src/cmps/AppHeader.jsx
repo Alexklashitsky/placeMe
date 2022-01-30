@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,10 +10,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { GuestsFilter } from './GuestsFilter';
 import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
-import { setFilterBy } from '../store/stay.action'
+import { setFilterBy } from '../store/stay.action';
 import logo from '../assets/imgs/1181191_airbnb_icon.svg';
-
-
 
 export function _AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -24,11 +22,9 @@ export function _AppHeader() {
   const [isDetails, setIsDetails] = useState(false);
   const [toggleLoginModal, setToggleLoginModal] = useState(false);
   // const [handleChange, onHandleChange] = useState(false)
-  const [filterByText, setFilterByText] = useState(null)
-  const filters = useSelector((state) => state.staysModule.filterBy)
-  const dispatch = useDispatch()
-
-
+  const [filterByText, setFilterByText] = useState(null);
+  const filters = useSelector((state) => state.staysModule.filterBy);
+  const dispatch = useDispatch();
 
   // let search = 'ddd'
 
@@ -51,8 +47,6 @@ export function _AppHeader() {
   const notification = useSelector((state) => state?.ordersModule.notification);
 
   useEffect(() => {
-    console.log('notification:', notification);
-
     if (!notification) {
       setMarker(false);
     } else {
@@ -74,16 +68,16 @@ export function _AppHeader() {
   };
 
   const onSetFilter = (filterBy) => {
-
-    console.log('the new filter', filterBy)
+    console.log('the new filter', filterBy);
     const submittedFilter = {
-      ...filters, name: filterBy.filterByText
-    }
+      ...filters,
+      name: filterBy.filterByText,
+    };
     console.log('submittedFilter:', submittedFilter);
 
-    dispatch(setFilterBy(submittedFilter))
+    dispatch(setFilterBy(submittedFilter));
     //   setFilter(filterBy)
-  }
+  };
   const onToggleLoginModal = () => {
     // console.log('toggle login modal: ', this.props.toggleLoginModal);
     setToggleLoginModal(!toggleLoginModal);
@@ -133,21 +127,25 @@ export function _AppHeader() {
   // src\assets\imgs\1181191_airbnb_icon.svg
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'
-        } `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
+        isDetails && 'details details-header'
+      } `}>
       <Link to='/' className='header_icon clean-link'>
         <img className='header-logo' src={logo} alt='sfsdfs' />
         <h1 onClick={backPage}>Hosty</h1>
       </Link>
-      <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
-
+      <input
+        className='test-input'
+        type='text'
+        value={filterByText}
+        onChange={(e) => setFilterByText(e.target.value)}
+      />
 
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
           <div className='small-search-button'>
             <SearchIcon onClick={() => onSetFilter(filterByText)} />
           </div>
-
         </div>
 
         <div className='header-center header-bar hidden-bar '>
@@ -157,12 +155,16 @@ export function _AppHeader() {
                 <li>Location</li>
                 <li>
                   {' '}
-                  <input placeholder='where are you going' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
+                  <input
+                    placeholder='where are you going'
+                    type='text'
+                    value={filterByText}
+                    onChange={(e) => setFilterByText(e.target.value)}
+                  />
                 </li>
               </ul>
             </div>
           </div>
-
 
           <div className='date-container'>
             <div className='container-border'>
@@ -221,7 +223,7 @@ export function _AppHeader() {
         </div>
         <div>{!user ? <span>None </span> : user.username}</div>
         <div className='menu-container'>
-          <button onClick={() => onSetFilter({ filterByText })} >  click me</button>
+          <button onClick={() => onSetFilter({ filterByText })}> click me</button>
           <div className='hamburger-container' onClick={onToggleHamburger}>
             {notification ? <div className='red-dot'>🔴</div> : <div></div>}
 
@@ -241,10 +243,9 @@ export function _AppHeader() {
             )}
             {toggleLoginModal && <LoginSignupModal onToggleLoginModal={onToggleLoginModal} />}
           </div>
-        </div >
-      </div >
-
-    </header >
+        </div>
+      </div>
+    </header>
   );
 }
 
@@ -252,14 +253,11 @@ function mapStateToProps({ stayModule }) {
   return {
     // stays: stayModule.stay,
     // filterBy: stayModule.filterBy
-
-  }
+  };
 }
 
 const mapDispatchToProps = {
+  setFilterBy,
+};
 
-  setFilterBy
-}
-
-export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader)
-
+export const AppHeader = connect(mapStateToProps, mapDispatchToProps)(_AppHeader);
