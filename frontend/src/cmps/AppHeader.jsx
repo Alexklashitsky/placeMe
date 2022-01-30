@@ -32,6 +32,7 @@ export function _AppHeader() {
   const [marker, setMarker] = useState(false);
   const location = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isHeaderShown, setIsHeaderShown] = useState(true);
 
   const user = useSelector((state) => state?.userModule.user);
 
@@ -94,7 +95,7 @@ export function _AppHeader() {
   useEffect(() => {
     window.removeEventListener('scroll', handleScroll);
     window.addEventListener('scroll', handleScroll);
-
+    setIsHeaderShown(true)
     if (location.pathname === '/') {
       setIsWhiteHeader(false);
     }
@@ -111,8 +112,17 @@ export function _AppHeader() {
       setIsWhiteHeader(true);
     }
     if (location.pathname.includes('/Orders')) {
+      console.log('location', location);
+      console.log('width', window.screen.width);
       setIsDetails(false);
       setIsWhiteHeader(true);
+      if (window.innerWidth <= 500) {
+
+        setIsHeaderShown(false);
+
+      }
+
+
     }
     if (window.innerWidth <= 500) setToggleHamburger(true);
     return () => {
@@ -133,6 +143,8 @@ export function _AppHeader() {
     setIsDetails(false);
   };
   // src\assets\imgs\1181191_airbnb_icon.svg
+  console.log('isHeaderShown', isHeaderShown);
+  if (!isHeaderShown) return <></>
   return (
     <header
       className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'
