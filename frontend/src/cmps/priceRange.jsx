@@ -11,7 +11,6 @@ import { setFilterBy } from '../store/stay.action'
 
 
 function valuetext(value) {
-    // console.log('value:', value);
 
     return `${value}`;
 }
@@ -39,11 +38,9 @@ export function RangeSlider({ handelPriceRange }) {
 
     const onSetFilter = (newValue) => {
 
-        // console.log('the new filter', newValue)
         const minPrice = newValue[0]
         const maxPrice = newValue[1]
-        console.log('minPrice:', minPrice);
-        console.log('maxPrice:', maxPrice);
+
         const priceRange = {
             minPrice,
             maxPrice
