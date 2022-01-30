@@ -140,7 +140,8 @@ header.header {
     transition: 0.4s;
     z-index: 1;
     // @media (max-width: 500px) {
-    //   transition: opacity 0 0 ease-in;
+    //   position: static;
+    //   bottom: 0; 
     // }
   }
   .header-center {

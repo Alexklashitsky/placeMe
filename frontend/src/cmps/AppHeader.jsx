@@ -136,8 +136,8 @@ export function _AppHeader() {
         <h1 onClick={backPage}>Hosty</h1>
       </Link>
 
-      <div className={`header-center-container`}>
-        <div className={`header-center hidden-search`}>
+      <div className={'header-center-container'}>
+        <div className={'header-center hidden-search'}>
           <input
             className='test-input'
             type='text'
