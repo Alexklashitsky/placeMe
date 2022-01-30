@@ -30,3 +30,9 @@ body{
     grid-column: 1 / -1;
   }
 }
+
+@media (max-width: 500px) {
+  .main-root {
+    grid-template-columns: 10px 1fr 10px;
+  }
+}
