@@ -12,6 +12,7 @@ import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
 import { setFilterBy } from '../store/stay.action';
 import logo from '../assets/imgs/1181191_airbnb_icon.svg';
+import { useHistory } from "react-router-dom"
 
 export function _AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -26,7 +27,6 @@ export function _AppHeader() {
   const filters = useSelector((state) => state.staysModule.filterBy);
   const dispatch = useDispatch();
 
-  // let search = 'ddd'
 
   const [input, setInput] = useState('');
   const [marker, setMarker] = useState(false);
@@ -45,6 +45,7 @@ export function _AppHeader() {
   }, [user]);
 
   const notification = useSelector((state) => state?.ordersModule.notification);
+  const history = useHistory()
 
   useEffect(() => {
     if (!notification) {
@@ -68,11 +69,17 @@ export function _AppHeader() {
   };
 
   const onSetFilter = (filterBy) => {
-    console.log('the new filter', filterBy);
+
+    history.push('/StaySearch')
+    console.log('filterBy:', filterBy);
+
+
+    // console.log('the new filter', filterBy)
     const submittedFilter = {
-      ...filters,
-      name: filterBy.filterByText,
-    };
+      ...filters, name: filterByText
+    }
+    console.log('filterByText:', filterByText);
+
     console.log('submittedFilter:', submittedFilter);
 
     dispatch(setFilterBy(submittedFilter));
@@ -128,25 +135,20 @@ export function _AppHeader() {
   // src\assets\imgs\1181191_airbnb_icon.svg
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
-        isDetails && 'details details-header'
-      } `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'
+        } `}>
       <Link to='/' className='header_icon clean-link'>
         <img className='header-logo' src={logo} alt='sfsdfs' />
         <h1 onClick={backPage}>Hosty</h1>
       </Link>
 
-      <div className={'header-center-container'}>
-        <div className={'header-center hidden-search'}>
-          <input
-            className='test-input'
-            type='text'
-            value={filterByText}
-            onChange={(e) => setFilterByText(e.target.value)}
-            placeholder='Start your search'
-          />
+
+      <div className={`header-center-container`}>
+        <div className={`header-center hidden-search`}>
+          <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
           <div className='small-search-button' onClick={() => onSetFilter(filterByText)}>
-            <SearchIcon />
+            <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+            } />
           </div>
         </div>
 
@@ -204,8 +206,9 @@ export function _AppHeader() {
                 {/* {toggleGuests && <GuestsFilter order={order} stay={stay} />} */}
               </ul>
 
-              <div className='search-button' onClick={() => onSetFilter({ filterByText })}>
-                <SearchIcon />
+              <div className='search-button' >
+                <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+                } />
               </div>
             </div>
           </div>
