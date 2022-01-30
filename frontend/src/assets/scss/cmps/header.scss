@@ -388,9 +388,18 @@ header.header {
       }
       .red-dot {
         position: absolute;
-        bottom: 60%;
+        bottom: 65%;
         left: 80%;
-        
+
+      }
+      .hamburger-menu{
+        .red-dot {
+          @media (max-width: 500px) {
+            
+          bottom: 40%;
+          left: 35%;
+          }
+        }
       }
     }
   }

@@ -71,16 +71,16 @@ export function _AppHeader() {
   const onSetFilter = (filterBy) => {
 
     history.push('/StaySearch')
-    console.log('filterBy:', filterBy);
+    // console.log('filterBy:', filterBy);
 
 
     // console.log('the new filter', filterBy)
     const submittedFilter = {
       ...filters, name: filterByText
     }
-    console.log('filterByText:', filterByText);
+    // console.log('filterByText:', filterByText);
 
-    console.log('submittedFilter:', submittedFilter);
+    // console.log('submittedFilter:', submittedFilter);
 
     dispatch(setFilterBy(submittedFilter));
     //   setFilter(filterBy)
@@ -147,7 +147,7 @@ export function _AppHeader() {
         <div className={`header-center hidden-search`}>
           <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
           <div className='small-search-button' onClick={() => onSetFilter(filterByText)}>
-            <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+            <SearchIcon onClick={() => onSetFilter({ filterByText })
             } />
           </div>
         </div>
@@ -207,7 +207,7 @@ export function _AppHeader() {
               </ul>
 
               <div className='search-button' >
-                <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+                <SearchIcon onClick={() => onSetFilter({ filterByText })
                 } />
               </div>
             </div>
@@ -231,7 +231,8 @@ export function _AppHeader() {
         <div className='menu-container'>
           {/* <button  >  click me</button> */}
           <div className='hamburger-container' onClick={onToggleHamburger}>
-            {notification && <div className='red-dot'>🔴</div>}
+            {/* {notification && <div className='red-dot'>🔴</div>} */}
+            <div className='red-dot'>🔴</div>
 
             <div className={!loggedIn ? 'hamburger-container' : 'hamburger-container-red'} onClick={onToggleHamburger}>
               <MenuIcon />
