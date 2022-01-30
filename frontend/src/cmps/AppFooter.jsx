@@ -6,6 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { UserMsg } from '../cmps/UserMsg';
 import { socketService } from '../services/socket.service';
 import { setNotification } from '../store/order.action';
+import { updateText } from '../store/modal.action';
 
 export function AppFooter() {
   const dispatch = useDispatch();
@@ -17,11 +18,13 @@ export function AppFooter() {
       socketService.on('order-sent', (order) => {
         console.log('received');
         dispatch(setNotification(true));
+        dispatch(updateText({ txt: 'New Order!', type: 'success' }));
       });
 
       socketService.on('order-status-updated', (order) => {
         console.log('received update');
         dispatch(setNotification(true));
+        dispatch(updateText({ txt: 'Status Changed!', type: 'success' }));
       });
       return () => {
         socketService.off('order-status-updated');

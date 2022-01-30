@@ -33,8 +33,6 @@ function connectSockets(http, session) {
 
     socket.on('update-order-status', (order) => {
       socket.to(order.buyer._id).emit('order-status-updated', order);
-      console.log('order:', order);
-      console.log('order.buyer._id:', order.buyer._id);
     });
   });
 }
