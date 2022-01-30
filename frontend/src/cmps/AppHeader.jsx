@@ -79,11 +79,11 @@ export function _AppHeader() {
 
     history.push('/StaySearch')
 
-    console.log('the new filter', filterBy)
+    // console.log('the new filter', filterBy)
     const submittedFilter = {
       ...filters, name: filterBy.filterByText
     }
-    console.log('submittedFilter:', submittedFilter);
+    // console.log('submittedFilter:', submittedFilter);
 
     dispatch(setFilterBy(submittedFilter))
     //   setFilter(filterBy)
