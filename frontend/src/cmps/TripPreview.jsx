@@ -28,7 +28,7 @@ export function TripPreview({ order }) {
         )}, our apologies for the inconvenience. You are more than welcome to try other venues or contact the host to arrange for an alternative arrangement`;
     }
   }
-  console.log(stay);
+
   if (!stay) return 'loading';
   return (
     <div className='trip-card'>

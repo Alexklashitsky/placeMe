@@ -71,22 +71,17 @@ export function _AppHeader() {
   const onSetFilter = (filterBy) => {
 
     history.push('/StaySearch')
-    console.log('filterBy:', filterBy);
 
 
-    // console.log('the new filter', filterBy)
     const submittedFilter = {
       ...filters, name: filterByText
     }
-    console.log('filterByText:', filterByText);
 
-    console.log('submittedFilter:', submittedFilter);
 
     dispatch(setFilterBy(submittedFilter));
     //   setFilter(filterBy)
   };
   const onToggleLoginModal = () => {
-    // console.log('toggle login modal: ', this.props.toggleLoginModal);
     setToggleLoginModal(!toggleLoginModal);
   };
   //SCROLL USE EFFECT
@@ -207,7 +202,7 @@ export function _AppHeader() {
               </ul>
 
               <div className='search-button' >
-                <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+                <SearchIcon onClick={() => onSetFilter({ filterByText })
                 } />
               </div>
             </div>
