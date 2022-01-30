@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateOrderStatus } from '../../store/order.action';
 
 export function OrderPreview({ order }) {
   const [option, setOption] = useState();
-  const [input, setInput] = useState('');
 
   const dispatch = useDispatch();
 

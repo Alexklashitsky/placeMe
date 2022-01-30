@@ -11,20 +11,26 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
   }, [toggleLoginModal]);
 
   const dispatch = useDispatch();
+  const notification = useSelector((state) => state?.ordersModule.notification);
 
   const onToggleLoginModal = (e) => {
     e.stopPropagation();
     setToggleLoginModal(!toggleLoginModal);
   };
 
+  const loggedInUser = useSelector((state) => state?.userModule.user);
+
   //clear notification
 
   const clearNotification = () => {
+    if (!loggedInUser) {
+      setToggleLoginModal(true);
+      return;
+    }
     dispatch(setNotification(false));
   };
 
   //logout
-  const user = useSelector((state) => state?.userModule?.user);
 
   const onLogout = () => {
     dispatch(logout());
@@ -33,7 +39,7 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
 
   return (
     <section className='hamburger-menu'>
-      <div onClick={onToggleLoginModal}>Log in / Sign up</div>
+      <div className='hidden-on-mobile' onClick={onToggleLoginModal}>Log in / Sign up</div>
 
       {/* <div onClick={onToggleLoginModal}>Sign up</div> */}
       <Link to='/Trips' className='clean-link' onClick={onToggleHamburger}>
@@ -43,13 +49,14 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
       {/* {isHost && <div><Link to='/Orders' className='clean-link'> Orders </Link></div>} */}
       <Link to='/Orders' className='clean-link' onClick={onToggleHamburger}>
         {' '}
+        {notification && <div className='red-dot'>🔴</div>}
         <div onClick={clearNotification}>Orders</div>{' '}
       </Link>
-      <Link to='/BecomeHost' className='clean-link' onClick={onToggleHamburger}>
+      <Link to='/BecomeHost' className='clean-link hidden-on-mobile' onClick={onToggleHamburger}>
         {' '}
         <div>Host your home</div>
-        <div onClick={onLogout}>Logout</div>
       </Link>
+      <div onClick={onLogout}>Logout</div>
     </section>
   );
 }

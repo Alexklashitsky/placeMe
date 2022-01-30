@@ -18,13 +18,10 @@ export function setNotification(value) {
 
 export function updateOrderStatus(orderToUpdate) {
   return async (dispatch) => {
-    try {
-      console.log('order from action:', orderToUpdate);
-      dispatch({ type: 'UPDATE_ORDER', orderToUpdate });
-      await orderService.save(orderToUpdate);
-    } catch (err) {
-      console.log('Cannot update order');
-    }
+    await orderService.save(orderToUpdate);
+    const action = { type: 'UPDATE_ORDER', orderToUpdate };
+    socketService.emit('update-order-status', orderToUpdate);
+    dispatch(action);
   };
 }
 

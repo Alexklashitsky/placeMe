@@ -3,10 +3,10 @@ const orderService = require('./order.service.js');
 async function getOrders(req, res) {
   try {
     let filterBy = req.query;
-    // console.log('the filter by parse', req.query);
+
     // filterBy = JSON.parse(filterBy);
     const orders = await orderService.query(filterBy);
-    // console.log(orders);
+
     res.json(orders);
   } catch (err) {
     // console.log(err);
@@ -27,11 +27,9 @@ async function getOrderById(req, res) {
 }
 
 async function addOrder(req, res) {
-  // console.log('req:', req);
-
   try {
     const order = req.body;
-    // console.log(req.session.user)
+    console.log(req.session.user);
     const buyer = req.session.user;
     const addedOrder = await orderService.add(order, buyer);
     res.json(addedOrder);
@@ -44,7 +42,6 @@ async function addOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body;
-    // console.log('req.body:', req.body);
 
     const updatedOrder = await orderService.update(order);
     res.json(updatedOrder);

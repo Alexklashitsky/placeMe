@@ -6,11 +6,8 @@ const stayService = require('../stay/stay.service');
 //our pipe pile
 
 async function query(filterBy) {
-  // console.log('the filter in service', filterBy);
-
   try {
     const criteria = buildCriteria(filterBy);
-    // console.log('criteria:', criteria);
 
     const collection = await dbService.getCollection('order');
     let orders = await collection.find(criteria).toArray();
@@ -39,7 +36,7 @@ async function getById(orderId) {
     const collection = await dbService.getCollection('order');
     const order = await collection.findOne({ _id: ObjectId(orderId) });
     // stay.reviews = await reviewService.query({ stayId })
-    // console.log('the stay in service', stay)
+
     return order;
   } catch (err) {
     logger.error(`while finding order ${orderId}`, err);
@@ -48,8 +45,6 @@ async function getById(orderId) {
 }
 
 async function add(order, buyer) {
-  // console.log('order:', order);
-
   try {
     const updatedOrder = {
       ...order,
