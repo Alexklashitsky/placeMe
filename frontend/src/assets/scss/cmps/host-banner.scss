@@ -1,5 +1,8 @@
 .host-banner-container {
   padding: 80px;
+  @media (max-width: 500px) {
+    display: none;
+  }
   .host-banner {
     overflow: hidden;
     display: grid;

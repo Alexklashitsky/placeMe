@@ -7,13 +7,21 @@ div.hero-container {
   align-items: flex-start;
   padding: 1rem 0;
   margin-bottom: 78px;
+  @media (max-width: 500px) {
+    padding: 10px 0;
+    height: 100vh;
+  }
   // border-radius: 10px;
   // .hero-text-pic-container {
   //   display: flex;
   //   align-content: center;
   //   justify-content: center;
   //   align-items: flex-start;
-
+  @media (max-width: 500px) {
+    // margin: 0 10px;
+    // width: 100vw;
+    // display: none;
+  }
     .hero-img-container {
       background-image: url(../../imgs/mike-aunzo-Bl-IWjL4s1I-unsplash.jpg);
       background-size: cover;
@@ -23,6 +31,10 @@ div.hero-container {
       margin: 0 80px;
       border-radius: 10px;
       transform: translate(0, 0vh);
+      @media (max-width: 500px) {
+        margin: 0 10px;
+      }
+     
 
       .hero-text {
         position: absolute;
@@ -38,7 +50,11 @@ div.hero-container {
         font-size: 3rem;
         width: 95%;
         font-weight: 600;
+        @media (max-width: 500px) {
+          font-size: 1rem;
+          transform: translate(-50%, -200px);
 
+        }
         .hero-button {
           margin-top: 24px;
           background-color: white;
@@ -53,6 +69,11 @@ div.hero-container {
           align-content: center;
           justify-content: center;
           align-items: center;
+          @media (max-width: 500px) {
+            font-size: 0.8rem;
+            height: 40px;
+            width: 5.5rem;
+          }
         }
         .hero-button:hover {
           background-color: #fffafa;
