@@ -32,7 +32,9 @@ function connectSockets(http, session) {
     });
 
     socket.on('update-order-status', (order) => {
+      console.log('order', order);
       socket.to(order.buyer._id).emit('order-status-updated', order);
+      console.log('order:', order.status);
     });
   });
 }

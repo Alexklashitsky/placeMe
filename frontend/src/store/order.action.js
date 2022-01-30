@@ -11,7 +11,7 @@ export function updateOrder(order) {
 export function setNotification(value) {
   return (dispatch) => {
     const action = { type: 'SET_NOTIFICATION', value };
-    console.log('action:', action);
+
     dispatch(action);
   };
 }

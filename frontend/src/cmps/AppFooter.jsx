@@ -15,11 +15,14 @@ export function AppFooter() {
   useEffect(() => {
     socketService.setup();
     if (user) {
+      socketService.emit('set-user-socket', user._id);
       socketService.on('order-sent', (order) => {
         console.log('received');
         dispatch(setNotification(true));
         dispatch(updateText({ txt: 'New Order!', type: 'success' }));
       });
+
+      console.log('is here?');
 
       socketService.on('order-status-updated', (order) => {
         console.log('received update');
