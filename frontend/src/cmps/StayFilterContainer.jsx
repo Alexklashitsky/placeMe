@@ -14,6 +14,7 @@ import 'react-day-picker/lib/style.css';
 export class _StayFilter extends Component {
   state = {
     currModalShown: '',
+    currChosenSpecialStay: '',
     filterBy: {
       specialStay: '',
       additionalFilter: []
@@ -53,6 +54,10 @@ export class _StayFilter extends Component {
 
     // console.log('end:', end);
   };
+  handelSpecialStayChange(value) {
+    console.log('value:', value);
+
+  }
 
   render() {
     const { currModalShown } = this.state;
@@ -61,13 +66,13 @@ export class _StayFilter extends Component {
         <div></div>
         {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
         <section className='special-stay '>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Houseboats')}>Houseboats</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>Beachfront</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>Cabins</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>Treehouse</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>Ski in/Ski out</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>Amazing Places</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'farms')}>farms</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Houseboats'), () => { this.handelSpecialStayChange('Houseboats') }}>Houseboats</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>Beachfront</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>Cabins</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>Treehouse</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>Ski in/Ski out</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>Amazing Places</div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'farms')}>farms</div>
         </section>
 
         <div className='round-button'>

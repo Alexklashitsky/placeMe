@@ -31,7 +31,6 @@ export function _AppHeader() {
 
 
 
-  // let search = 'ddd'
 
   const [input, setInput] = useState('');
   const [marker, setMarker] = useState(false);
@@ -78,12 +77,16 @@ export function _AppHeader() {
   const onSetFilter = (filterBy) => {
 
     history.push('/StaySearch')
+    console.log('filterBy:', filterBy);
+
 
     // console.log('the new filter', filterBy)
     const submittedFilter = {
-      ...filters, name: filterBy.filterByText
+      ...filters, name: filterByText
     }
-    // console.log('submittedFilter:', submittedFilter);
+    console.log('filterByText:', filterByText);
+
+    console.log('submittedFilter:', submittedFilter);
 
     dispatch(setFilterBy(submittedFilter))
     //   setFilter(filterBy)
@@ -148,9 +151,10 @@ export function _AppHeader() {
 
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
-            <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
-          <div className='small-search-button'  onClick={() => onSetFilter(filterByText)}>
-            <SearchIcon />
+          <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
+          <div className='small-search-button' onClick={() => onSetFilter(filterByText)}>
+            <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+            } />
           </div>
 
         </div>
@@ -205,8 +209,9 @@ export function _AppHeader() {
                 {/* {toggleGuests && <GuestsFilter order={order} stay={stay} />} */}
               </ul>
 
-              <div className='search-button' onClick={() => onSetFilter({ filterByText })}>
-                <SearchIcon />
+              <div className='search-button' >
+                <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
+                } />
               </div>
 
             </div>
