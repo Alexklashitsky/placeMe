@@ -113,6 +113,7 @@ export function _AppHeader() {
       setIsDetails(false);
       setIsWhiteHeader(true);
     }
+    if (window.innerWidth <= 500) setToggleHamburger(true)
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -139,13 +140,13 @@ export function _AppHeader() {
         <img className='header-logo' src={logo} alt='sfsdfs' />
         <h1 onClick={backPage}>Hosty</h1>
       </Link>
-      <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} />
 
 
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
-          <div className='small-search-button'>
-            <SearchIcon onClick={() => onSetFilter(filterByText)} />
+            <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
+          <div className='small-search-button'  onClick={() => onSetFilter(filterByText)}>
+            <SearchIcon />
           </div>
 
         </div>
@@ -196,12 +197,14 @@ export function _AppHeader() {
                   {' '}
                   <input placeholder='add guests' type='text' />
                 </li>
-                {toggleGuests && <GuestsFilter />}
+                {/* {toggleGuests && <GuestsFilter />} */}
                 {/* {toggleGuests && <GuestsFilter order={order} stay={stay} />} */}
               </ul>
-              <div className='search-button'>
+
+              <div className='search-button' onClick={() => onSetFilter({ filterByText })}>
                 <SearchIcon />
               </div>
+
             </div>
           </div>
         </div>
@@ -219,11 +222,11 @@ export function _AppHeader() {
             Become a Host{' '}
           </Link>
         </div>
-        <div>{!user ? <span>None </span> : user.username}</div>
+        {/* <div>{!user ? <span>None </span> : user.username}</div> */}
         <div className='menu-container'>
-          <button onClick={() => onSetFilter({ filterByText })} >  click me</button>
+          {/* <button  >  click me</button> */}
           <div className='hamburger-container' onClick={onToggleHamburger}>
-            {notification ? <div className='red-dot'>🔴</div> : <div></div>}
+            {notification && <div className='red-dot'>🔴</div>}
 
             <div className={!loggedIn ? 'hamburger-container' : 'hamburger-container-red'} onClick={onToggleHamburger}>
               <MenuIcon />
