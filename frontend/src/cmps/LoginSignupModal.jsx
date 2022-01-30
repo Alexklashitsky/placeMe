@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import GoogleLogin from 'react-google-login';
+// import GoogleLogin from 'react-google-login';
 
 import { userService } from '../services/user.service.js';
 import { login, signup } from '../store/user.action.js';
@@ -130,14 +130,14 @@ class _LoginSignupModal extends React.Component {
                     </div>
 
                     <div>---------------------------   or   ---------------------------</div>
-                    <GoogleLogin
+                    {/* <GoogleLogin
                         className='toggle-signup-login-button'
                         clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
                         buttonText='Continue with Google'
                         onSuccess={this.responseGoogle}
                         onFailure={this.responseGoogle}
                         cookiePolicy={'single_host_origin'}
-                    />
+                    /> */}
                 </div>
 
             </div>
