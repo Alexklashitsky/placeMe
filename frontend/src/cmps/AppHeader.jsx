@@ -12,6 +12,7 @@ import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
 import { setFilterBy } from '../store/stay.action'
 import logo from '../assets/imgs/1181191_airbnb_icon.svg';
+import { useHistory } from "react-router-dom"
 
 
 
@@ -49,6 +50,7 @@ export function _AppHeader() {
   }, [user]);
 
   const notification = useSelector((state) => state?.ordersModule.notification);
+  const history = useHistory()
 
   useEffect(() => {
     console.log('notification:', notification);
@@ -74,6 +76,8 @@ export function _AppHeader() {
   };
 
   const onSetFilter = (filterBy) => {
+
+    history.push('/StaySearch')
 
     console.log('the new filter', filterBy)
     const submittedFilter = {

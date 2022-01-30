@@ -64,7 +64,7 @@ export class _StayFilter extends Component {
           <div onClick={() => this.handelFilterByChange('specialStay', 'Houseboats')}>Houseboats</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>Beachfront</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>Cabins</div>
-          <div onClick={() => this.handelFilterByChange('specialStay', 'Treehouse')}>Treehouse</div>
+          <div onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>Treehouse</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>Ski in/Ski out</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>Amazing Places</div>
           <div onClick={() => this.handelFilterByChange('specialStay', 'farms')}>farms</div>

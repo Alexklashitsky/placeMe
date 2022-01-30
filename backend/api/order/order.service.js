@@ -6,11 +6,11 @@ const stayService = require('../stay/stay.service');
 //our pipe pile
 
 async function query(filterBy) {
-  console.log('the filter in service', filterBy);
+  // console.log('the filter in service', filterBy);
 
   try {
     const criteria = buildCriteria(filterBy);
-    console.log('criteria:', criteria);
+    // console.log('criteria:', criteria);
 
     const collection = await dbService.getCollection('order');
     let orders = await collection.find(criteria).toArray();
@@ -48,7 +48,7 @@ async function getById(orderId) {
 }
 
 async function add(order, buyer) {
-  console.log('order:', order);
+  // console.log('order:', order);
 
   try {
     const updatedOrder = {
@@ -67,7 +67,7 @@ async function add(order, buyer) {
 }
 
 async function update(order) {
-  console.log('order:', order);
+  // console.log('order:', order);
 
   const orderToUpdate = {
     status: order.status,
@@ -79,7 +79,7 @@ async function update(order) {
     const collection = await dbService.getCollection('order');
     await collection.updateOne({ _id: id }, { $set: { ...orderToUpdate } });
   } catch (err) {
-    console.log('the err in update', err);
+    // console.log('the err in update', err);
     logger.error(`cannot update stay ${order}`, err);
     throw err;
   }

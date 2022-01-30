@@ -92,18 +92,38 @@ function _buildCriteria(filterBy) {
       { ['loc.country']: regex }
     ]
   }
-  // console.log('filterBy.priceRange.minPrice:', filterBy.priceRange.minPrice);
+  // console.log('filterBy.priceRange.minPrice:', JSON.parse(filterBy.priceRange).minPrice);
+
+  if (filterBy.priceRange) {
+    const priceRange = JSON.parse(filterBy.priceRange)
+    if (priceRange?.minPrice) {
+
+      // console.log('priceRange:', priceRange);
+
+      criteria.price = { $gte: +priceRange.minPrice }
+
+    }
+
+    // if (filterBy.priceRange.maxPrice) {
+    //   criteria.price = { $lte: +filterBy.priceRange.maxPrice }
+
+    // }
+  }
 
 
-  // if (filterBy.priceRange.minPrice) {
-  //   // criteria.price = { $gte: +filterBy.priceRange.minPrice }
-
-  // }
 
   // if (filterBy.name) {
   //   const regex = new RegExp(filterBy.name, 'i')
   //   criteria.loc.country = { $regex: regex }
   // }
+
+  if (filterBy.specialStay) {
+    const regex = new RegExp(filterBy.specialStay, 'i')
+    criteria.type = { $regex: regex }
+
+
+
+  }
 
 
 

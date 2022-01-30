@@ -5,12 +5,12 @@ const logger = require('../../services/logger.service');
 async function getStays(req, res) {
   try {
     let filterBy = req.query;
-    console.log('the filter by parse', filterBy);
+    // console.log('the filter by parse', filterBy);
     // filterBy = JSON.parse(filterBy);
     const stays = await stayService.query(filterBy);
     res.json(stays);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     logger.error('Failed to get stays', err);
     res.status(500).send({ err: 'Failed to get stays' });
   }
