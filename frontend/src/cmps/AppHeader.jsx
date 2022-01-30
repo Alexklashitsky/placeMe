@@ -142,13 +142,13 @@ export function _AppHeader() {
       </Link>
 
 
-      <div className={`header-center-container`}>
-        <div className={`header-center hidden-search`}>
+      <div className={'header-center-container'}>
+
+        <div className={'header-center hidden-search'}>
             <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
           <div className='small-search-button'  onClick={() => onSetFilter(filterByText)}>
             <SearchIcon />
           </div>
-
         </div>
 
         <div className='header-center header-bar hidden-bar '>
