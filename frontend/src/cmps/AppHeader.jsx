@@ -231,8 +231,8 @@ export function _AppHeader() {
         <div className='menu-container'>
           {/* <button  >  click me</button> */}
           <div className='hamburger-container' onClick={onToggleHamburger}>
-            {/* {notification && <div className='red-dot'>🔴</div>} */}
-            <div className='red-dot'>🔴</div>
+            {notification && <div className='red-dot'>🔴</div>}
+            {/* <div className='red-dot'>🔴</div> */}
 
             <div className={!loggedIn ? 'hamburger-container' : 'hamburger-container-red'} onClick={onToggleHamburger}>
               <MenuIcon />
