@@ -31,6 +31,7 @@ class _LoginSignupModal extends React.Component {
   };
 
   onLogin = (ev) => {
+    this.props.onToggleLoginModal();
     ev.preventDefault();
     const { credentials } = this.state;
     console.log('the crd in serv', credentials);
@@ -40,6 +41,7 @@ class _LoginSignupModal extends React.Component {
   };
 
   onSignup = (ev) => {
+    this.props.onToggleLoginModal();
     ev.preventDefault();
     const { credentials } = this.state;
     if (!credentials.username || !credentials.password || !credentials.fullname) return;
@@ -116,6 +118,7 @@ class _LoginSignupModal extends React.Component {
                   onChange={this.handleChange}
                   required
                 />
+
                 <button className='submit-button'>Signup!</button>
               </form>
             )}
@@ -124,9 +127,7 @@ class _LoginSignupModal extends React.Component {
           <div>New to Hosty?</div>
 
           <div className='toggle-signup-login-button'>
-            <div className='clean-link' onClick={this.toggleSignup}>
-              {!isSignup ? 'Create new account' : 'back to Login'}
-            </div>
+            <div className='clean-link'>{!isSignup ? 'Create new account' : 'back to Login'}</div>
           </div>
 
           <div>--------------------------- or ---------------------------</div>

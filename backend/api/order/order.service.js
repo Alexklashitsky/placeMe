@@ -62,7 +62,7 @@ async function add(order, buyer) {
 }
 
 async function update(order) {
-  console.log('order:', order);
+  // console.log('order:', order);
 
   const orderToUpdate = {
     status: order.status,
@@ -74,7 +74,7 @@ async function update(order) {
     const collection = await dbService.getCollection('order');
     await collection.updateOne({ _id: id }, { $set: { ...orderToUpdate } });
   } catch (err) {
-    console.log('the err in update', err);
+    // console.log('the err in update', err);
     logger.error(`cannot update stay ${order}`, err);
     throw err;
   }
