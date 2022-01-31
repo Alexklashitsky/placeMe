@@ -16,25 +16,35 @@ export function AppFooter() {
     socketService.setup();
     if (user) {
       socketService.emit('set-user-socket', user._id);
-      socketService.on('order-sent', (order) => {
-        console.log('received');
-        dispatch(setNotification(true));
-        dispatch(updateText({ txt: 'New Order!', type: 'success' }));
-      });
-
-      console.log('is here?');
-
-      socketService.on('order-status-updated', (order) => {
-        console.log('received update');
-        dispatch(setNotification(true));
-        dispatch(updateText({ txt: 'Status Changed!', type: 'success' }));
-      });
-      return () => {
-        socketService.off('order-status-updated');
-        socketService.off('order-sent');
-        socketService.terminate();
-      };
     }
+    socketService.on('order-sent', (order) => {
+      console.log('received');
+      dispatch(setNotification(true));
+      dispatch(updateText({ txt: `New order at your stay ${order.stay.name}`, type: 'success', link: 'orders' }));
+    });
+    socketService.on('order-status-updated', (order) => {
+      const getStatus = () => {
+        switch (order.status) {
+          case 'approved':
+            return 'success';
+          case 'cancelled':
+            return 'danger';
+        }
+      };
+      dispatch(setNotification(true));
+      dispatch(
+        updateText({
+          txt: `Your order from  ${order.host.fullname} was ${order.status + ' '} `,
+          type: getStatus(),
+          link: 'trips',
+        })
+      );
+    });
+    return () => {
+      socketService.off('order-status-updated');
+      socketService.off('order-sent');
+      socketService.terminate();
+    };
   }, []);
 
   return (

@@ -10,6 +10,7 @@ const today = utilService.getDayInDd();
 
 export const StayCheckIn = ({ stay }) => {
   let averageRate = utilService.getReviews(stay);
+  const [diffDays, setDiffDays] = useState(7);
   const [firstClick, setToggleFirstClick] = useState(false);
   const [toggleCal, setToggleCal] = useState(false);
   const [toggleGuests, setToggleGuests] = useState(false);
@@ -26,16 +27,25 @@ export const StayCheckIn = ({ stay }) => {
     }
   }, [user]);
 
+  const differentDays = (diffDays) => {
+    setDiffDays(diffDays);
+  };
+
   const dispatch = useDispatch();
 
   const onSubmit = () => {
+    if (!order.startDate || !order.endDate || !order.guests.adults) {
+      dispatch(updateText({ txt: 'Please enter dates and guests!', type: 'danger' }));
+      return;
+    }
+
     const orderToSend = {
       ...order,
       host: stay.host,
     };
 
     if (!loggedIn) {
-      dispatch(updateText({ txt: 'Login first!', type: 'fail' }));
+      dispatch(updateText({ txt: 'Login first!', type: 'danger' }));
       return;
     }
     if (!firstClick) {
@@ -74,12 +84,12 @@ export const StayCheckIn = ({ stay }) => {
       <section className='order-container'>
         <div className='order-form-header'>
           <p>
-            <span className='cost'>${order.totalPrice <= 0 ? stay.price : order.totalPrice}</span>
+            <span className='cost'>${stay.price}</span>
             <span className='night'>/ night</span>
           </p>
           <section className='reserve-reviews'>
             <span className='fas fa-star'></span>
-            <p className='stay-rate'> {averageRate.toFixed(2)} </p>
+            <p className='stay-rate'> {averageRate.toFixed(1)} </p>
             <p className='stay-details-dot'> · </p>
             <p className='reviews'>{stay.reviews.length} reviews </p>
           </section>
@@ -98,11 +108,11 @@ export const StayCheckIn = ({ stay }) => {
           </div>
 
           <div className='guest-input' onClick={onToggleGuests}>
-            <h4>guests</h4>
+            <h4>GUESTS</h4>
             <div>
               {toggleGuests && <div onClick={setToggleGuests} className='screen-details'></div>}
               <div className='guests'>
-                {!order?.guests?.adults ? <p>guests</p> : <p>{order.guests.adults + order.guests.children} guests</p>}
+                {!order?.guests?.adults ? <p>1 guests</p> : <p>{order.guests.adults + order.guests.children} guests</p>}
                 {!order?.guests?.infants ? <React.Fragment></React.Fragment> : <p>{order.guests.infants} infants</p>}
               </div>
             </div>
@@ -186,11 +196,31 @@ export const StayCheckIn = ({ stay }) => {
             </button>
           </div>
         </div>
+
         <span className='charge'>You won't be charged yet</span>
+        <span className='lower-checkin-data'>
+          {!diffDays ? (
+            <span>{stay.price}x 7 nights</span>
+          ) : (
+            <span>
+              {stay.price} x {diffDays} nights
+            </span>
+          )}
+          <span>${stay.price * diffDays}</span>
+        </span>
+        <span className='service'>
+          <span>Service fee</span>
+          <span>$122</span>
+        </span>
+        <span className='total-order-price'>
+          <span>Total</span>
+
+          <span>${stay.price * diffDays + 122}</span>
+        </span>
       </section>
 
-      {toggleGuests && <GuestsFilter order={order} stay={stay} />}
-      {toggleCal && <TestCal order={order} stay={stay} onToggleCal={onToggleCal} />}
+      {toggleGuests && <GuestsFilter order={order} stay={stay} onToggleGuests={onToggleGuests} />}
+      {toggleCal && <TestCal order={order} stay={stay} onToggleCal={onToggleCal} differentDays={differentDays} />}
     </section>
   );
 };

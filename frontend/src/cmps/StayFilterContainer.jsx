@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { TestCal } from './Calendar';
 import { GuestsFilter } from './GuestsFilter';
 import { AdditionalFilter } from '../cmps/AdditionalFilters';
-import { setFilterBy } from '../store/stay.action'
-import { RangeSlider } from './priceRange'
-
+import { setFilterBy } from '../store/stay.action';
+import { RangeSlider } from './priceRange';
 
 import 'react-day-picker/lib/style.css';
 
@@ -17,9 +16,8 @@ export class _StayFilter extends Component {
     currChosenSpecialStay: '',
     filterBy: {
       specialStay: '',
-      additionalFilter: []
-
-    }
+      additionalFilter: [],
+    },
   };
 
   componentDidMount() {
@@ -56,7 +54,6 @@ export class _StayFilter extends Component {
   };
   handelSpecialStayChange(value) {
     console.log('value:', value);
-
   }
 
   render() {
@@ -66,13 +63,34 @@ export class _StayFilter extends Component {
         <div></div>
         {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
         <section className='special-stay '>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Houseboats'), () => { this.handelSpecialStayChange('Houseboats') }}>Houseboats</div>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>Beachfront</div>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>Cabins</div>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>Treehouse</div>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>Ski in/Ski out</div>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>Amazing Places</div>
-          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'farms')}>farms</div>
+          <div
+            className='stay-type'
+            onClick={
+              (() => this.handelFilterByChange('specialStay', 'Houseboats'),
+              () => {
+                this.handelSpecialStayChange('Houseboats');
+              })
+            }>
+            Houseboats
+          </div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>
+            Beachfront
+          </div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>
+            Cabins
+          </div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>
+            Treehouse
+          </div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>
+            Ski in/Ski out
+          </div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'Amazing Places')}>
+            Amazing Places
+          </div>
+          <div className='stay-type' onClick={() => this.handelFilterByChange('specialStay', 'farms')}>
+            Farms
+          </div>
         </section>
 
         <div className='round-button'>
