@@ -41,6 +41,16 @@ async function logout(req, res) {
   }
 }
 
+async function googleLogIn(req, res) {
+  // const { token } = req.body
+  // const { ticket } = await client.verifyIdToken({
+  //     idToken: token,
+  //     audience: process.env.CLIENT.ID
+  // })
+  // const { name } = ticket.getPayload()
+}
+
+
 module.exports = {
   login,
   signup,

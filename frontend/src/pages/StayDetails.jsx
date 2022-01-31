@@ -24,6 +24,14 @@ function getAmenity(amenity) {
       return 'fas fa-smoking';
     case 'Pets allowed':
       return 'fas fa-pet';
+    case 'Garden view':
+      return 'fas fa-tree';
+    case 'Private patio':
+      return 'fas fa-patio';
+    case 'Free parking':
+      return 'fas fa-car';
+    case 'Outdoor shower':
+      return 'fas fa-shower';
   }
 }
 

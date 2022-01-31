@@ -6,14 +6,23 @@ import DateRangePicker from '@material-ui/lab/DateRangePicker';
 import AdapterDateFns from '@material-ui/lab/AdapterDateFns';
 import LocalizationProvider from '@material-ui/lab/LocalizationProvider';
 import Box from '@mui/material/Box';
+import { useLocation } from 'react-router-dom';
 import { updateOrder } from '../store/order.action';
 import { useDispatch } from 'react-redux';
 import { utilService } from '../services/util.service.js';
 
-export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClicked }) {
+export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClicked, differentDays }) {
   const [value, setValue] = React.useState([null, null]);
+  const [inDetails, setInDetails] = useState(false);
 
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.includes('/stay/')) {
+      setInDetails(true);
+    }
+  }, [location]);
 
   useEffect(() => {
     if (!value[0]) return;
@@ -30,7 +39,7 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
     date2 = new Date(date2.split('/')[2], date2.split('/')[1] - 1, date2.split('/')[0]);
     let timeDiff = Math.abs(date2.getTime() - today.getTime());
     let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
+    differentDays(diffDays);
     if (handelDateChange) handelDateChange(startDate, endDate);
 
     if (!stay) return;
@@ -56,7 +65,7 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
               <div>
                 <React.Fragment>
                   <TextField {...startProps} />
-                  <Box sx={{ mx: 2 }}> to </Box>
+                  <Box sx={{ mx: 2, borderColor: 'primary.light' }}> to </Box>
                   <TextField {...endProps} />
                 </React.Fragment>
               </div>
@@ -64,9 +73,15 @@ export function TestCal({ order, stay, onToggleCal, handelDateChange, onSaveClic
           />
         </LocalizationProvider>
       </div>
-      <button className='save' onClick={() => onSaveClicked()}>
-        save
-      </button>
+      {!inDetails ? (
+        <button className='save' onClick={() => onSaveClicked()}>
+          save
+        </button>
+      ) : (
+        <button className='clear' onClick={() => onSaveClicked()}>
+          Clear
+        </button>
+      )}
     </div>
   );
 }

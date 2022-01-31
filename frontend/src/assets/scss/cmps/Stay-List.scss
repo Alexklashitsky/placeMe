@@ -17,11 +17,12 @@
   justify-items: stretch;
 }
 .stay-type{
+  cursor: pointer;
   
 }
 
 .stay-type:hover{
-  cursor: pointer;
+  
 }
 
 // .stay-type:active{
@@ -33,6 +34,8 @@
 //   color: aqua;
 // }
 
-
+.active-stay{
+  border-bottom: rgb(34, 34, 34)  solid 1px;
+}
 
 

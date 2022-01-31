@@ -20,7 +20,6 @@ function connectSockets(http, session) {
       if (socket.userId) {
         socket.leave(socket.userId);
       }
-      console.log('userId:', userId);
 
       socket.join(userId);
       socket.userId = userId;

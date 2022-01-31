@@ -1671,7 +1671,7 @@ function getAverageScore(stay) {
   const sumRate = stay.reviews.reduce((acc, review) => {
     return acc + review.rate;
   }, 0);
-  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(1);
   return stay;
 }
 
@@ -1679,7 +1679,7 @@ function getAverageScoreDetails(stay) {
   const sumRate = stay.reviews.reduce((acc, review) => {
     return acc + review.rate;
   }, 0);
-  stay.avgRate = (sumRate / stay.reviews.length).toFixed(2);
+  stay.avgRate = (sumRate / stay.reviews.length).toFixed(1);
   return stay.avgRate;
 }
 

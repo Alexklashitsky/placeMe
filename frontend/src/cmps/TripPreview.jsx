@@ -21,15 +21,15 @@ export function TripPreview({ order }) {
     switch (status) {
       case 'pending':
         return `Your trip request to ${getStayName(stay)} is pending the Host approval`;
-      case 'approve':
+      case 'approved':
         return `Your trip to ${getStayName(stay)} was approved by the Host`;
-      case 'cancel':
+      case 'cancelled':
         return `ths Host could not accept your trip order to ${getStayName(
           stay
         )}, our apologies for the inconvenience. You are more than welcome to try other venues or contact the host to arrange for an alternative arrangement`;
     }
   }
-  console.log(stay);
+
   if (!stay) return 'loading';
   return (
     <div className='trip-card'>
@@ -42,7 +42,7 @@ export function TripPreview({ order }) {
           <div>
             Between : {order.startDate} - {order.endDate}
           </div>
-          <div> Total Price : $ {order.totalPrice} </div>
+          <div> Total Price : ${order.totalPrice} </div>
           <div className='contact-button'>contact host</div>
         </div>
       </div>

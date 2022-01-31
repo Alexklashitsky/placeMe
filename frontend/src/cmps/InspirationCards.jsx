@@ -48,7 +48,6 @@ function InspirationCards() {
         const topRatedStays = await stayService.getTopRatedStays()
         setTopRatedStays(topRatedStays)
     }, [])
-    // console.log('topRatedStays.loc.address:', topRatedStays[0].loc.address);
     return (
         <div>
             <p className="inspiration-title">Inspiration for your next trip</p>
