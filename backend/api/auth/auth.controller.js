@@ -1,5 +1,6 @@
 const authService = require('./auth.service')
 const logger = require('../../services/logger.service')
+// const { Client } = require('socket.io/dist/client')
 
 async function login(req, res) {
     const { username, password } = req.body
@@ -29,7 +30,7 @@ async function signup(req, res) {
     }
 }
 
-async function logout(req, res){
+async function logout(req, res) {
     try {
         // req.session.destroy()
         req.session.user = null;
@@ -39,8 +40,19 @@ async function logout(req, res){
     }
 }
 
+async function googleLogIn(req, res) {
+    // const { token } = req.body
+    // const { ticket } = await client.verifyIdToken({
+    //     idToken: token,
+    //     audience: process.env.CLIENT.ID
+    // })
+    // const { name } = ticket.getPayload()
+}
+
+
 module.exports = {
     login,
     signup,
-    logout
+    logout,
+    googleLogIn
 }

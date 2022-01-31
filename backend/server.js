@@ -6,6 +6,11 @@ const expressSession = require('express-session');
 const app = express();
 const http = require('http').createServer(app);
 
+const dotenv = require('dotenv')
+const { OAuth2Client } = require('google-auth-library')
+dotenv.config()
+const client = new OAuth2Client(process.env.REACT_APP_GOOGLE_CLIENT_ID)
+
 // Express App Config
 const session = expressSession({
   secret: 'coding is amazing',

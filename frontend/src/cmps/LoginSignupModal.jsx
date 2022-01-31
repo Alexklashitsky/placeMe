@@ -132,7 +132,7 @@ class _LoginSignupModal extends React.Component {
                     <div>---------------------------   or   ---------------------------</div>
                     <GoogleLogin
                         className='toggle-signup-login-button'
-                        clientId='658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com'
+                        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         buttonText='Continue with Google'
                         onSuccess={this.responseGoogle}
                         onFailure={this.responseGoogle}
