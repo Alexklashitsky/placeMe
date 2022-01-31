@@ -1,7 +1,7 @@
-import Axios from 'axios';
-var axios = Axios.create({
-  withCredentials: true,
-});
+import { httpService } from './http.service.js';
+// var axios = Axios.create({
+//   withCredentials: true,
+// });
 
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser';
 
@@ -16,9 +16,10 @@ export const userService = {
 async function login(credentials) {
   // console.log('cred in services', credentials);
   try {
-    const user = await axios.post(`http://localhost:3030/api/auth/login`, credentials);
-    _setLoggedinUser(user.data);
-    return user.data;
+    const user = await httpService.post(`auth/login`, credentials);
+    _setLoggedinUser(user);
+    
+    return user;
   } catch (err) {
     console.log('userserivce-front-eror', err);
   }
@@ -26,9 +27,9 @@ async function login(credentials) {
 
 async function signup(userInfo) {
   try {
-    const user = await axios.post(`http://localhost:3030/api/auth/signup`, userInfo);
-    _setLoggedinUser(user.data);
-    return user.data;
+    const user = await httpService.post(`auth/signup`, userInfo);
+    _setLoggedinUser(user);
+    return user;
   } catch (err) {
     console.log('userserivce-front-eror', err);
   }
@@ -44,7 +45,7 @@ function _setLoggedinUser(user) {
 
 function logout() {
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, null);
-  return axios.post(`http://localhost:3030/api/auth/logout`);
+  return httpService.post(`auth/logout`);
   // return Promise.resolve()
 }
 

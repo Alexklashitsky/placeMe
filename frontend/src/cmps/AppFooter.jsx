@@ -15,6 +15,7 @@ export function AppFooter() {
   useEffect(() => {
     socketService.setup();
     if (user) {
+      console.log('user: ', user)
       socketService.emit('set-user-socket', user._id);
     }
     socketService.on('order-sent', (order) => {

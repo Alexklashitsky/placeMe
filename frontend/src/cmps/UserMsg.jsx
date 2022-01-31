@@ -34,8 +34,8 @@ export const UserMsg = () => {
         x
       </button>
       {message.txt}
-      {message.link === 'trips' ? <a href='http://localhost:3000/Trips'>Link here</a> : <span></span>}
-      {message.link === 'orders' ? <a href='http://localhost:3000/Orders'>Link here</a> : <span></span>}
+      {message.link === 'trips' ? <a href='https://hosty-bnb-app.herokuapp.com/Trips'>Link here</a> : <span></span>}
+      {message.link === 'orders' ? <a href='https://hosty-bnb-app.herokuapp.com/Orders'>Link here</a> : <span></span>}
     </section>
   );
 };
