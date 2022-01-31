@@ -20,7 +20,6 @@ function connectSockets(http, session) {
       if (socket.userId) {
         socket.leave(socket.userId);
       }
-      console.log('userId:', userId);
 
       socket.join(userId);
       socket.userId = userId;
@@ -32,9 +31,9 @@ function connectSockets(http, session) {
     });
 
     socket.on('update-order-status', (order) => {
+      console.log('order', order);
       socket.to(order.buyer._id).emit('order-status-updated', order);
-      console.log('order:', order);
-      console.log('order.buyer._id:', order.buyer._id);
+      console.log('order:', order.status);
     });
   });
 }

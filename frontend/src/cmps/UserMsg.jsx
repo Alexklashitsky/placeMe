@@ -22,7 +22,9 @@ export const UserMsg = () => {
   };
 
   if (!message) return <span></span>;
+
   const msgClass = message.type || '';
+  if (message.link === null) return <span></span>;
   return (
     <section className={'user-msg ' + msgClass}>
       <button
@@ -32,6 +34,8 @@ export const UserMsg = () => {
         x
       </button>
       {message.txt}
+      {message.link === 'trips' ? <a href='http://localhost:3000/Trips'>Link here</a> : <span></span>}
+      {message.link === 'orders' ? <a href='http://localhost:3000/Orders'>Link here</a> : <span></span>}
     </section>
   );
 };

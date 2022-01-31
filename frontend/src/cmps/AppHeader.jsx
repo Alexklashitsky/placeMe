@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
+import NotificationIcon from '../assets/imgs/2.svg';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -12,7 +12,7 @@ import { HamburgerMenu } from './HamburgerMenu';
 import { LoginSignupModal } from './LoginSignupModal';
 import { setFilterBy } from '../store/stay.action';
 import logo from '../assets/imgs/1181191_airbnb_icon.svg';
-import { useHistory } from "react-router-dom"
+import { useHistory } from 'react-router-dom';
 
 export function _AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -27,11 +27,11 @@ export function _AppHeader() {
   const filters = useSelector((state) => state.staysModule.filterBy);
   const dispatch = useDispatch();
 
-
   const [input, setInput] = useState('');
   const [marker, setMarker] = useState(false);
   const location = useLocation();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isHeaderShown, setIsHeaderShown] = useState(true);
 
   const user = useSelector((state) => state?.userModule.user);
 
@@ -45,7 +45,7 @@ export function _AppHeader() {
   }, [user]);
 
   const notification = useSelector((state) => state?.ordersModule.notification);
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     if (!notification) {
@@ -89,7 +89,7 @@ export function _AppHeader() {
   useEffect(() => {
     window.removeEventListener('scroll', handleScroll);
     window.addEventListener('scroll', handleScroll);
-
+    setIsHeaderShown(true);
     if (location.pathname === '/') {
       setIsWhiteHeader(false);
     }
@@ -106,8 +106,13 @@ export function _AppHeader() {
       setIsWhiteHeader(true);
     }
     if (location.pathname.includes('/Orders')) {
+      console.log('location', location);
+      console.log('width', window.screen.width);
       setIsDetails(false);
       setIsWhiteHeader(true);
+      if (window.innerWidth <= 500) {
+        setIsHeaderShown(false);
+      }
     }
     if (window.innerWidth <= 500) setToggleHamburger(true);
     return () => {
@@ -128,6 +133,8 @@ export function _AppHeader() {
     setIsDetails(false);
   };
   // src\assets\imgs\1181191_airbnb_icon.svg
+  console.log('isHeaderShown', isHeaderShown);
+  if (!isHeaderShown) return <></>;
   return (
     <header
       className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'
@@ -137,13 +144,17 @@ export function _AppHeader() {
         <h1 onClick={backPage}>Hosty</h1>
       </Link>
 
-
       <div className={`header-center-container`}>
         <div className={`header-center hidden-search`}>
-          <input className='test-input' type='text' value={filterByText} onChange={(e) => setFilterByText(e.target.value)} placeholder='Start your search' />
+          <input
+            className='test-input'
+            type='text'
+            value={filterByText}
+            onChange={(e) => setFilterByText(e.target.value)}
+            placeholder='Start your search'
+          />
           <div className='small-search-button' onClick={() => onSetFilter(filterByText)}>
-            <SearchIcon onClick={() => onSetFilter({ filterByText }), console.log('search')
-            } />
+            <SearchIcon onClick={() => onSetFilter({ filterByText })} />
           </div>
         </div>
 
@@ -201,9 +212,8 @@ export function _AppHeader() {
                 {/* {toggleGuests && <GuestsFilter order={order} stay={stay} />} */}
               </ul>
 
-              <div className='search-button' >
-                <SearchIcon onClick={() => onSetFilter({ filterByText })
-                } />
+              <div className='search-button'>
+                <SearchIcon onClick={() => onSetFilter({ filterByText })} />
               </div>
             </div>
           </div>
@@ -226,7 +236,7 @@ export function _AppHeader() {
         <div className='menu-container'>
           {/* <button  >  click me</button> */}
           <div className='hamburger-container' onClick={onToggleHamburger}>
-            {notification && <div className='red-dot'>🔴</div>}
+            {notification && <img className='red-dot' src={NotificationIcon}></img>}
 
             <div className={!loggedIn ? 'hamburger-container' : 'hamburger-container-red'} onClick={onToggleHamburger}>
               <MenuIcon />

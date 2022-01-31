@@ -26,10 +26,10 @@ export function OrderPreview({ order }) {
       <div> {order.status} </div>
       <div>{order.totalPrice} </div>
 
-      <select value={option} onChange={handleSelectChange} className='selector'>
+      <select defaultValue={order.status} value={option} onChange={handleSelectChange} className='selector'>
         <option value='pending'>Pending</option>
-        <option value='cancel'>Cancel</option>
-        <option value='approve'>Approve</option>
+        <option value='cancelled'>Cancel</option>
+        <option value='approved'>Approve</option>
       </select>
     </div>
   );

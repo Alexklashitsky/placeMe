@@ -13,7 +13,7 @@
   margin-top: 50px;
   display: grid;
   -moz-column-gap: 90px;
-  column-gap: 80px;
+  column-gap: 5px;
   row-gap: 10px;
   grid-template-columns: 50% 50%;
   grid-template-rows: 33%;
@@ -49,15 +49,15 @@
     background-color: black;
   }
   &.communication {
-    width: 80%;
-    background-color: black;
-  }
-  &.check-in {
     width: 85%;
     background-color: black;
   }
+  &.check-in {
+    width: 100%;
+    background-color: black;
+  }
   &.accuracy {
-    width: 60%;
+    width: 100%;
     background-color: black;
   }
   &.value {

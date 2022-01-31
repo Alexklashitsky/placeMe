@@ -6,6 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import { UserMsg } from '../cmps/UserMsg';
 import { socketService } from '../services/socket.service';
 import { setNotification } from '../store/order.action';
+import { updateText } from '../store/modal.action';
 
 export function AppFooter() {
   const dispatch = useDispatch();
@@ -14,21 +15,36 @@ export function AppFooter() {
   useEffect(() => {
     socketService.setup();
     if (user) {
-      socketService.on('order-sent', (order) => {
-        console.log('received');
-        dispatch(setNotification(true));
-      });
-
-      socketService.on('order-status-updated', (order) => {
-        console.log('received update');
-        dispatch(setNotification(true));
-      });
-      return () => {
-        socketService.off('order-status-updated');
-        socketService.off('order-sent');
-        socketService.terminate();
-      };
+      socketService.emit('set-user-socket', user._id);
     }
+    socketService.on('order-sent', (order) => {
+      console.log('received');
+      dispatch(setNotification(true));
+      dispatch(updateText({ txt: `New order at your stay ${order.stay.name}`, type: 'success', link: 'orders' }));
+    });
+    socketService.on('order-status-updated', (order) => {
+      const getStatus = () => {
+        switch (order.status) {
+          case 'approved':
+            return 'success';
+          case 'cancelled':
+            return 'danger';
+        }
+      };
+      dispatch(setNotification(true));
+      dispatch(
+        updateText({
+          txt: `Your order from  ${order.host.fullname} was ${order.status + ' '} `,
+          type: getStatus(),
+          link: 'trips',
+        })
+      );
+    });
+    return () => {
+      socketService.off('order-status-updated');
+      socketService.off('order-sent');
+      socketService.terminate();
+    };
   }, []);
 
   return (

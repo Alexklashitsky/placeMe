@@ -16,6 +16,8 @@ class _LoginSignupModal extends React.Component {
         console.log(response);
     };
 
+
+
     clearState = () => {
         const clearTemplate = {
             credentials: userService.getEmptyUser(),
@@ -129,15 +131,15 @@ class _LoginSignupModal extends React.Component {
                         </div>
                     </div>
 
-                    <div>---------------------------   or   ---------------------------</div>
-                    <GoogleLogin
+                    {/* <div>---------------------------   or   ---------------------------</div> */}
+                    {/* <GoogleLogin
                         className='toggle-signup-login-button'
                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                         buttonText='Continue with Google'
                         onSuccess={this.responseGoogle}
                         onFailure={this.responseGoogle}
-                        cookiePolicy={'single_host_origin'}
-                    />
+                        cookiePolicy={'single_host_origin'} */}
+                    {/* /> */}
                 </div>
 
             </div>

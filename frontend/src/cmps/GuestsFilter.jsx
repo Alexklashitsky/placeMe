@@ -1,10 +1,13 @@
 import { Component, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateOrder } from '../store/order.action';
+import { useLocation } from 'react-router-dom';
 
-export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked }) => {
+export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked, onToggleGuests }) => {
+  const [inDetals, setInDetails] = useState(false);
+  const [disableBtn, setDisableBtn] = useState(false);
   const [guests, setGuests] = useState({
-    adults: 0,
+    adults: 1,
     children: 0,
     infants: 0,
     pets: 0,
@@ -17,9 +20,24 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
     dispatch(updateOrder(orderToUpdate));
   }, [guests]);
 
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname.includes('/stay/')) {
+      setInDetails(true);
+    }
+  }, [location]);
+
   const onHandleGuests = (type, diff) => {
     guests[type] = guests[type] + diff;
     setGuests({ ...guests });
+    setDisableBtn(false);
+    if (guests.adults + guests.children >= stay.capacity) {
+      setDisableBtn(true);
+    }
+    if (guests.adults + guests.children <= 0) {
+      console.log('haa');
+    }
 
     // this.props.handelFilterByChange('additionalFilter', { ...guests })
   };
@@ -35,7 +53,9 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
           <div className='guest-num flex'>
             <button onClick={() => onHandleGuests('adults', -1)}>-</button>
             {guests.adults}
-            <button onClick={() => onHandleGuests('adults', +1)}>+</button>
+            <button disabled={disableBtn} onClick={() => onHandleGuests('adults', +1)}>
+              +
+            </button>
           </div>
         </div>
       </div>
@@ -49,7 +69,9 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
           <div className='guest-num flex'>
             <button onClick={() => onHandleGuests('children', -1)}>-</button>
             {guests.children}
-            <button onClick={() => onHandleGuests('children', +1)}>+</button>
+            <button disabled={disableBtn} onClick={() => onHandleGuests('children', +1)}>
+              +
+            </button>
           </div>
         </div>
       </div>
@@ -62,7 +84,9 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
           <div className='guest-num flex'>
             <button onClick={() => onHandleGuests('infants', -1)}>-</button>
             {guests.infants}
-            <button onClick={() => onHandleGuests('infants', +1)}>+</button>
+            <button disabled={disableBtn} onClick={() => onHandleGuests('infants', +1)}>
+              +
+            </button>
           </div>
         </div>
         <div className='guests-types'>
@@ -73,14 +97,16 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked 
             <div className='guest-num flex'>
               <button onClick={() => onHandleGuests('pets', -1)}>-</button>
               {guests.pets}
-              <button onClick={() => onHandleGuests('pets', +1)}>+</button>
+              <button disabled={disableBtn} onClick={() => onHandleGuests('pets', +1)}>
+                +
+              </button>
             </div>
           </div>
         </div>
-        <button className='save guest' onClick={() => onSaveClicked()}>
-          save
+        {/* <button className='clear '>clear</button> */}
+        <button className='save-guest' onClick={() => onToggleGuests()}>
+          Close
         </button>
-        <button className='clear '>clear</button>
       </div>
     </section>
   );

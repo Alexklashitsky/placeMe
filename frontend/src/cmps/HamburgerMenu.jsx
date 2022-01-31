@@ -39,17 +39,20 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
 
   return (
     <section className='hamburger-menu'>
-      <div className='hidden-on-mobile' onClick={onToggleLoginModal}>Log in / Sign up</div>
+      <div className='hidden-on-mobile' onClick={onToggleLoginModal}>
+        Log in / Sign up
+      </div>
 
       {/* <div onClick={onToggleLoginModal}>Sign up</div> */}
       <Link to='/Trips' className='clean-link' onClick={onToggleHamburger}>
         {' '}
-        <div>Trips </div>
+        <div onClick={clearNotification}>Trips </div>
       </Link>
       {/* {isHost && <div><Link to='/Orders' className='clean-link'> Orders </Link></div>} */}
       <Link to='/Orders' className='clean-link' onClick={onToggleHamburger}>
         {' '}
         {notification && <div className='red-dot'>🔴</div>}
+        {/* <div className='red-dot'>🔴</div> */}
         <div onClick={clearNotification}>Orders</div>{' '}
       </Link>
       <Link to='/BecomeHost' className='clean-link hidden-on-mobile' onClick={onToggleHamburger}>

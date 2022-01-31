@@ -11,7 +11,7 @@ export function updateOrder(order) {
 export function setNotification(value) {
   return (dispatch) => {
     const action = { type: 'SET_NOTIFICATION', value };
-    console.log('action:', action);
+
     dispatch(action);
   };
 }
@@ -35,9 +35,9 @@ export function loadOrders(filterBy) {
 
 export function reserveOrder(order) {
   return async (dispatch, getState) => {
+    socketService.emit('send-order', order);
     await orderService.save(order);
     const action = { type: 'SET_ORDER', order: orderService.getEmptyOrder() };
-    socketService.emit('send-order', order);
     dispatch(action);
   };
 }

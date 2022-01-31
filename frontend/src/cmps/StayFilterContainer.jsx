@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { TestCal } from './Calendar';
 import { GuestsFilter } from './GuestsFilter';
 import { AdditionalFilter } from '../cmps/AdditionalFilters';
-import { setFilterBy } from '../store/stay.action'
-import { RangeSlider } from './priceRange'
-
+import { setFilterBy } from '../store/stay.action';
+import { RangeSlider } from './priceRange';
 
 import 'react-day-picker/lib/style.css';
 
@@ -17,9 +16,8 @@ export class _StayFilter extends Component {
     currChosenSpecialStay: '',
     filterBy: {
       specialStay: '',
-      additionalFilter: []
-
-    }
+      additionalFilter: [],
+    },
   };
 
   componentDidMount() {

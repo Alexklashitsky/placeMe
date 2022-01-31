@@ -14,5 +14,6 @@ export function modalReducer(state = initialState, action) {
       newState = { ...state, msg: action.msg };
       break;
   }
+
   return newState;
 }
