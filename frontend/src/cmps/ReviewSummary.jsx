@@ -1,13 +1,16 @@
 import React from 'react';
+import { utilService } from '../services/util.service';
+
 
 export const ReviewSummary = ({ stay }) => {
   if (!stay) return <h1>Loading...</h1>;
+  const averageRate = utilService.getReviews(stay);
 
   return (
     <div>
       <section className='review-summary'>
         <span className='fas fa-star-review-summary'></span>
-        <span>{stay.reviews[0].rate}</span>
+        <span>{averageRate.toFixed(2)}</span>
         <span>·</span>
         <span> {stay.reviews.length} reviews</span>
       </section>
