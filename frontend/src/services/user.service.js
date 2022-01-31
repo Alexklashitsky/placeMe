@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import { httpService } from './http.service';
 var axios = Axios.create({
   withCredentials: true,
 });
@@ -16,7 +17,7 @@ export const userService = {
 async function login(credentials) {
   // console.log('cred in services', credentials);
   try {
-    const user = await axios.post(`http://localhost:3030/api/auth/login`, credentials);
+    const user = await httpService.post(`api/auth/login`, credentials);
     _setLoggedinUser(user.data);
     return user.data;
   } catch (err) {
@@ -26,7 +27,7 @@ async function login(credentials) {
 
 async function signup(userInfo) {
   try {
-    const user = await axios.post(`http://localhost:3030/api/auth/signup`, userInfo);
+    const user = await httpService.post(`api/auth/signup`, userInfo);
     _setLoggedinUser(user.data);
     return user.data;
   } catch (err) {
@@ -44,7 +45,7 @@ function _setLoggedinUser(user) {
 
 function logout() {
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, null);
-  return axios.post(`http://localhost:3030/api/auth/logout`);
+  return httpService.post(`api/auth/logout`);
   // return Promise.resolve()
 }
 

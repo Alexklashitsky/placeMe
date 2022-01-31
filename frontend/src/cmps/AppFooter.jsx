@@ -18,7 +18,6 @@ export function AppFooter() {
       socketService.emit('set-user-socket', user._id);
     }
     socketService.on('order-sent', (order) => {
-      console.log('received');
       dispatch(setNotification(true));
       dispatch(updateText({ txt: `New order at your stay ${order.stay.name}`, type: 'success', link: 'orders' }));
     });

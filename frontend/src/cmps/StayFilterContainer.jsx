@@ -20,28 +20,25 @@ export class _StayFilter extends Component {
     },
   };
 
-  componentDidMount() {
-    console.log('start');
-  }
+  componentDidMount() {}
 
   componentDidUpdate() {
     // console.log('this.:', this.state);
-    const currState = this.state.filterBy;
   }
 
   onOpenModal = (value) => {
     this.setState({ currModalShown: value });
   };
   handelFilterByChange = (field, value) => {
-    this.setState((prevState) => ({ ...prevState, filterBy: { ...prevState.filterBy, [field]: value } }), () => {
-      if (field === 'specialStay') {
-        this.handelSpecialStayChange(value)
-        this.onSubmitFilterBy();
+    this.setState(
+      (prevState) => ({ ...prevState, filterBy: { ...prevState.filterBy, [field]: value } }),
+      () => {
+        if (field === 'specialStay') {
+          this.handelSpecialStayChange(value);
+          this.onSubmitFilterBy();
+        }
       }
-    });
-
-
-
+    );
   };
 
   onSaveClicked = () => {
@@ -62,7 +59,6 @@ export class _StayFilter extends Component {
   handelSpecialStayChange(value) {
     // console.log('value:', value);
     this.setState({ currChosenSpecialStay: value });
-
   }
 
   render() {
@@ -72,20 +68,43 @@ export class _StayFilter extends Component {
         <div></div>
         {currModalShown && <div className='screen' onClick={() => this.onOpenModal('')}></div>}
         <section className='special-stay '>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Houseboats' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'Houseboats')}>Houseboats</div>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Beachfront' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>Beachfront</div>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Cabins' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>Cabins</div>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'TreeHouse' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>Treehouse</div>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Ski in/Ski out' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>Ski in/Ski out</div>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Off Beat' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'Off Beat')}>Off Beat</div>
-          <div className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'specialStay' ? 'active-stay' : ''}`}
-            onClick={() => this.handelFilterByChange('specialStay', 'farm')}>farms</div>
+          <div
+            className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Houseboats' ? 'active-stay' : ''}`}
+            onClick={() => this.handelFilterByChange('specialStay', 'Houseboats')}>
+            Houseboats
+          </div>
+          <div
+            className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Beachfront' ? 'active-stay' : ''}`}
+            onClick={() => this.handelFilterByChange('specialStay', 'Beachfront')}>
+            Beachfront
+          </div>
+          <div
+            className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Cabins' ? 'active-stay' : ''}`}
+            onClick={() => this.handelFilterByChange('specialStay', 'Cabins')}>
+            Cabins
+          </div>
+          <div
+            className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'TreeHouse' ? 'active-stay' : ''}`}
+            onClick={() => this.handelFilterByChange('specialStay', 'TreeHouse')}>
+            Treehouse
+          </div>
+          <div
+            className={
+              'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Ski in/Ski out' ? 'active-stay' : ''}`
+            }
+            onClick={() => this.handelFilterByChange('specialStay', 'Ski in/Ski out')}>
+            Ski in/Ski out
+          </div>
+          <div
+            className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'Off Beat' ? 'active-stay' : ''}`}
+            onClick={() => this.handelFilterByChange('specialStay', 'Off Beat')}>
+            Off Beat
+          </div>
+          <div
+            className={'stay-type' + ' ' + `${this.state.currChosenSpecialStay === 'specialStay' ? 'active-stay' : ''}`}
+            onClick={() => this.handelFilterByChange('specialStay', 'farm')}>
+            Farms
+          </div>
         </section>
 
         <div className='round-button'>
