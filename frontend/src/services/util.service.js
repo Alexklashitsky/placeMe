@@ -6,6 +6,7 @@ export const utilService = {
   getDayInDd,
   getReviews,
   capitalizeTheFirstLetterOfEachWord,
+  datesToDaysCount,
 };
 
 function getReviews(stay) {
@@ -102,4 +103,20 @@ function capitalizeTheFirstLetterOfEachWord(words) {
       separateWord[i].substring(1);
   }
   return separateWord.join(' ');
+}
+
+function datesToDaysCount (startDate, endDate){
+
+  startDate = new Date(startDate.split('/')[2], startDate.split('/')[1] - 1, startDate.split('/')[0]);
+  // console.log('startDate in function: ', startDate);
+  if (endDate.includes('1970')) {
+    endDate = '25/01/2022';
+  }
+  endDate = new Date(endDate.split('/')[2], endDate.split('/')[1] - 1, endDate.split('/')[0]);
+  // console.log('endDate in function: ', endDate);
+
+  let timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
+  let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  return diffDays
+  
 }

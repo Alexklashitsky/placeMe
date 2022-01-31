@@ -116,7 +116,7 @@ export function _AppHeader() {
       console.log('width', window.screen.width);
       setIsDetails(false);
       setIsWhiteHeader(true);
-      if (window.innerWidth <= 500) {
+      if (window.screen.width <= 500) {
 
         setIsHeaderShown(false);
 
@@ -143,7 +143,7 @@ export function _AppHeader() {
     setIsDetails(false);
   };
   // src\assets\imgs\1181191_airbnb_icon.svg
-  console.log('isHeaderShown', isHeaderShown);
+  // console.log('isHeaderShown', isHeaderShown);
   if (!isHeaderShown) return <></>
   return (
     <header
