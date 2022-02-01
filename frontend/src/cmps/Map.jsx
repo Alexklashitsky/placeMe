@@ -12,7 +12,7 @@ class _MyMap extends Component {
       width: '100%',
       height: '100%',
     },
-    isInfoWindowOpen: true,
+    isInfoWindowOpen: false,
   };
 
   mapClicked = (mapProps, map, clickEvent) => {
