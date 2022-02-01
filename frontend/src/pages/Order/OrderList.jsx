@@ -3,7 +3,7 @@ import { OrderPreview } from './OrderPreview';
 
 export function OrderList({ orders }) {
   orders = JSON.parse(JSON.stringify(orders)).reverse();
-  console.log('order list: ', orders)
+  // console.log('order list: ', orders)
   return (
       <div className='order-list'>
         {orders.map((order) => (

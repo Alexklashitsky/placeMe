@@ -15,11 +15,12 @@ export function OrderPreview({ order }) {
 
   const dispatch = useDispatch();
 
-  function handleSelectChange(event) {
-    setOption(event.target.value);
+  function handleSelectChange(value) {
+    console.log('value: ', value)
+    setOption(value);
     const orderToUpdate = {
       ...order,
-      status: event.target.value,
+      status: value,
     };
 
 
@@ -53,7 +54,7 @@ export function OrderPreview({ order }) {
   // console.log('days: ',order.endDate, order.startDate,  daysCount);
   if (!stay) return <></>;
   return (
-    <div className='order-card'>
+    <div className={`order-card ${option}`}>
 
 
       <div className={`order-title ${option}`}>
@@ -111,14 +112,13 @@ export function OrderPreview({ order }) {
       }
 
       <div className='buttons-container'>
-        <div className='show-Details-button' onClick={onToggleShowMore}>Show Order Details</div>
-        <div className='selector-container'>
-          <select defaultValue={order.status} value={option} onChange={handleSelectChange} >
-            <option value='pending'>Pending</option>
-            <option value='cancel'>Cancel</option>
-            <option value='approve'>Approve</option>
-          </select>
+        <div className='show-Details-button' onClick={onToggleShowMore}>
+          {!toggleShowMore && <span>Show Details </span> }
+          {toggleShowMore && <span>Hide Details </span> }
         </div>
+
+        <div className='status-button cancel-button' value='cancel' onClick={() => handleSelectChange('cancel')}>Cancel</div>
+        <div className='status-button approve-button' value='approve' onClick={() => handleSelectChange('approve')}>Approve</div>
       </div>
       {/* </div> */}
 

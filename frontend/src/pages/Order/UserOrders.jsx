@@ -30,7 +30,7 @@ export const UserOrders = () => {
   if (!user) return <h1>Please log-in first!</h1>;
   
   const pendingOrders = orders.filter(order => order.status === 'pending')
-console.log('order page: ', orders);
+// console.log('order page: ', orders);
   return (
     <div className='orders-main'>
 
