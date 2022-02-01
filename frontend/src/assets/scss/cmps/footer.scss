@@ -13,7 +13,7 @@
   margin-top: 4rem;
   .app-footer {
     padding-top: 1.2rem;
-    width: calc(100vw - 160px);
+    width: calc(100vw - 180px);
     display: flex;
     justify-content: space-between;
     color: dimgray;
@@ -38,13 +38,18 @@
   .app-footer-endline {
     padding: 1rem 0;
     border-top: 2px solid #dfe5e7;
-    width: 80%;
+    width: calc(100vw - 180px);
     font-size: 0.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     div {
       display: inline-block;
+      width: 100%;
+      &.app-footer-icons {
+
+        text-align: right;
+      }
       span {
         margin-left: 0.5rem;
       }

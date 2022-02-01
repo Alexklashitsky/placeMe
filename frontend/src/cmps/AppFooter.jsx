@@ -92,7 +92,7 @@ export function AppFooter() {
         <div>
           © 2022 no rights reserved, this is a clone of the Airbnb website for learning purposes ·Privacy·Terms·Sitemap
         </div>
-        <div>
+        <div className='app-footer-icons'>
           <span>
             <FacebookIcon />{' '}
           </span>
