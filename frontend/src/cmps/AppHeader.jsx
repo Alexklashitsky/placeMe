@@ -130,9 +130,20 @@ export function _AppHeader() {
   };
 
   const backPage = () => {
+    restFilters()
     setIsWhiteHeader(false);
     setIsDetails(false);
+
   };
+
+  const restFilters = () => {
+    console.log('rest');
+    const reseatedFilter = {
+      ...filters, freeCancel: false, additionalFilters: [], minPrice: 0, maxPrice: Infinity,
+      city: '', startDate: null, endDate: null, specialStay: "", name: ''
+    }
+    dispatch(setFilterBy(reseatedFilter));
+  }
   // src\assets\imgs\1181191_airbnb_icon.svg
   // console.log('isHeaderShown', isHeaderShown);
   if (!isHeaderShown) return <></>
