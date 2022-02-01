@@ -6,7 +6,7 @@ import { OrderList } from '../Order/OrderList';
 import { stayService } from '../../services/stay.service';
 import logo from '../../assets/imgs/1181191_airbnb_icon.svg';
 import { Link } from 'react-router-dom';
-import {CircularIndeterminate} from '../../cmps/Loader.jsx'
+import { CircularIndeterminate } from '../../cmps/Loader.jsx';
 
 export const UserOrders = () => {
   const user = useSelector((state) => state?.userModule?.user);
@@ -17,23 +17,19 @@ export const UserOrders = () => {
 
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
-    if (!user) return
+    if (!user) return;
     dispatch(loadOrders({ hostId: user._id }));
     dispatch(loadStays());
   }, []);
 
-
-  if (!orders) return <CircularIndeterminate/>;
+  if (!orders) return <CircularIndeterminate />;
   if (!user) return <h1>Please log-in first!</h1>;
   
   const pendingOrders = orders.filter(order => order.status === 'pending')
 // console.log('order page: ', orders);
   return (
     <div className='orders-main'>
-
       <div className='orders-header'>
         <div className='pending-orders-count'>Pending Orders: {pendingOrders.length} </div>
 
@@ -76,9 +72,9 @@ export const UserOrders = () => {
     //           <p>{orders.length}</p>
     //         </div>
     //         {/* <div className='active-users'>Active Users</div> */}
-    //       {/* </div> */} 
+    //       {/* </div> */}
     //   {/*  </div> */}
-    //    {/* </div> 
+    //    {/* </div>
     //  </div>*/}
   );
 };

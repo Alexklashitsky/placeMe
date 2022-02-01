@@ -6,6 +6,10 @@ import Prague from '../assets/imgs/prague.jpg'
 import London from '../assets/imgs/alexander-london-3l1sjp562qQ-unsplash.jpg'
 import { HomeTopStays } from '../cmps/HomeTopStays.jsx';
 import { stayService } from '../services/stay.service';
+import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFilterBy } from '../store/stay.action';
+import { useHistory } from 'react-router-dom';
 
 // const stays = [
 //     {
@@ -43,30 +47,50 @@ import { stayService } from '../services/stay.service';
 // ];
 function InspirationCards() {
     const [topRatedStays, setTopRatedStays] = useState(null);
+    const filters = useSelector((state) => state.staysModule.filterBy)
+    const [filterByCity, setFilterByCity] = useState(null);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(async () => {
         const topRatedStays = await stayService.getTopRatedStays()
         setTopRatedStays(topRatedStays)
+
+
     }, [])
+    const handelChange = (value) => {
+        // console.log(value);
+        const submittedFilter = {
+            ...filters, city: value
+        }
+        // console.log(submittedFilter);
+        dispatch(setFilterBy(submittedFilter));
+        history.push('/StaySearch')
+
+
+    }
     return (
         <div>
             <p className="inspiration-title">Inspiration for your next trip</p>
-            <div className='inspiration-cards-container'>
+            <section></section>
 
-                <Card
+            <div className='inspiration-cards-container' >
+
+                <Card handelChange={handelChange}
                     src={NY}
                     title="New York"
+
                 />
-                <Card
+                <Card handelChange={handelChange}
                     src={Paris}
                     title="Paris"
                 />
-                <Card
+                <Card handelChange={handelChange}
                     src={Prague}
                     title="Prague"
 
                 />
-                <Card
+                <Card handelChange={handelChange}
                     src={London}
                     title="London"
 

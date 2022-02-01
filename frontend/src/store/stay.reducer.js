@@ -12,6 +12,7 @@ const initialState = {
         additionalFilters: [],
         minPrice: 0,
         maxPrice: Infinity,
+        city: '',
 
         startDate: null,
         endDate: null,

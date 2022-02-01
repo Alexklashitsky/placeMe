@@ -4,10 +4,11 @@ import { logout } from '../store/user.action';
 import { updateText } from '../store/modal.action';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNotification } from '../store/order.action';
+import NotificationIcon from '../assets/imgs/4.svg';
 
 export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLoginModal, toggleHamburger }) {
   useEffect(() => {
-    if (toggleLoginModal && toggleHamburger ) onToggleHamburger();
+    if (toggleLoginModal && toggleHamburger) onToggleHamburger();
   }, [toggleLoginModal]);
 
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
       {/* {isHost && <div><Link to='/Orders' className='clean-link'> Orders </Link></div>} */}
       <Link to='/Orders' className='clean-link' onClick={onToggleHamburger}>
         {' '}
-        {notification && <div className='red-dot'>🔴</div>}
+        {notification && <img src={NotificationIcon} className='red-dot'></img>}
         {/* <div className='red-dot'>🔴</div> */}
         <div onClick={clearNotification}>Orders</div>{' '}
       </Link>

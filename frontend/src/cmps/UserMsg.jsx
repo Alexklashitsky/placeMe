@@ -9,13 +9,13 @@ export const UserMsg = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (timeOutId.current) clearTimeout(timeOutId.current);
+  // useEffect(() => {
+  //   if (timeOutId.current) clearTimeout(timeOutId.current);
 
-    timeOutId.current = setTimeout(() => {
-      closeMsg();
-    }, 2000);
-  }, [message]);
+  //   timeOutId.current = setTimeout(() => {
+  //     closeMsg();
+  //   }, 2000);
+  // }, [message]);
 
   const closeMsg = () => {
     dispatch(updateText(null));
@@ -31,7 +31,7 @@ export const UserMsg = () => {
         onClick={() => {
           closeMsg();
         }}>
-        x
+        <span className='x'>x</span>
       </button>
       {message.txt}
       {message.link === 'trips' ? <a href='https://hosty-bnb-app.herokuapp.com/Trips'>Link here</a> : <span></span>}

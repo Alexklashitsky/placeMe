@@ -36,7 +36,7 @@ export const GuestsFilter = ({ order, stay, handelFilterByChange, onSaveClicked,
       setDisableBtn(true);
     }
     if (guests.adults + guests.children <= 0) {
-      console.log('haa');
+      return;
     }
 
     // this.props.handelFilterByChange('additionalFilter', { ...guests })
