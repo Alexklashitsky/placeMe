@@ -15,6 +15,7 @@ export function AppFooter() {
   useEffect(() => {
     socketService.setup();
     if (user) {
+      console.log('user: ', user);
       socketService.emit('set-user-socket', user._id);
     }
     socketService.on('order-sent', (order) => {
@@ -22,18 +23,29 @@ export function AppFooter() {
       dispatch(updateText({ txt: `New order at your stay ${order.stay.name}`, type: 'success', link: 'orders' }));
     });
     socketService.on('order-status-updated', (order) => {
+      const getText = () => {
+        switch (order.status) {
+          case 'pending':
+            return 'pending';
+          case 'approve':
+            return 'approved';
+          case 'cancel':
+            return 'cancelled';
+        }
+      };
+
       const getStatus = () => {
         switch (order.status) {
-          case 'approved':
+          case 'approve':
             return 'success';
-          case 'cancelled':
+          case 'cancel':
             return 'danger';
         }
       };
       dispatch(setNotification(true));
       dispatch(
         updateText({
-          txt: `Your order from  ${order.host.fullname} was ${order.status + ' '} `,
+          txt: `Your order from  ${order.host.fullname} was ${getText()} `,
           type: getStatus(),
           link: 'trips',
         })

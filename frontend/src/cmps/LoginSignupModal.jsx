@@ -12,7 +12,9 @@ class _LoginSignupModal extends React.Component {
     isSignup: false,
   };
 
-  responseGoogle = (response) => {};
+  responseGoogle = (response) => {
+    console.log(response);
+  };
 
   clearState = () => {
     const clearTemplate = {
@@ -35,6 +37,7 @@ class _LoginSignupModal extends React.Component {
     if (!credentials.username || !credentials.password) return;
     this.props.login(credentials);
     this.clearState();
+    this.props.onToggleLoginModal();
   };
 
   onSignup = (ev) => {
@@ -43,6 +46,7 @@ class _LoginSignupModal extends React.Component {
     if (!credentials.username || !credentials.password || !credentials.fullname) return;
     this.props.signup(credentials);
     this.clearState();
+    this.props.onToggleLoginModal();
   };
 
   toggleSignup = () => {

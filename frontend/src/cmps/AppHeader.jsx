@@ -247,6 +247,7 @@ export function _AppHeader() {
                 onToggleHamburger={onToggleHamburger}
                 setToggleLoginModal={setToggleLoginModal}
                 toggleLoginModal={toggleLoginModal}
+                toggleHamburger={toggleHamburger}
               />
             )}
             {toggleLoginModal && <LoginSignupModal onToggleLoginModal={onToggleLoginModal} />}

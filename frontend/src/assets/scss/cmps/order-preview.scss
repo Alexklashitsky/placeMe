@@ -22,19 +22,19 @@
   .order-list {
     padding-top: 70px;
     .order-card {
-      @media (max-width: 500px) {
-        width: calc(100vw - 20px);
-      }
       // .transition {
       //   width: 100%;
       //   max-height: 270px;
       //   transition: max-height 1s;
       //   &.show {
-      //     max-height: 670px;
-      //   }
-      // }
-      font-size: 0.9rem;
-      width: calc(100vw - 160px);
+        //     max-height: 670px;
+        //   }
+        // }
+        font-size: 0.9rem;
+        width: calc(100vw - 180px);
+        @media (max-width: 500px) {
+          width: calc(100vw - 20px);
+        }
       display: flex;
       flex-direction: row;
       align-items: flex-start;
