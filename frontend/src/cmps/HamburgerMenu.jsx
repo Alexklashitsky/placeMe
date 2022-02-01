@@ -54,6 +54,7 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
       <Link to='/Orders' className='clean-link' onClick={onToggleHamburger}>
         {' '}
         {notification && <img src={NotificationIcon} className='red-dot'></img>}
+        {/* <img src={NotificationIcon} className='red-dot'></img> */}
         {/* <div className='red-dot'>🔴</div> */}
         <div onClick={clearNotification}>Orders</div>{' '}
       </Link>
