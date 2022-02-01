@@ -20,7 +20,7 @@ export function AppFooter() {
     }
     socketService.on('order-sent', (order) => {
       dispatch(setNotification(true));
-      alert('blabla')
+
       dispatch(updateText({ txt: `New order at your stay ${order.stay.name}`, type: 'success', link: 'orders' }));
     });
     socketService.on('order-status-updated', (order) => {
