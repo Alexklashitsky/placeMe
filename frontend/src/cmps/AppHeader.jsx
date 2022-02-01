@@ -13,6 +13,7 @@ import { LoginSignupModal } from './LoginSignupModal';
 import { setFilterBy } from '../store/stay.action';
 import logo from '../assets/imgs/1181191_airbnb_icon.svg';
 import { useHistory } from 'react-router-dom';
+import {updateText} from '../store/modal.action'
 
 export function _AppHeader() {
   const [toggleLocation, setToggleLocation] = useState(false);
@@ -66,6 +67,7 @@ export function _AppHeader() {
   };
   const onToggleHamburger = () => {
     setToggleHamburger(!toggleHamburger);
+
   };
 
   const onSetFilter = (filterBy) => {

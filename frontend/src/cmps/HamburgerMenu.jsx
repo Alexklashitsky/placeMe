@@ -17,6 +17,7 @@ export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLo
   const onToggleLoginModal = (e) => {
     e.stopPropagation();
     setToggleLoginModal(!toggleLoginModal);
+    
   };
 
   const loggedInUser = useSelector((state) => state?.userModule.user);

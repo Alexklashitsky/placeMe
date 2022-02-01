@@ -20,9 +20,9 @@ export function TripPreview({ order }) {
     switch (status) {
       case 'pending':
         return `Your trip request to ${getStayName(stay)} is pending the Host approval`;
-      case 'approved':
+      case 'approve':
         return `Your trip to ${getStayName(stay)} was approved by the Host`;
-      case 'cancelled':
+      case 'cancel':
         return `ths Host could not accept your trip order to ${getStayName(
           stay
         )}, our apologies for the inconvenience. You are more than welcome to try other venues or contact the host to arrange for an alternative arrangement`;

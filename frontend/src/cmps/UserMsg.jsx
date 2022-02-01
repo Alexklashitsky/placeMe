@@ -9,13 +9,13 @@ export const UserMsg = () => {
 
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (timeOutId.current) clearTimeout(timeOutId.current);
+  useEffect(() => {
+    if (timeOutId.current) clearTimeout(timeOutId.current);
 
-  //   timeOutId.current = setTimeout(() => {
-  //     closeMsg();
-  //   }, 2000);
-  // }, [message]);
+    timeOutId.current = setTimeout(() => {
+      closeMsg();
+    }, 5000);
+  }, [message]);
 
   const closeMsg = () => {
     dispatch(updateText(null));
