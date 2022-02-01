@@ -5,9 +5,9 @@ import { updateText } from '../store/modal.action';
 import { useSelector, useDispatch } from 'react-redux';
 import { setNotification } from '../store/order.action';
 
-export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLoginModal }) {
+export function HamburgerMenu({ onToggleHamburger, toggleLoginModal, setToggleLoginModal, toggleHamburger }) {
   useEffect(() => {
-    if (toggleLoginModal === true) onToggleHamburger();
+    if (toggleLoginModal && toggleHamburger ) onToggleHamburger();
   }, [toggleLoginModal]);
 
   const dispatch = useDispatch();

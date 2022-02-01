@@ -1648,13 +1648,13 @@ async function query(filterBy) {
 //   return Promise.resolve(stays);
 // }
 
-function getById(stayId) {
-  return axios
-    .get(`http://localhost:3030/api/stay/${stayId}`)
-    .then((res) => res.data)
-    .catch((err) => {
-      console.log(err.response.status);
-    });
+async function getById(stayId) {
+  try {
+    const stay = await httpService.get(`stay/${stayId}`);
+    return stay;
+  } catch (err) {
+    console.log(err.response.status);
+  }
 }
 // function getById(stayId) {
 //   return storageService.get(STORAGE_KEY, stayId);
