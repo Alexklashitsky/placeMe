@@ -17,7 +17,6 @@ export function TripPreview({ order }) {
   }
 
   function tripStatusMassage(status) {
-    console.log(status);
     switch (status) {
       case 'pending':
         return `Your trip request to ${getStayName(stay)} is pending the Host approval`;

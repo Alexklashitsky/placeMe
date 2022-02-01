@@ -69,14 +69,12 @@ export function _AppHeader() {
   };
 
   const onSetFilter = (filterBy) => {
-
-    history.push('/StaySearch')
-
+    history.push('/StaySearch');
 
     const submittedFilter = {
-      ...filters, name: filterByText
-    }
-
+      ...filters,
+      name: filterByText,
+    };
 
     dispatch(setFilterBy(submittedFilter));
     //   setFilter(filterBy)
@@ -106,12 +104,9 @@ export function _AppHeader() {
       setIsWhiteHeader(true);
     }
     if (location.pathname.includes('/Orders')) {
-      console.log('location', location);
-      console.log('width', window.screen.width);
       setIsDetails(false);
       setIsWhiteHeader(true);
       if (window.screen.width <= 500) {
-
         setIsHeaderShown(false);
       }
     }
@@ -146,11 +141,12 @@ export function _AppHeader() {
   }
   // src\assets\imgs\1181191_airbnb_icon.svg
   // console.log('isHeaderShown', isHeaderShown);
-  if (!isHeaderShown) return <></>
+  if (!isHeaderShown) return <></>;
   return (
     <header
-      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${isDetails && 'details details-header'
-        } `}>
+      className={`full header ${isWhiteHeader ? 'white-header' : 'black-header'} ${
+        isDetails && 'details details-header'
+      } `}>
       <Link to='/' className='header_icon clean-link'>
         <img className='header-logo' src={logo} alt='sfsdfs' />
         <h1 onClick={backPage}>Hosty</h1>

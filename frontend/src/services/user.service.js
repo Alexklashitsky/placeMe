@@ -18,7 +18,7 @@ async function login(credentials) {
   try {
     const user = await httpService.post(`auth/login`, credentials);
     _setLoggedinUser(user);
-    
+
     return user;
   } catch (err) {
     console.log('userserivce-front-eror', err);
