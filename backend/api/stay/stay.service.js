@@ -98,10 +98,10 @@ function _buildCriteria(filterBy) {
 
     }
 
-    // if (filterBy.priceRange.maxPrice) {
-    //   criteria.price = { $lte: +filterBy.priceRange.maxPrice }
+    if (filterBy.priceRange.maxPrice) {
+      criteria.price = { $lte: +priceRange.maxPrice }
 
-    // }
+    }
   }
 
 
@@ -114,8 +114,14 @@ function _buildCriteria(filterBy) {
     const regex = new RegExp(filterBy.specialStay, 'i')
     criteria.type = { $regex: regex }
 
+  }
 
+  if (filterBy.city) {
 
+    console.log('filterBy.city:', filterBy.city);
+    const regex = new RegExp(filterBy.city, 'i')
+    console.log('regex:', regex);
+    criteria['loc.city'] = { $regex: regex }
   }
 
 
